@@ -1,0 +1,6 @@
+# Cartesian metres in map; closed automatically by the task client.
+polygon: [[0.0,0.0],[6.0,0.0],[6.0,4.0],[0.0,4.0]]
+# Wider EMPTY simulation area for forward-only turns, not physical walls.
+allowed_bounds: [-2.0,8.0,-2.0,6.0]
+planning_timeout_s: 60.0
+execution_timeout_s: 240.0

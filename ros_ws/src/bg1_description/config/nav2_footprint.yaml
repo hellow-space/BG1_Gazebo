@@ -1,0 +1,8 @@
+# Conservative maximum outline including the rear squeegee, relative to base_link.
+footprint:
+  - [0.840, 0.380]
+  - [0.840, -0.380]
+  - [-0.355, -0.380]
+  - [-0.355, 0.380]
+robot_radius: null
+minimum_physical_passage_width_m: 0.850

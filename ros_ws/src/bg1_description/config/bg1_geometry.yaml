@@ -1,0 +1,38 @@
+# Dimensions from the BG1 Pro user manual unless marked ESTIMATED_BASELINE.
+body_length_m: 1.120
+body_width_m: 0.660
+overall_length_m: 1.195
+overall_width_m: 0.760
+overall_height_m: 1.303
+
+# Axle-relative navigation envelope: x forward, y left, z up.
+front_extent_m: 0.840
+body_rear_extent_m: -0.280
+rear_extent_m: -0.355
+half_width_m: 0.380
+body_bottom_z_m: 0.120
+squeegee_height_m: 0.050
+# Navigation mode: simplified rigid squeegee lifted clear of the floor.
+squeegee_clearance_m: 0.020
+
+# ESTIMATED_BASELINE values retained from the reusable three-wheel model.
+wheel_track_m: 0.620
+wheel_radius_m: 0.120
+wheel_width_m: 0.080
+caster_x_m: 0.550
+caster_radius_m: 0.080
+caster_trail_m: 0.060
+
+# Equivalent planar navigation sensor; not a claim about a production sensor pose.
+nav_lidar_x_m: 0.780
+nav_lidar_z_m: 0.280
+nav_lidar_min_m: 0.120
+nav_lidar_max_m: 20.0
+nav_lidar_update_hz: 10.0
+
+max_linear_mps: 1.0
+max_angular_rps: 0.8
+routine_obstacle_height_m: 0.020
+maximum_obstacle_height_m: 0.025
+minimum_passage_width_m: 0.850
+parameter_status: ESTIMATED_BASELINE

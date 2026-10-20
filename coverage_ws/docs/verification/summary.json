@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "execute": true,
+  "polygon": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      6.0,
+      0.0
+    ],
+    [
+      6.0,
+      4.0
+    ],
+    [
+      0.0,
+      4.0
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "allowed_bounds": [
+    -2.0,
+    8.0,
+    -2.0,
+    6.0
+  ],
+  "localization": "Gazebo ground-truth map-to-odom correction (simulation only)",
+  "operation_width_m": 0.6,
+  "path_length_m": 35.70766875385286,
+  "planning_status": 4,
+  "planning_error_code": 0,
+  "planning_seconds": 0.001,
+  "swath_count": 7,
+  "ground_truth_start": {
+    "t": 699.681109865,
+    "x": 1.8334398932319362,
+    "y": 4.301163761545857,
+    "yaw": -0.37183427670442454
+  },
+  "execution_status": 4,
+  "actual_travel_m": 36.9805064251423,
+  "actual_final": {
+    "t": 859.652588992,
+    "x": 4.891581678238983,
+    "y": 2.8118561613820394,
+    "yaw": 1.5342333012465923
+  },
+  "actual_position_error_m": 0.18833211348863824,
+  "actual_yaw_error_rad": 0.03656302554830404,
+  "actual_displacement_m": 3.4015097096894777,
+  "elapsed_seconds": 163.24645598400002,
+  "ground_truth_sample_count": 1581
+}

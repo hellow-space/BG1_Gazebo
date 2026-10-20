@@ -1,0 +1,21 @@
+# Local assistant and account state
+/.agents/
+/.codex/
+/.aws/
+
+# Generated ROS/colcon workspaces
+/log/
+/ros_ws/build/
+/ros_ws/install/
+/ros_ws/log/
+/coverage_ws/build/
+/coverage_ws/install/
+/coverage_ws/log/
+
+# Python/editor caches
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.DS_Store
+*.swp
+*.swo

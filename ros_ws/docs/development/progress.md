@@ -1,0 +1,30 @@
+# SDD ledger — plan: docs/superpowers/plans/2026-10-16-bg1-navigation-gazebo-model.md
+
+Workspace cleanup: documents and this ledger now live inside ros_ws/docs; older entries retain their original path notation. Removed the unused simulation_construct reference tree, original ZIP, root/ROS logs and Python test caches at the user's request. Kept the two BG1 packages and the build/install trees required by the current symlink installation. Post-cleanup verification: 28 source tests pass, both installed ROS packages resolve, installed wrapped Xacro expands and validates as SDF, and install has no dangling symlinks. Visible root entries are ros_ws and the user manual; managed read-only dot-directories were preserved.
+
+Execution mode: inline/native in the requested workspace root.
+Ruling: Git worktree and automated SDD task scripts are unavailable because the workspace is not a Git repository — execute in place and retain command evidence in this ledger — cost if wrong: no isolated rollback or commit-range review.
+
+Pre-flight Task 1 -> Task 2: configuration keys consumed by Xacro match the plan; no conflict.
+Pre-flight Task 1 -> Task 3: appearance builder consumes the same geometry YAML; no conflict.
+Pre-flight Task 2 -> Task 4: launch consumes `/robot_description` and model name `bg1_pro`; no conflict.
+Pre-flight Task 3 -> Task 4: `appearance` values are `primitive` and `wrapped`; no conflict.
+Pre-flight Task 4 -> Task 5: runtime verifier consumes the bridged navigation topic contract; scoped Gazebo topics must be discovered and pinned during integration.
+
+Task 1: complete (no Git commits; tests: `python3 -m pytest ros_ws/src/bg1_description/test/test_configuration.py -q` -> 5 passed; build: 2 packages finished).
+Task 2: complete (physical Xacro, Harmonic systems, lidar, and description launch; 12 cumulative tests passed; 2 packages built).
+Task 3: complete (deterministic 12-triangle Collada shell and 1024x320 wrap; 17 description tests passed).
+Task 4: complete (SDF world, spawn launch, and bridge contract; 4 launch tests passed; 2 packages built).
+Task 5 unit layer: complete (runtime helper tests 5 passed; threshold world validates as SDF 1.10; operator README written).
+Runtime checkpoint: local Gazebo spawn and six bridges succeeded. Verifier passed after separating the configured braking period from the stopped window; evidence at /tmp/bg1_gazebo_verification/runtime_evidence.json. This verifier uses wheel odometry, not independent ground-truth pose, so it does not certify true chassis tilt or traction.
+Appearance revision requested by user: replaced the fully tiled box decal with a rounded, layered 1172-triangle shell, local side labels, sensor accents, panel seams, and wheel hubs. Manual page 4 used as the visual reference. All 26 source tests pass, including nonvisual equality between appearances.
+Final appearance check: inspected actual Gazebo screenshot docs/previews/bg1_wrapped_gazebo.png. Fixed front panel occlusion after first render; final local decals are upright, seam and wheel hubs visible, shell remains lightweight. GUI left open for user review. Final colcon test-result: 31 tests, 0 errors, 0 failures, 0 skipped.
+Keyboard acceptance follow-up: actual key presses through teleop_twist_keyboard revealed wheel odometry turned while chassis yaw stayed near zero. Raised the simplified rigid squeegee by 20 mm for navigation mode. Investigated converted SDF and found custom-named wheel collisions dropped all contact extensions. Removed only wheel collision names, added conversion regression coverage, and set passive caster friction to 0.05. Official converter caveat: https://sdformat.org/tutorials/specification/sdformat_urdf_extensions/ .
+Verified actual Gazebo world pose after keyboard i/k/j/k sequence: forward 0.6002 m, left yaw 1.0735 rad (61.5 degrees), stopped planar drift 0.0 m during the measured window. Evidence: docs/verification/keyboard_motion.json. This supersedes prior odometry-only claims for this specific maneuver; full slip/threshold characterization is still not done. Final tests: 28 source cases / 33 colcon aggregate, zero failures. A visible terminal running teleop_twist_keyboard is open, confirmed via ROS node discovery; robot left stopped. Start helper: ros_ws/keyboard_control.sh.
+
+Nav2 integration (2026-10-16): added bg1_navigation with an AMCL/static-map demo, NavFn planner, Regulated Pure Pursuit controller, velocity smoother, RViz configuration and a 0.3 m/s navigation cap. A single scene YAML generates matching Gazebo boxes and map occupancy. Both costmaps use the authoritative asymmetric BG1 footprint plus 3 cm padding. Corrected DiffDrive odom TF child to base_footprint and sensor gz_frame_id to nav_lidar_link; added frame regression coverage.
+
+Runtime: verified 360 finite scan returns. AMCL's retained pose requires a transient-local subscription for a verifier launched after localization; corrected demo_goal.py after observing its initial readiness timeout. Initial interactive goals included a failed collision-protected maneuver near storage; arbitrary tight goals are not certified. Restarted the scene, sent fixed goal (4.8,0,0), then returned to (0,0,0). Both actions returned SUCCEEDED. Independent Gazebo pose: outbound 28.620 s, 0.1605 m position error, 0.1689 rad yaw error; return 33.450 s, 0.1630 m error, 0.1883 rad yaw error. The outbound recording begins with a brief interactive goal before the fixed goal preempted it; the recorded route and return both go around the central island. Sampled maximum-envelope clearances to static boxes are 0.773 m / 0.750 m; these are sampled geometric checks, not continuous contact measurements.
+
+Evidence: docs/verification/nav2_outbound.json, nav2_return.json, nav2_summary.json; docs/previews/bg1_nav2_trajectory.png and bg1_nav2_gazebo.png. All 3 packages built; 31 source cases / 38 colcon aggregate tests passed, zero errors/failures/skips. Gazebo and RViz left running after return. Launch helper: bash ros_ws/navigation_demo.sh. This is known-map navigation; online SLAM, moving-obstacle avoidance and narrow-passage tuning remain outside this validation.
+

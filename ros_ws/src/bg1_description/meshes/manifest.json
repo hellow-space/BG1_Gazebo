@@ -1,0 +1,18 @@
+{
+  "asset_version": 2,
+  "body_center_m": [
+    0.27999999999999997,
+    0.0,
+    0.7114999999999999
+  ],
+  "body_size_m": [
+    1.12,
+    0.66,
+    1.1829999999999998
+  ],
+  "geometry_sha256": "e38353565d029ca80f9b4adf5f8274d82221cd6df7a454ab0627dfda941027d8",
+  "mesh_sha256": "0f4484236fc7d4054ad2194dceec04ffe6558a56ba3a77d827513ce6c46f1a65",
+  "style": "rounded_industrial_shell_local_decals",
+  "texture_sha256": "8c3e141fb0c5c67a6716f503d23cedc869469b25f2f09b574894c385c359106f",
+  "triangle_count": 1172
+}

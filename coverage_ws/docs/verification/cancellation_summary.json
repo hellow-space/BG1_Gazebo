@@ -1,0 +1,7 @@
+{
+  "task_reported_interrupted": true,
+  "cleanup_error": null,
+  "last_half_second_max_drift_m": 0.0,
+  "samples_in_stop_window": 5,
+  "passed": true
+}

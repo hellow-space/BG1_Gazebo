@@ -1,0 +1,34 @@
+[
+  {
+    "passed": true,
+    "goal": [
+      4.8,
+      0.0,
+      0.0
+    ],
+    "scan_frame": "nav_lidar_link",
+    "finite_scan_points": 360,
+    "elapsed_seconds": 28.62033929800964,
+    "action_status": 4,
+    "position_error_m": 0.16052633278917477,
+    "yaw_error_rad": 0.1688926226803771,
+    "sampled_footprint_min_clearance_m": 0.7730011967908292,
+    "clearance_note": "2D maximum envelope versus static scene boxes, sampled about 10 Hz; not continuous contact sensing."
+  },
+  {
+    "passed": true,
+    "goal": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "scan_frame": "nav_lidar_link",
+    "finite_scan_points": 360,
+    "elapsed_seconds": 33.450250031994074,
+    "action_status": 4,
+    "position_error_m": 0.16298797037509904,
+    "yaw_error_rad": 0.1883037081960244,
+    "sampled_footprint_min_clearance_m": 0.7495283381883052,
+    "clearance_note": "2D maximum envelope versus static scene boxes, sampled about 10 Hz; not continuous contact sensing."
+  }
+]

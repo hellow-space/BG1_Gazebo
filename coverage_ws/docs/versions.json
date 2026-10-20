@@ -1,0 +1,12 @@
+{
+  "Fields2Cover": {
+    "origin": "https://github.com/Fields2Cover/Fields2Cover.git",
+    "branch": "v1.2.1-devel",
+    "commit": "87a91dbd9a7e762b15706b5337f7828f02a584ee"
+  },
+  "opennav_coverage": {
+    "origin": "https://github.com/open-navigation/opennav_coverage.git",
+    "branch": "jazzy",
+    "commit": "194250501889ce8896c5ee8b80a4d1317750be0e"
+  }
+}

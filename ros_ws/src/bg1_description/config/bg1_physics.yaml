@@ -1,0 +1,22 @@
+# Manual value: empty vehicle, water tanks empty.
+total_mass_kg: 348.5
+
+# ESTIMATED_BASELINE mass distribution. Values sum to total_mass_kg.
+body_mass_kg: 340.7
+drive_wheel_mass_kg: 3.0
+caster_swivel_mass_kg: 1.0
+caster_wheel_mass_kg: 0.8
+
+# ESTIMATED_BASELINE drive and contact properties for stable navigation simulation.
+drive_torque_nm: 80.0
+max_linear_acceleration_mps2: 0.5
+max_angular_acceleration_rps2: 1.0
+drive_wheel_mu: 1.0
+drive_wheel_mu2: 1.0
+# Low lateral resistance for the simplified passive caster contact.
+caster_mu: 0.05
+caster_mu2: 0.05
+caster_swivel_damping: 0.08
+contact_kp: 1000000.0
+contact_kd: 10.0
+parameter_status: ESTIMATED_BASELINE

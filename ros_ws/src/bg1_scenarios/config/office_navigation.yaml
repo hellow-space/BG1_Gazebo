@@ -1,0 +1,6 @@
+# NavFn A* potential-to-path extraction fails at one office doorway in Jazzy.
+# Dijkstra successfully plans to all 20 scene probes. RPP stays unchanged.
+planner_server:
+  ros__parameters:
+    GridBased:
+      use_astar: false

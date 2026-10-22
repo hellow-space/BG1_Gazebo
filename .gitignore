@@ -1,7 +1,8 @@
-# Local assistant and account state
+# Local assistant, account, and editor state
 /.agents/
 /.codex/
 /.aws/
+/.vscode/
 
 # Generated ROS/colcon workspaces
 /log/
@@ -11,6 +12,14 @@
 /coverage_ws/build/
 /coverage_ws/install/
 /coverage_ws/log/
+/leader_coverage_ws/build/
+/leader_coverage_ws/install/
+/leader_coverage_ws/log/
+/leader_coverage_ws/*.log
+
+# Local datasets and user-created SLAM sessions; package demo maps stay versioned
+/data/maps/imported/
+/data/maps/slam/
 
 # Python/editor caches
 __pycache__/

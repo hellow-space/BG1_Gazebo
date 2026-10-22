@@ -1,0 +1,85 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+Visualization Manager:
+  Global Options:
+    Fixed Frame: map
+    Background Color: 35; 40; 48
+  Displays:
+  - Class: rviz_default_plugins/Map
+    Name: Map
+    Enabled: true
+    Topic:
+      Value: /map
+      Durability Policy: Transient Local
+    Alpha: 0.85
+  - Class: rviz_default_plugins/RobotModel
+    Name: BG1
+    Enabled: true
+    Description Source: Topic
+    Description Topic:
+      Value: /robot_description
+      Durability Policy: Transient Local
+  - Class: rviz_default_plugins/LaserScan
+    Name: Laser
+    Enabled: true
+    Topic:
+      Value: /scan
+      Reliability Policy: Best Effort
+    Size (m): 0.035
+    Color: 255; 100; 70
+    Color Transformer: FlatColor
+  - Class: rviz_default_plugins/Polygon
+    Name: Footprint
+    Enabled: true
+    Topic:
+      Value: /local_costmap/published_footprint
+    Color: 255; 220; 90
+  - Class: rviz_default_plugins/Path
+    Name: Leader Coverage Path
+    Enabled: true
+    Line Style: Billboards
+    Line Width: 0.065
+    Color: 20; 220; 220
+    Topic:
+      Value: /leader_coverage/coverage_path
+      Durability Policy: Transient Local
+      Reliability Policy: Reliable
+  - Class: rviz_default_plugins/Path
+    Name: Region Boundary
+    Enabled: true
+    Line Style: Billboards
+    Line Width: 0.065
+    Color: 255; 130; 40
+    Topic:
+      Value: /leader_coverage/boundary_path
+      Durability Policy: Transient Local
+      Reliability Policy: Reliable
+  - Class: rviz_default_plugins/MarkerArray
+    Name: Selected Region and Vertices
+    Enabled: true
+    Topic:
+      Value: /leader_coverage/selection_markers
+      Durability Policy: Transient Local
+      Reliability Policy: Reliable
+  Tools:
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/PublishPoint
+    Single click: false
+    Topic:
+      Value: /clicked_point
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Top Down
+      Scale: 15
+      X: 0.0
+      Y: 0.0
+Window Geometry:
+  Width: 1100
+  Height: 850
+  X: 0
+  Y: 30

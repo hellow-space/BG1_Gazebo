@@ -1,0 +1,2 @@
+# A cross-aisle area that contains the ends of several racks.
+polygon: [[-10.0,-8.0],[10.0,-8.0],[10.0,8.0],[-10.0,8.0]]

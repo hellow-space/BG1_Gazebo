@@ -9,11 +9,13 @@ Project layout:
 - `src/bg1_description`: model, geometry, materials, and model tests.
 - `src/bg1_gazebo`: launch files, worlds, bridge, and runtime checks.
 - `src/bg1_navigation`: Nav2 parameters, matching demo world/map, RViz, and goal verification.
+- `src/bg1_mapping`: standalone SLAM Toolbox mapping and keyboard teleoperation.
+- `src/bg1_scenarios`: larger warehouse/office worlds, matching reference maps and scene selection.
 - `docs`: design history, preview images, and verification records.
 - `keyboard_control.sh`: keyboard teleoperation entry point.
-- `build` and `install`: generated files kept for immediate launch; regenerate both together with the build command below when needed.
+- `build` and `install`: local generated files created by the build command below; excluded from Git and absent from a fresh clone. Regenerate both together when needed.
 
-The user manual remains in the parent directory. Historical design documents describe the original workspace layout; their references to the removed ROS 1 tree are provenance, not dependencies.
+The user manual is stored in `../docs/manuals/`. Historical design documents describe the original workspace layout; their references to the removed ROS 1 tree are provenance, not dependencies.
 
 ## Model scope
 
@@ -189,3 +191,26 @@ python3 ros_ws/src/bg1_description/tools/build_visual_assets.py \
 The generated `meshes/manifest.json` records the geometry hash, asset hashes, body dimensions, and triangle count.
 
 The texture is an atlas: its bottom strip holds solid surface colors, while its upper area supplies the side labels. Preserve this layout when replacing the PNG. Styling follows the manual's outline drawings approximately; it is a lightweight visual interpretation.
+
+## Larger scenes and SLAM
+
+See [scene layouts, screenshots and regeneration](src/bg1_scenarios/README.md).
+`warehouse` is 36 × 28 m with rack aisles, pallets and columns; `office` is
+32 × 26 m with sixteen interconnected furnished rooms. Both spawn at origin.
+
+```bash
+bash ros_ws/mapping.sh scene:=warehouse
+# Or: bash ros_ws/mapping.sh scene:=office
+bash ros_ws/save_map.sh
+bash ros_ws/stop_mapping.sh
+
+# Start a separate navigation session with a generated reference map
+bash ros_ws/navigation_demo.sh scene:=office
+# Or: bash ros_ws/navigation_demo.sh scene:=warehouse
+```
+
+Run one session at a time. Default scene remains `demo`. SLAM explores an
+unknown map; navigation uses the selected scene's known map. Office uses a
+scene-local NavFn Dijkstra override; original Nav2/RPP settings are retained
+for demo and warehouse. Complex scenes are not wired into the separate
+empty-region coverage demonstration.

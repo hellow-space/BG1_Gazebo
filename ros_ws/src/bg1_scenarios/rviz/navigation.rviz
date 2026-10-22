@@ -1,0 +1,71 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: nav2_rviz_plugins/Navigation 2
+  Name: Navigation 2
+Visualization Manager:
+  Global Options:
+    Fixed Frame: map
+    Background Color: 35; 40; 48
+  Displays:
+  - Class: rviz_default_plugins/Map
+    Name: Map
+    Enabled: true
+    Topic:
+      Value: /map
+      Durability Policy: Transient Local
+    Alpha: 0.85
+  - Class: rviz_default_plugins/RobotModel
+    Name: BG1
+    Enabled: true
+    Description Source: Topic
+    Description Topic:
+      Value: /robot_description
+      Durability Policy: Transient Local
+  - Class: rviz_default_plugins/LaserScan
+    Name: Laser
+    Enabled: true
+    Topic:
+      Value: /scan
+      Reliability Policy: Best Effort
+    Size (m): 0.035
+    Color: 255; 100; 70
+    Color Transformer: FlatColor
+  - Class: rviz_default_plugins/Path
+    Name: Planned Path
+    Enabled: true
+    Topic:
+      Value: /plan
+    Color: 30; 220; 190
+    Line Style: Billboards
+    Line Width: 0.05
+  - Class: rviz_default_plugins/Polygon
+    Name: Footprint
+    Enabled: true
+    Topic:
+      Value: /local_costmap/published_footprint
+    Color: 255; 220; 90
+  - Class: rviz_default_plugins/Map
+    Name: Local Costmap
+    Enabled: true
+    Topic:
+      Value: /local_costmap/costmap
+      Durability Policy: Transient Local
+    Color Scheme: costmap
+    Alpha: 0.4
+  Tools:
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/SetInitialPose
+    Topic: /initialpose
+  - Class: nav2_rviz_plugins/GoalTool
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Top Down
+      Scale: 22
+      X: 0.0
+      Y: 0.0
+Window Geometry:
+  Width: 1100
+  Height: 800

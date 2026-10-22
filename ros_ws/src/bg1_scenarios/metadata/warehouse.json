@@ -1,0 +1,343 @@
+{
+  "name": "warehouse",
+  "title": "Warehouse and loading aisles",
+  "size": [
+    36.0,
+    28.0
+  ],
+  "world_name": "bg1_warehouse",
+  "spawn": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "goals": [
+    [
+      0.0,
+      11.5
+    ],
+    [
+      15.0,
+      0.0
+    ],
+    [
+      -15.0,
+      -11.5
+    ],
+    [
+      0.0,
+      -12.0
+    ],
+    [
+      -15.0,
+      11.5
+    ],
+    [
+      15.0,
+      11.5
+    ]
+  ],
+  "resolution": 0.05,
+  "objects": [
+    {
+      "name": "wall_south",
+      "shape": "box",
+      "x": 0.0,
+      "y": -14.0,
+      "size": [
+        36.0,
+        0.22,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_north",
+      "shape": "box",
+      "x": 0.0,
+      "y": 14.0,
+      "size": [
+        36.0,
+        0.22,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_west",
+      "shape": "box",
+      "x": -18.0,
+      "y": 0.0,
+      "size": [
+        0.22,
+        28.0,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_east",
+      "shape": "box",
+      "x": 18.0,
+      "y": 0.0,
+      "size": [
+        0.22,
+        28.0,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "rack_0_0",
+      "shape": "box",
+      "x": -12.0,
+      "y": -7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_0_1",
+      "shape": "box",
+      "x": -12.0,
+      "y": 7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_1_0",
+      "shape": "box",
+      "x": -8.0,
+      "y": -7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_1_1",
+      "shape": "box",
+      "x": -8.0,
+      "y": 7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_2_0",
+      "shape": "box",
+      "x": -4.0,
+      "y": -7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_2_1",
+      "shape": "box",
+      "x": -4.0,
+      "y": 7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_3_0",
+      "shape": "box",
+      "x": 4.0,
+      "y": -7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_3_1",
+      "shape": "box",
+      "x": 4.0,
+      "y": 7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_4_0",
+      "shape": "box",
+      "x": 8.0,
+      "y": -7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_4_1",
+      "shape": "box",
+      "x": 8.0,
+      "y": 7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_5_0",
+      "shape": "box",
+      "x": 12.0,
+      "y": -7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "rack_5_1",
+      "shape": "box",
+      "x": 12.0,
+      "y": 7.0,
+      "size": [
+        1.6,
+        8.0,
+        2.4
+      ],
+      "kind": "rack"
+    },
+    {
+      "name": "pallet_0",
+      "shape": "box",
+      "x": -15.0,
+      "y": -8.5,
+      "size": [
+        1.2,
+        1.2,
+        0.85
+      ],
+      "kind": "pallet"
+    },
+    {
+      "name": "pallet_1",
+      "shape": "box",
+      "x": -15.0,
+      "y": 8.5,
+      "size": [
+        1.2,
+        1.2,
+        0.85
+      ],
+      "kind": "pallet"
+    },
+    {
+      "name": "pallet_2",
+      "shape": "box",
+      "x": 15.0,
+      "y": -8.5,
+      "size": [
+        1.2,
+        1.2,
+        0.85
+      ],
+      "kind": "pallet"
+    },
+    {
+      "name": "pallet_3",
+      "shape": "box",
+      "x": 15.0,
+      "y": 8.5,
+      "size": [
+        1.2,
+        1.2,
+        0.85
+      ],
+      "kind": "pallet"
+    },
+    {
+      "name": "pallet_4",
+      "shape": "box",
+      "x": -5.5,
+      "y": -12.5,
+      "size": [
+        1.2,
+        1.2,
+        0.85
+      ],
+      "kind": "pallet"
+    },
+    {
+      "name": "pallet_5",
+      "shape": "box",
+      "x": 5.5,
+      "y": 12.5,
+      "size": [
+        1.2,
+        1.2,
+        0.85
+      ],
+      "kind": "pallet"
+    },
+    {
+      "name": "column_0",
+      "shape": "cylinder",
+      "x": -16.0,
+      "y": -5.0,
+      "radius": 0.25,
+      "height": 2.6,
+      "kind": "column"
+    },
+    {
+      "name": "column_1",
+      "shape": "cylinder",
+      "x": -16.0,
+      "y": 5.0,
+      "radius": 0.25,
+      "height": 2.6,
+      "kind": "column"
+    },
+    {
+      "name": "column_2",
+      "shape": "cylinder",
+      "x": 16.0,
+      "y": -5.0,
+      "radius": 0.25,
+      "height": 2.6,
+      "kind": "column"
+    },
+    {
+      "name": "column_3",
+      "shape": "cylinder",
+      "x": 16.0,
+      "y": 5.0,
+      "radius": 0.25,
+      "height": 2.6,
+      "kind": "column"
+    }
+  ]
+}

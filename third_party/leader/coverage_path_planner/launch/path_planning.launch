@@ -1,0 +1,18 @@
+<launch>
+  <!-- path coverage -->
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find coverage_path_planner)/cfg/path_planning_node.config"/>
+  <node pkg="coverage_path_planner" type="path_planning_node" name="path_planning_node" output="screen" clear_params="true" respawn_delay="2">
+    <param name="obstacle_inflate" type="int" value="2"/>    <!--障碍物膨胀 像素 -->
+    <param name="restrict_expan_dis" type="double" value="0.0"/>
+    <param name="boundary_shrink_dis" type="double" value="-0.10"/>
+    <param name="task_area_shrink_dis" type="double" value="-0.10"/>
+    <param name="min_path_num" type="int" value="3"/>
+    <param name="boundary_path" type="bool" value="false"/>
+    <param name="island_path" type="bool" value="true"/>
+    <param name="island_min_area" type="double" value="2.0"/>
+    <param name="island_path_shrink_dis" type="double" value="0.3"/>
+    <param name="debug" type="bool" value="false"/>
+    <param name="publish_paths" type="bool" value="true"/>
+    <param name="path_width" type="double" value="0.05"/>
+  </node>
+</launch>

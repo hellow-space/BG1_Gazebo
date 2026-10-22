@@ -1,0 +1,1107 @@
+{
+  "name": "office",
+  "title": "Office rooms and loop corridors",
+  "size": [
+    32.0,
+    26.0
+  ],
+  "world_name": "bg1_office",
+  "spawn": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "goals": [
+    [
+      0.0,
+      11.0
+    ],
+    [
+      14.0,
+      0.0
+    ],
+    [
+      -14.0,
+      0.0
+    ],
+    [
+      0.0,
+      -11.0
+    ],
+    [
+      -12.5,
+      -10.5
+    ],
+    [
+      -12.5,
+      -5.0
+    ],
+    [
+      -12.5,
+      5.0
+    ],
+    [
+      -12.5,
+      10.5
+    ],
+    [
+      -5.5,
+      -10.5
+    ],
+    [
+      -5.5,
+      -5.0
+    ],
+    [
+      -5.5,
+      5.0
+    ],
+    [
+      -5.5,
+      10.5
+    ],
+    [
+      5.5,
+      -10.5
+    ],
+    [
+      5.5,
+      -5.0
+    ],
+    [
+      5.5,
+      5.0
+    ],
+    [
+      5.5,
+      10.5
+    ],
+    [
+      12.5,
+      -10.5
+    ],
+    [
+      12.5,
+      -5.0
+    ],
+    [
+      12.5,
+      5.0
+    ],
+    [
+      12.5,
+      10.5
+    ]
+  ],
+  "resolution": 0.05,
+  "objects": [
+    {
+      "name": "wall_south",
+      "shape": "box",
+      "x": 0.0,
+      "y": -13.0,
+      "size": [
+        32.0,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_north",
+      "shape": "box",
+      "x": 0.0,
+      "y": 13.0,
+      "size": [
+        32.0,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_west",
+      "shape": "box",
+      "x": -16.0,
+      "y": 0.0,
+      "size": [
+        0.2,
+        26.0,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_east",
+      "shape": "box",
+      "x": 16.0,
+      "y": 0.0,
+      "size": [
+        0.2,
+        26.0,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_0_0_0",
+      "shape": "box",
+      "x": -9.0,
+      "y": -12.3,
+      "size": [
+        0.2,
+        1.4000000000000004,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_0_0_1",
+      "shape": "box",
+      "x": -9.0,
+      "y": -7.75,
+      "size": [
+        0.2,
+        3.3000000000000007,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_0_0_2",
+      "shape": "box",
+      "x": -9.0,
+      "y": -2.95,
+      "size": [
+        0.2,
+        1.9,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_0_1_0",
+      "shape": "box",
+      "x": -9.0,
+      "y": 2.95,
+      "size": [
+        0.2,
+        1.9,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_0_1_1",
+      "shape": "box",
+      "x": -9.0,
+      "y": 7.750000000000001,
+      "size": [
+        0.2,
+        3.3000000000000007,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_0_1_2",
+      "shape": "box",
+      "x": -9.0,
+      "y": 12.3,
+      "size": [
+        0.2,
+        1.4000000000000004,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_1_0_0",
+      "shape": "box",
+      "x": -2.0,
+      "y": -12.3,
+      "size": [
+        0.2,
+        1.4000000000000004,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_1_0_1",
+      "shape": "box",
+      "x": -2.0,
+      "y": -7.75,
+      "size": [
+        0.2,
+        3.3000000000000007,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_1_0_2",
+      "shape": "box",
+      "x": -2.0,
+      "y": -2.95,
+      "size": [
+        0.2,
+        1.9,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_1_1_0",
+      "shape": "box",
+      "x": -2.0,
+      "y": 2.95,
+      "size": [
+        0.2,
+        1.9,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_1_1_1",
+      "shape": "box",
+      "x": -2.0,
+      "y": 7.750000000000001,
+      "size": [
+        0.2,
+        3.3000000000000007,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_1_1_2",
+      "shape": "box",
+      "x": -2.0,
+      "y": 12.3,
+      "size": [
+        0.2,
+        1.4000000000000004,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_2_0_0",
+      "shape": "box",
+      "x": 2.0,
+      "y": -12.3,
+      "size": [
+        0.2,
+        1.4000000000000004,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_2_0_1",
+      "shape": "box",
+      "x": 2.0,
+      "y": -7.75,
+      "size": [
+        0.2,
+        3.3000000000000007,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_2_0_2",
+      "shape": "box",
+      "x": 2.0,
+      "y": -2.95,
+      "size": [
+        0.2,
+        1.9,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_2_1_0",
+      "shape": "box",
+      "x": 2.0,
+      "y": 2.95,
+      "size": [
+        0.2,
+        1.9,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_2_1_1",
+      "shape": "box",
+      "x": 2.0,
+      "y": 7.750000000000001,
+      "size": [
+        0.2,
+        3.3000000000000007,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_2_1_2",
+      "shape": "box",
+      "x": 2.0,
+      "y": 12.3,
+      "size": [
+        0.2,
+        1.4000000000000004,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_3_0_0",
+      "shape": "box",
+      "x": 9.0,
+      "y": -12.3,
+      "size": [
+        0.2,
+        1.4000000000000004,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_3_0_1",
+      "shape": "box",
+      "x": 9.0,
+      "y": -7.75,
+      "size": [
+        0.2,
+        3.3000000000000007,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_3_0_2",
+      "shape": "box",
+      "x": 9.0,
+      "y": -2.95,
+      "size": [
+        0.2,
+        1.9,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_3_1_0",
+      "shape": "box",
+      "x": 9.0,
+      "y": 2.95,
+      "size": [
+        0.2,
+        1.9,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_3_1_1",
+      "shape": "box",
+      "x": 9.0,
+      "y": 7.750000000000001,
+      "size": [
+        0.2,
+        3.3000000000000007,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_vertical_3_1_2",
+      "shape": "box",
+      "x": 9.0,
+      "y": 12.3,
+      "size": [
+        0.2,
+        1.4000000000000004,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_0_0_0",
+      "shape": "box",
+      "x": -14.8,
+      "y": -8.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_0_0_1",
+      "shape": "box",
+      "x": -9.0,
+      "y": -8.0,
+      "size": [
+        4.800000000000001,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_0_0_2",
+      "shape": "box",
+      "x": -3.2,
+      "y": -8.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_0_1_0",
+      "shape": "box",
+      "x": 3.2,
+      "y": -8.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_0_1_1",
+      "shape": "box",
+      "x": 9.0,
+      "y": -8.0,
+      "size": [
+        4.800000000000001,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_0_1_2",
+      "shape": "box",
+      "x": 14.8,
+      "y": -8.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_1_0_0",
+      "shape": "box",
+      "x": -14.8,
+      "y": -2.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_1_0_1",
+      "shape": "box",
+      "x": -9.0,
+      "y": -2.0,
+      "size": [
+        4.800000000000001,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_1_0_2",
+      "shape": "box",
+      "x": -3.2,
+      "y": -2.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_1_1_0",
+      "shape": "box",
+      "x": 3.2,
+      "y": -2.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_1_1_1",
+      "shape": "box",
+      "x": 9.0,
+      "y": -2.0,
+      "size": [
+        4.800000000000001,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_1_1_2",
+      "shape": "box",
+      "x": 14.8,
+      "y": -2.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_2_0_0",
+      "shape": "box",
+      "x": -14.8,
+      "y": 2.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_2_0_1",
+      "shape": "box",
+      "x": -9.0,
+      "y": 2.0,
+      "size": [
+        4.800000000000001,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_2_0_2",
+      "shape": "box",
+      "x": -3.2,
+      "y": 2.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_2_1_0",
+      "shape": "box",
+      "x": 3.2,
+      "y": 2.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_2_1_1",
+      "shape": "box",
+      "x": 9.0,
+      "y": 2.0,
+      "size": [
+        4.800000000000001,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_2_1_2",
+      "shape": "box",
+      "x": 14.8,
+      "y": 2.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_3_0_0",
+      "shape": "box",
+      "x": -14.8,
+      "y": 8.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_3_0_1",
+      "shape": "box",
+      "x": -9.0,
+      "y": 8.0,
+      "size": [
+        4.800000000000001,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_3_0_2",
+      "shape": "box",
+      "x": -3.2,
+      "y": 8.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_3_1_0",
+      "shape": "box",
+      "x": 3.2,
+      "y": 8.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_3_1_1",
+      "shape": "box",
+      "x": 9.0,
+      "y": 8.0,
+      "size": [
+        4.800000000000001,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "wall_horizontal_3_1_2",
+      "shape": "box",
+      "x": 14.8,
+      "y": 8.0,
+      "size": [
+        2.4000000000000004,
+        0.2,
+        1.8
+      ],
+      "kind": "wall"
+    },
+    {
+      "name": "desk_0_0",
+      "shape": "box",
+      "x": -14.8,
+      "y": -9.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_0_0",
+      "shape": "box",
+      "x": -9.65,
+      "y": -9.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_0_1",
+      "shape": "box",
+      "x": -14.8,
+      "y": -3.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_0_1",
+      "shape": "box",
+      "x": -9.65,
+      "y": -3.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_0_2",
+      "shape": "box",
+      "x": -14.8,
+      "y": 7.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_0_2",
+      "shape": "box",
+      "x": -9.65,
+      "y": 7.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_0_3",
+      "shape": "box",
+      "x": -14.8,
+      "y": 12.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_0_3",
+      "shape": "box",
+      "x": -9.65,
+      "y": 12.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_1_0",
+      "shape": "box",
+      "x": -7.8,
+      "y": -9.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_1_0",
+      "shape": "box",
+      "x": -2.65,
+      "y": -9.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_1_1",
+      "shape": "box",
+      "x": -7.8,
+      "y": -3.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_1_1",
+      "shape": "box",
+      "x": -2.65,
+      "y": -3.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_1_2",
+      "shape": "box",
+      "x": -7.8,
+      "y": 7.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_1_2",
+      "shape": "box",
+      "x": -2.65,
+      "y": 7.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_1_3",
+      "shape": "box",
+      "x": -7.8,
+      "y": 12.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_1_3",
+      "shape": "box",
+      "x": -2.65,
+      "y": 12.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_2_0",
+      "shape": "box",
+      "x": 3.2,
+      "y": -9.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_2_0",
+      "shape": "box",
+      "x": 8.35,
+      "y": -9.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_2_1",
+      "shape": "box",
+      "x": 3.2,
+      "y": -3.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_2_1",
+      "shape": "box",
+      "x": 8.35,
+      "y": -3.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_2_2",
+      "shape": "box",
+      "x": 3.2,
+      "y": 7.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_2_2",
+      "shape": "box",
+      "x": 8.35,
+      "y": 7.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_2_3",
+      "shape": "box",
+      "x": 3.2,
+      "y": 12.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_2_3",
+      "shape": "box",
+      "x": 8.35,
+      "y": 12.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_3_0",
+      "shape": "box",
+      "x": 10.2,
+      "y": -9.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_3_0",
+      "shape": "box",
+      "x": 15.35,
+      "y": -9.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_3_1",
+      "shape": "box",
+      "x": 10.2,
+      "y": -3.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_3_1",
+      "shape": "box",
+      "x": 15.35,
+      "y": -3.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_3_2",
+      "shape": "box",
+      "x": 10.2,
+      "y": 7.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_3_2",
+      "shape": "box",
+      "x": 15.35,
+      "y": 7.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    },
+    {
+      "name": "desk_3_3",
+      "shape": "box",
+      "x": 10.2,
+      "y": 12.0,
+      "size": [
+        1.6,
+        0.7,
+        0.75
+      ],
+      "kind": "desk"
+    },
+    {
+      "name": "cabinet_3_3",
+      "shape": "box",
+      "x": 15.35,
+      "y": 12.0,
+      "size": [
+        0.8,
+        1.2,
+        1.1
+      ],
+      "kind": "cabinet"
+    }
+  ]
+}

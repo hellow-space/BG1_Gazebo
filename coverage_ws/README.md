@@ -86,7 +86,9 @@ planning/tracking from that localization limitation.
 
 ## Build and dependencies
 
-The sources and local build/install trees are included in this workspace.
+The BG1 adapter lives in this workspace. Third-party sources live in
+`../third_party/opennav_coverage` and `../third_party/Fields2Cover`; generated
+build/install/log trees are local and ignored by Git.
 Build only this overlay:
 
 ```bash
@@ -115,7 +117,8 @@ source coverage_ws/install/setup.bash
 python3 -m pytest coverage_ws/src/bg1_coverage_demo/test -q
 ```
 
-Verify existing source integrity from the project root:
+Historical integrity snapshot from the initial 2026-10-19 integration
+(before later mapping/scenario work; not a current regression gate):
 
 ```bash
 sha256sum --check coverage_ws/docs/ros_ws_before.sha256

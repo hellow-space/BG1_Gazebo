@@ -7,6 +7,7 @@
   <license>Proprietary</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <exec_depend>bg1_gazebo</exec_depend>
+  <exec_depend>bg1_scenarios</exec_depend>
   <exec_depend>nav2_bringup</exec_depend>
   <exec_depend>nav2_regulated_pure_pursuit_controller</exec_depend>
   <exec_depend>nav2_navfn_planner</exec_depend>

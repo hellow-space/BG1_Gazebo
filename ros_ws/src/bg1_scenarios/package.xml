@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>bg1_scenarios</name>
+  <version>0.1.0</version>
+  <description>Larger warehouse and office simulation worlds and reference maps.</description>
+  <maintainer email="jimmy@example.com">Jimmy</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+  <exec_depend>bg1_gazebo</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-pil</exec_depend>
+  <exec_depend>python3-matplotlib</exec_depend>
+  <test_depend>ament_cmake_pytest</test_depend>
+  <test_depend>python3-numpy</test_depend>
+  <test_depend>python3-scipy</test_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

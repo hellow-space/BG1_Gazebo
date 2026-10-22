@@ -1,8 +1,8 @@
 [submodule "coverage_ws/src/opennav_coverage"]
-	path = coverage_ws/src/opennav_coverage
+	path = third_party/opennav_coverage
 	url = https://github.com/open-navigation/opennav_coverage.git
 	branch = jazzy
 [submodule "coverage_ws/src/Fields2Cover"]
-	path = coverage_ws/src/Fields2Cover
+	path = third_party/Fields2Cover
 	url = https://github.com/Fields2Cover/Fields2Cover.git
 	branch = v1.2.1-devel

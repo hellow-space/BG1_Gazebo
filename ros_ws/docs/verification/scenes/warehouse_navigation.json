@@ -1,0 +1,67 @@
+{
+  "scene": "warehouse",
+  "mode": "navigation",
+  "passed": true,
+  "plans": [
+    {
+      "goal": [
+        0.0,
+        11.5
+      ],
+      "poses": 458,
+      "length_m": 11.499999776483383
+    },
+    {
+      "goal": [
+        15.0,
+        0.0
+      ],
+      "poses": 598,
+      "length_m": 14.999999716878436
+    },
+    {
+      "goal": [
+        -15.0,
+        -11.5
+      ],
+      "poses": 984,
+      "length_m": 24.681525515477837
+    },
+    {
+      "goal": [
+        0.0,
+        -12.0
+      ],
+      "poses": 478,
+      "length_m": 12.000000223518219
+    },
+    {
+      "goal": [
+        -15.0,
+        11.5
+      ],
+      "poses": 974,
+      "length_m": 25.016696779139796
+    },
+    {
+      "goal": [
+        15.0,
+        11.5
+      ],
+      "poses": 984,
+      "length_m": 24.62409058649261
+    }
+  ],
+  "map": {
+    "frame": "map",
+    "width": 760,
+    "height": 600,
+    "known": 410880,
+    "occupied": 81950,
+    "resolution": 0.05000000074505806
+  },
+  "scan": {
+    "frame": "nav_lidar_link",
+    "finite": 360
+  }
+}

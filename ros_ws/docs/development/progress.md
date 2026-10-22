@@ -28,3 +28,14 @@ Runtime: verified 360 finite scan returns. AMCL's retained pose requires a trans
 
 Evidence: docs/verification/nav2_outbound.json, nav2_return.json, nav2_summary.json; docs/previews/bg1_nav2_trajectory.png and bg1_nav2_gazebo.png. All 3 packages built; 31 source cases / 38 colcon aggregate tests passed, zero errors/failures/skips. Gazebo and RViz left running after return. Launch helper: bash ros_ws/navigation_demo.sh. This is known-map navigation; online SLAM, moving-obstacle avoidance and narrow-passage tuning remain outside this validation.
 
+
+2026-10-21 provenance note (user supplied): root-level `coverage_path_planner/`
+was provided by the user's leader. Treat it as leader-provided source,
+separate from the upstream `opennav_coverage`/Fields2Cover demo and the
+project's own `bg1_coverage_demo` integration. Do not attribute this package
+to the user or replace it with the previous coverage algorithm.
+Initial inspection: ROS 1/catkin package; local environment is ROS 2 Jazzy.
+`robot_msg/CoveragePathPlan` and `robot_msg/RegionClean` definitions are not
+included. The active node accepts polygon coordinates through
+`/plan_backshaped_path_srv`; no interactive region-selection UI is present.
+Deployment and a ROS 2 selection adapter have not yet been implemented.

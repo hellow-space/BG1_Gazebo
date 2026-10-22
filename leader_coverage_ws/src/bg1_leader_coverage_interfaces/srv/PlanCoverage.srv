@@ -1,0 +1,12 @@
+# Coordinates must be in map. This is a project-local interface, not robot_msg.
+geometry_msgs/PolygonStamped region
+geometry_msgs/Point start
+uint8 pattern                 # 0 zigzag, 1 backshaped
+float64 stripe_spacing        # metres; converted to source algorithm cell spacing
+float64 clearance             # metres; conservative circular obstacle clearance
+---
+bool success
+string message
+nav_msgs/Path coverage_path
+nav_msgs/Path boundary_path
+nav_msgs/Path island_path

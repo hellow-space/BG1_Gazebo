@@ -1,0 +1,41 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Global Options:
+    Fixed Frame: map
+    Background Color: 35; 40; 48
+  Displays:
+    - Class: rviz_default_plugins/Map
+      Name: Live SLAM Map
+      Enabled: true
+      Topic: {Value: /map, Durability Policy: Transient Local}
+      Alpha: 0.9
+    - Class: rviz_default_plugins/RobotModel
+      Name: BG1
+      Enabled: true
+      Description Source: Topic
+      Description Topic: {Value: /robot_description, Durability Policy: Transient Local}
+    - Class: rviz_default_plugins/LaserScan
+      Name: Laser
+      Enabled: true
+      Topic: {Value: /scan, Reliability Policy: Best Effort}
+      Size (m): 0.035
+      Color: 255; 90; 60
+      Color Transformer: FlatColor
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: false
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Top Down
+      Scale: 65
+      X: 1.0
+      Y: 0.0
+Window Geometry:
+  Width: 1100
+  Height: 800

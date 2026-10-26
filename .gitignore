@@ -17,6 +17,10 @@
 /leader_coverage_ws/log/
 /leader_coverage_ws/*.log
 
+# Leader raw motion recordings and verification logs stay local
+/leader_coverage_ws/docs/verification/imported_A11123AJ04_20261022/motion/runtime.json
+/leader_coverage_ws/docs/verification/**/*.log
+
 # Local datasets and user-created SLAM sessions; package demo maps stay versioned
 /data/maps/imported/
 /data/maps/slam/

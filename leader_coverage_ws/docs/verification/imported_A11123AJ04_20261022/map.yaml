@@ -1,0 +1,10 @@
+free_thresh: 0.25
+image: ../../../../data/maps/imported/A11123AJ04_231127_094529/A11123AJ04_231127_094529.pgm
+mode: trinary
+negate: 0
+occupied_thresh: 0.65
+origin:
+- 0.0
+- 0.0
+- 0.0
+resolution: 0.05

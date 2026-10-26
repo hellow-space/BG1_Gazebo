@@ -1,0 +1,10 @@
+{
+  "rectangles": 1688,
+  "triangles": 20256,
+  "projection_matches_map": true,
+  "blocked_cells": 1605037,
+  "height_m": 1.2,
+  "resolution": 0.05,
+  "unknown_is_obstacle": true,
+  "source_sha256": "7b2731a7b2d38b520a29b14888f5849b10c6e986176ae22da0d0b50bcc3291b0"
+}

@@ -1,0 +1,54 @@
+{
+  "map_id": "A11123AJ04_231127_094529",
+  "localization": "AMCL, known simulated spawn pose",
+  "ground_truth_localization": false,
+  "world": "leader_imported",
+  "spawn": [
+    34.325,
+    52.425,
+    0.0
+  ],
+  "path_poses": 16988,
+  "path_length_m": 897.3166794068736,
+  "motion": {
+    "phase": "following",
+    "message": "Following coverage path with RPP.",
+    "approach_succeeded": true,
+    "follow_succeeded": false,
+    "path_poses": 16988
+  },
+  "actual_travel_m": 37.77510039940894,
+  "full_route_completed": false,
+  "wall_elapsed_s": 130.0072178329999,
+  "sample_count": 849,
+  "observed_heading_range_rad": 3.3012376347519887,
+  "max_amcl_position_error_m": 0.15720973564952018,
+  "mean_amcl_position_error_m": 0.07674473920962599,
+  "max_distance_to_nearest_path_point_m": 0.30206585322644774,
+  "first_observed_pose": {
+    "sim_time": 77.852,
+    "wall_elapsed_s": 0.05632130499998311,
+    "x": 36.78744379427268,
+    "y": 51.357525120929736,
+    "yaw": 0.020851167102361887,
+    "path_distance_m": 0.03252676201046549,
+    "nearest_path_index": 47,
+    "amcl_x": 36.737396993102124,
+    "amcl_y": 51.31493883243212,
+    "localization_error_m": 0.06571357755751661
+  },
+  "last_observed_pose": {
+    "sim_time": 207.734,
+    "wall_elapsed_s": 129.97221840299994,
+    "x": 33.78525650662239,
+    "y": 52.087610584815074,
+    "yaw": -3.1380771274290247,
+    "path_distance_m": 0.06552180161179734,
+    "nearest_path_index": 814,
+    "amcl_x": 33.68026225129772,
+    "amcl_y": 52.02356734622337,
+    "localization_error_m": 0.12298508064190308
+  },
+  "validation_scope": "Observed start/approach success, actual straight-line motion and first zigzag U-turn; full route still following at snapshot",
+  "motion_kept_running": true
+}

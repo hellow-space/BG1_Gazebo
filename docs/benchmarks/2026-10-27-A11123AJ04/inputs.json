@@ -1,0 +1,84 @@
+{
+  "map_id": "A11123AJ04_231127_094529",
+  "source_image": "data/maps/imported/A11123AJ04_231127_094529/A11123AJ04_231127_094529.png",
+  "source_sha256": "88ce806ef09044c2b57ba86e7dc3befab7a177b8a07690899900fc4ffca2b016",
+  "width": 1208,
+  "height": 1710,
+  "resolution_m": 0.05000000074505806,
+  "origin": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "metadata_assumptions": [
+    "0.05 m/pixel inferred from companion PGM header, original PNG YAML missing",
+    "Arbitrary local origin [0,0,0]; trinary free<0.25, occupied>0.65"
+  ],
+  "free_pixels": 507209,
+  "occupied_pixels": 34445,
+  "unknown_pixels": 1524026,
+  "target_pixels": 470743,
+  "target_fraction_of_all_free": 0.9281045880495022,
+  "original_free_components_4connected": 114,
+  "polygon_rings": 93,
+  "polygon_vertices": 2779,
+  "polygon_valid": true,
+  "polygon_area_m2": 1176.857535073087,
+  "polygon_raster_roundtrip_equal": true,
+  "polygonize_seconds": 0.03250144800404087,
+  "start": [
+    34.375000512227416,
+    52.475000781938434
+  ],
+  "operation_width_m": 0.6,
+  "stripe_spacing_m": 0.6,
+  "clearance_m": 1.0,
+  "clearance_audit": "Independent exact EDT > ceil(clearance/resolution) in pixels, measured between raster cell centres; no continuous footprint claim",
+  "f2c_headland_m": 1.0,
+  "f2c_min_turning_radius_m": 0.6,
+  "f2c_swath_angle_rad": 1.5707963267948966,
+  "warmup_runs": 1,
+  "measured_runs": 3,
+  "versions": {
+    "Fields2Cover": {
+      "origin": "https://github.com/Fields2Cover/Fields2Cover.git",
+      "branch": "v1.2.1-devel",
+      "commit": "87a91dbd9a7e762b15706b5337f7828f02a584ee"
+    },
+    "opennav_coverage": {
+      "origin": "https://github.com/open-navigation/opennav_coverage.git",
+      "branch": "jazzy",
+      "commit": "194250501889ce8896c5ee8b80a4d1317750be0e"
+    }
+  },
+  "leader_source_hashes": {
+    "include/coverage_path_planner/task_helper.h": "64de04c5a0c50a481c6d9ba77eb9cdf66003fa5c8077ebcadfffb486468735eb",
+    "include/coverage_path_planner/BezierTrajectoryGeneratorWaypoint.h": "87e55165a499406fca6453b44f0f00ef7b5809e4d136152e8637f722290d6fce",
+    "include/coverage_path_planner/yaml_helper.h": "32fa812d74809d4eb89b7f6a38e0d9e134fb43ff16abbc7679ad65c9346152e2",
+    "include/coverage_path_planner/FreeSpaceCalculator.h": "74a4c6f65591addcae5677dcd23fdb48791b59b27451e246111b1dedff7392ac",
+    "include/coverage_path_planner/CoveragePathPlanner.h": "ff1172a5540a3ef743bcd56129bc2287a2d6efdd65b26f4f29707ac7b6edc93c",
+    "include/coverage_path_planner/json.h": "2894ef8d9caf694345124f72576b0dce94c80c3e5c5e09b984b1e583bfc95d31",
+    "include/coverage_path_planner/Bezier.h": "a9eb2706ad0df75bd78d6af50c62f67f247cd3b9eef77f2466fc775e23f6ef32",
+    "include/coverage_path_planner/node.h": "0c4e9df2fbf50a4a915d867d80916dc9d2e1154127fed8b03d6d706faa7f9f0e",
+    "include/coverage_path_planner/A_star_pathplanner.h": "00bf714204fd796f5849ad88e8f6d9cb7937ed1240c24bd4837bd583a8716ab3",
+    "include/coverage_path_planner/A_star_pathplanner_fast.h": "4c9bc64723ff04cedb8ab9d5864b457964dd51f9f241403c10da55abf208e937",
+    "include/coverage_path_planner/clean_region.h": "9175143c25ecc5866052ef960b527966dec53bf6680c8269ab70159e9bf5b0b5",
+    "include/coverage_path_planner/curve.h": "ddf11d74810a9b81b4e7697e28d210140d403d64141ce1b5ded63e92253817a6",
+    "src/BezierTrajectoryGeneratorWaypoint.cpp": "780d84ef83f87bcd65e317ce1eaa843f25fdf11900bf6071dea0bb435af70398",
+    "src/node.cpp": "3aa99a1e4b3b1a9c664284742409682c7680cba1da89f22038b4d666eaecce6d",
+    "src/FreeSpaceCalculator.cpp": "470e18086e9c61ff03764f1f719c9a6f4f667f05f690ba6b52f5b7cb4c88b7db",
+    "src/A_star_pathplanner.cpp": "a08b80acd1715ad68c0a291cf55cf5efcb317e656ed27f6e0aa5e4d4837ac0a0",
+    "src/curve.cpp": "4b5348aad74b50e6397b47b9df900bc29426fe35598a846e5da86084ce5392c7",
+    "src/A_star_pathplanner_fast.cpp": "1c77be40b44eacff4e6e3fca0257b046568427ecdd75cacf887ee0d02b827347",
+    "src/task_helper.cpp": "2b68d73ba4863f5a2280e69153b4804ab1ae48ac5c301a8cb67e9acae85aea7b",
+    "src/CoveragePathPlanner.cpp": "d60e29b08dbc46ee859185debf1a7249c886fc306167620e1310dc66703c98ee",
+    "src/jsoncpp.cpp": "4d66d46b7a22ad8810c7bf195db1de31ecc772c0a1bc7daa0f61210c0aae99eb"
+  },
+  "binary_sha256": {
+    "leader": "496f81c8830795a2a2ed702573d4f0edfb807133ca55b919b18a18d7c54a324e",
+    "f2c": "363e64ddae57b11f7f831639975ea5673a513363bdc2da8a6174b65c3851e8ac",
+    "f2c_library": "187dc90996933f378acca5b6d3ec05e7203db748af8d4813491634e989d2d65b"
+  },
+  "preprocessing_seconds": 0.2792908770061331,
+  "motion_executed": false
+}

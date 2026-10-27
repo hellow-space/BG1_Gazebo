@@ -1,0 +1,11 @@
+{
+  "observed_calls": 2,
+  "indexed_path_steps": 577,
+  "coarse_path_groups": 33,
+  "fine_path_groups": 26,
+  "skipped_path_groups": [
+    11
+  ],
+  "loop_limit_warning_is_unconditional_at_function_end": true,
+  "binary_sha256": "496f81c8830795a2a2ed702573d4f0edfb807133ca55b919b18a18d7c54a324e"
+}

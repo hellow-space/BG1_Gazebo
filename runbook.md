@@ -75,6 +75,8 @@ bash coverage_ws/task.sh --execute            # 接近起点并跟踪
 
 ## 测试
 
+Leader 与 Fields2Cover 的同图规划基线入口、固定参数、双分母覆盖率和复算方法见 [AJ04 PNG benchmark](docs/benchmarks/2026-10-27-A11123AJ04/README.md)。该流程分别加载两个 overlay、只启动规划器，不启动仿真或运动；不要直接将无效连接的几何扫掠面积当成可执行覆盖率。
+
 源码静态测试（已加载底层环境）：
 
 ```bash

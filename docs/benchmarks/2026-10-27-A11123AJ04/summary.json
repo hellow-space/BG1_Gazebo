@@ -1,0 +1,122 @@
+{
+  "map_id": "A11123AJ04_231127_094529",
+  "operation_width_m": 0.6,
+  "clearance_m": 1.0,
+  "all_free_area_m2": 1268.0225377900156,
+  "target_area_m2": 1176.8575350730869,
+  "common_target_fraction_of_all_free": 0.9281045880495022,
+  "metric_definitions": {
+    "geometric_coverage": "Union of radius width/2 capsules around ALL returned segments, intersected with free pixels; ignores traversal validity.",
+    "valid_fragment_coverage": "Union of capsules only around segments entirely inside the common exact-EDT clearance raster (>20 pixels from non-target cell centres). Fragments are not a connected executable route.",
+    "full_route_valid": "Every returned segment passes the same exhaustive raster-cell crossing check. Allowed-cell centres satisfy the distance threshold; this is NOT a continuous geometric or footprint/robot execution guarantee.",
+    "raster_method": "Exact point-to-segment distances at 0.05 m raster cell centres; no double counting.",
+    "time": "One warmup excluded; median of three end-to-end ROS calls; geometry conversion and process startup excluded."
+  },
+  "motion_executed": false,
+  "planners": {
+    "leader": {
+      "interface_success": true,
+      "poses": 20191,
+      "path_length_m": 1060.90897226227,
+      "known_free_route_valid": true,
+      "clearance_route_valid": false,
+      "leader_style_clearance_raster_valid": true,
+      "segment_count": 20190,
+      "invalid_known_free_segments": 0,
+      "invalid_clearance_segments": 6,
+      "known_free_valid_length_m": 1060.90897226227,
+      "clearance_valid_length_m": 1060.5468402225179,
+      "invalid_clearance_length_m": 0.36213203975215214,
+      "invalid_known_free_length_m": 0.0,
+      "clearance_valid_length_pct": 99.96586587075609,
+      "call_seconds": [
+        0.4506766999984393,
+        0.4710497199994279,
+        0.4353832689957926
+      ],
+      "call_median_s": 0.4506766999984393,
+      "deterministic_paths": true,
+      "start": [
+        34.57500076293945,
+        52.32500076293945
+      ],
+      "end": [
+        38.123779296875,
+        44.525001525878906
+      ],
+      "requested_start_offset_m": 0.25000021196905453,
+      "metrics_seconds": 1.9677961359993787,
+      "geometric_all_free_pixels": 236163,
+      "geometric_all_free_area_m2": 590.4075175955148,
+      "geometric_all_free_coverage_pct": 46.561279472564564,
+      "valid_fragment_all_free_pixels": 236160,
+      "valid_fragment_all_free_area_m2": 590.4000175952913,
+      "valid_fragment_all_free_coverage_pct": 46.56068800041009,
+      "valid_prefix_all_free_pixels": 103703,
+      "valid_prefix_all_free_area_m2": 259.25750772647564,
+      "valid_prefix_all_free_coverage_pct": 20.44581227856761,
+      "geometric_target_pixels": 236163,
+      "geometric_target_area_m2": 590.4075175955148,
+      "geometric_target_coverage_pct": 50.16813845346611,
+      "valid_fragment_target_pixels": 236160,
+      "valid_fragment_target_area_m2": 590.4000175952913,
+      "valid_fragment_target_coverage_pct": 50.167501163055,
+      "valid_prefix_target_pixels": 103703,
+      "valid_prefix_target_area_m2": 259.25750772647564,
+      "valid_prefix_target_coverage_pct": 22.029642501322378
+    },
+    "f2c": {
+      "interface_success": true,
+      "poses": 47658,
+      "path_length_m": 2472.5188531358917,
+      "known_free_route_valid": false,
+      "clearance_route_valid": false,
+      "leader_style_clearance_raster_valid": false,
+      "segment_count": 47657,
+      "invalid_known_free_segments": 2919,
+      "invalid_clearance_segments": 14074,
+      "known_free_valid_length_m": 2310.553012480045,
+      "clearance_valid_length_m": 1705.3864555197779,
+      "invalid_clearance_length_m": 767.132397616114,
+      "invalid_known_free_length_m": 161.96584065584705,
+      "clearance_valid_length_pct": 68.97364820320132,
+      "call_seconds": [
+        0.9895993000100134,
+        0.9986945740092779,
+        1.0179629350022878
+      ],
+      "call_median_s": 0.9986945740092779,
+      "deterministic_paths": true,
+      "start": [
+        51.5499992370605,
+        63.90000473281228
+      ],
+      "end": [
+        18.500000339001417,
+        18.900005340576172
+      ],
+      "requested_start_offset_m": 20.627925161671033,
+      "metrics_seconds": 4.005667807010468,
+      "geometric_all_free_pixels": 360226,
+      "geometric_all_free_area_m2": 900.5650268389287,
+      "geometric_all_free_coverage_pct": 71.02121610618109,
+      "valid_fragment_all_free_pixels": 296402,
+      "valid_fragment_all_free_area_m2": 741.00502208367,
+      "valid_fragment_all_free_coverage_pct": 58.43784317707296,
+      "valid_prefix_all_free_pixels": 964,
+      "valid_prefix_all_free_area_m2": 2.4100000718235974,
+      "valid_prefix_all_free_coverage_pct": 0.19005971897186366,
+      "geometric_target_pixels": 359380,
+      "geometric_target_area_m2": 898.4500267758967,
+      "geometric_target_coverage_pct": 76.34314264896132,
+      "valid_fragment_target_pixels": 296402,
+      "valid_fragment_target_area_m2": 741.00502208367,
+      "valid_fragment_target_coverage_pct": 62.96471747853924,
+      "valid_prefix_target_pixels": 964,
+      "valid_prefix_target_area_m2": 2.4100000718235974,
+      "valid_prefix_target_coverage_pct": 0.20478265210528887,
+      "swaths": 120,
+      "server_planning_median_s": 0.281600723
+    }
+  }
+}

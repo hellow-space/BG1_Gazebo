@@ -1,0 +1,3 @@
+planner,interface_success,path_length_m,geometric_all_free_coverage_pct,valid_fragment_all_free_coverage_pct,geometric_target_coverage_pct,valid_fragment_target_coverage_pct,known_free_route_valid,clearance_route_valid,clearance_valid_length_pct,call_median_s,poses
+leader,True,1060.90897226227,46.561279472564564,46.56068800041009,50.16813845346611,50.167501163055,True,False,99.96586587075609,0.4506766999984393,20191
+f2c,True,2472.5188531358917,71.02121610618109,58.43784317707296,76.34314264896132,62.96471747853924,False,False,68.97364820320132,0.9986945740092779,47658

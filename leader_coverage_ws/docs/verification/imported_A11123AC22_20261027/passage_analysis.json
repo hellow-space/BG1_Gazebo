@@ -1,0 +1,266 @@
+{
+  "source_sha256": "f06dd04d9b02db67dd850f04f06f628c326b3b72420a904f53edce7e40b10a5b",
+  "resolution_assumed_m": 0.05000000074505806,
+  "selection_world_m": [
+    [
+      0.05000000074505806,
+      0.05000000074505806
+    ],
+    [
+      122.65000182762742,
+      0.05000000074505806
+    ],
+    [
+      122.65000182762742,
+      79.70000118762255
+    ],
+    [
+      0.05000000074505806,
+      79.70000118762255
+    ]
+  ],
+  "selection_pixels_lower": [
+    [
+      1,
+      1
+    ],
+    [
+      2452,
+      1
+    ],
+    [
+      2452,
+      1594
+    ],
+    [
+      1,
+      1594
+    ]
+  ],
+  "known_free_pixels": 645425,
+  "known_free_pixels_outside_selection": 0,
+  "inflation_radius_pixels": 20,
+  "coarse_spacing_pixels": 14,
+  "coarse_test_window_pixels": 15,
+  "free_pixels_after_inflation": 241747,
+  "components_after_inflation": 20,
+  "component_areas_m2_descending": [
+    426.0525126973541,
+    67.27000200480224,
+    45.56750135801734,
+    20.510000611245637,
+    18.380000547766688,
+    9.755000290721657,
+    7.877500234767797,
+    2.5025000745803125,
+    2.2250000663101677,
+    1.6200000482797625,
+    0.8000000238418581,
+    0.7250000216066839,
+    0.4600000137090684,
+    0.32750000976026067,
+    0.23250000692904,
+    0.04250000126659871,
+    0.00750000022351742,
+    0.005000000149011613,
+    0.005000000149011613,
+    0.0025000000745058065
+  ],
+  "task_free_pixels_after_largest_contour": 174291,
+  "geometric_coarse_candidates": 579,
+  "sections": [
+    {
+      "id": "A",
+      "description": "lower-left vertical",
+      "axis": "horizontal",
+      "width_pixels": 70,
+      "width_m": 3.500000052154064,
+      "endpoints_m": [
+        [
+          21.450000319629908,
+          14.975000223144889
+        ],
+        [
+          24.950000371783972,
+          14.975000223144889
+        ]
+      ],
+      "center_pixel": [
+        463,
+        1295
+      ],
+      "center_m": [
+        23.17500034533441,
+        14.975000223144889
+      ],
+      "survives_1m_inflation": true,
+      "connected_to_start_after_inflation": false,
+      "retained_in_task": false,
+      "geometric_coarse_candidates_in_2m_square": 0,
+      "fully_free_window_centers_in_2m_square": 0,
+      "widest_path_bottleneck_radius_m_8connected": 0.5498657308498878
+    },
+    {
+      "id": "B",
+      "description": "lower-middle vertical",
+      "axis": "horizontal",
+      "width_pixels": 136,
+      "width_m": 6.800000101327896,
+      "endpoints_m": [
+        [
+          55.15000082179904,
+          24.9750003721565
+        ],
+        [
+          61.950000923126936,
+          24.9750003721565
+        ]
+      ],
+      "center_pixel": [
+        1170,
+        1095
+      ],
+      "center_m": [
+        58.52500087209046,
+        24.9750003721565
+      ],
+      "survives_1m_inflation": true,
+      "connected_to_start_after_inflation": false,
+      "retained_in_task": false,
+      "geometric_coarse_candidates_in_2m_square": 0,
+      "fully_free_window_centers_in_2m_square": 0,
+      "widest_path_bottleneck_radius_m_8connected": 0.5497227624242649
+    },
+    {
+      "id": "C",
+      "description": "upper-left vertical",
+      "axis": "horizontal",
+      "width_pixels": 46,
+      "width_m": 2.3000000342726707,
+      "endpoints_m": [
+        [
+          17.75000026449561,
+          61.975000923499465
+        ],
+        [
+          20.050000298768282,
+          61.975000923499465
+        ]
+      ],
+      "center_pixel": [
+        377,
+        355
+      ],
+      "center_m": [
+        18.875000281259418,
+        61.975000923499465
+      ],
+      "survives_1m_inflation": true,
+      "connected_to_start_after_inflation": false,
+      "retained_in_task": false,
+      "geometric_coarse_candidates_in_2m_square": 0,
+      "fully_free_window_centers_in_2m_square": 0,
+      "widest_path_bottleneck_radius_m_8connected": 0.7905004397783462
+    },
+    {
+      "id": "D",
+      "description": "upper-middle vertical",
+      "axis": "horizontal",
+      "width_pixels": 63,
+      "width_m": 3.1500000469386578,
+      "endpoints_m": [
+        [
+          50.70000075548887,
+          59.97500089369714
+        ],
+        [
+          53.85000080242753,
+          59.97500089369714
+        ]
+      ],
+      "center_pixel": [
+        1045,
+        395
+      ],
+      "center_m": [
+        52.2750007789582,
+        59.97500089369714
+      ],
+      "survives_1m_inflation": true,
+      "connected_to_start_after_inflation": true,
+      "retained_in_task": true,
+      "geometric_coarse_candidates_in_2m_square": 0,
+      "fully_free_window_centers_in_2m_square": 305,
+      "widest_path_bottleneck_radius_m_8connected": 1.5206108750442766
+    },
+    {
+      "id": "E",
+      "description": "upper horizontal connector",
+      "axis": "vertical",
+      "width_pixels": 49,
+      "width_m": 2.450000036507845,
+      "endpoints_m": [
+        [
+          39.97500059567392,
+          47.20000070333481
+        ],
+        [
+          39.97500059567392,
+          49.65000073984265
+        ]
+      ],
+      "center_pixel": [
+        799,
+        626
+      ],
+      "center_m": [
+        39.97500059567392,
+        48.42500072158873
+      ],
+      "survives_1m_inflation": true,
+      "connected_to_start_after_inflation": true,
+      "retained_in_task": true,
+      "geometric_coarse_candidates_in_2m_square": 0,
+      "fully_free_window_centers_in_2m_square": 0,
+      "widest_path_bottleneck_radius_m_8connected": 1.1044012871084832
+    },
+    {
+      "id": "F",
+      "description": "upper T crossbar",
+      "axis": "vertical",
+      "width_pixels": 53,
+      "width_m": 2.650000039488077,
+      "endpoints_m": [
+        [
+          49.97500074468553,
+          64.75000096485019
+        ],
+        [
+          49.97500074468553,
+          67.40000100433826
+        ]
+      ],
+      "center_pixel": [
+        999,
+        273
+      ],
+      "center_m": [
+        49.97500074468553,
+        66.07500098459423
+      ],
+      "survives_1m_inflation": true,
+      "connected_to_start_after_inflation": true,
+      "retained_in_task": true,
+      "geometric_coarse_candidates_in_2m_square": 0,
+      "fully_free_window_centers_in_2m_square": 0,
+      "widest_path_bottleneck_radius_m_8connected": 1.1704464384550692
+    }
+  ],
+  "limitations": [
+    "Widths are local axis-aligned contiguous white-pixel cross sections.",
+    "Bottleneck radii use 8-connected free pixel centres and exact EDT; no robot orientation model.",
+    "Coarse sampling is an offline geometric reproduction, not the full C++ planner execution.",
+    "0.05 m/pixel inferred from companion PGM; no original PNG YAML metadata.",
+    "No simulation or motion executed."
+  ]
+}

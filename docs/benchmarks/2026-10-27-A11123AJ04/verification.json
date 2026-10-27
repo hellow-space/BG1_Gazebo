@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "source_and_binary_hashes_match": true,
+  "submodules_unchanged": true,
+  "polygon_roundtrip_equal": true,
+  "metrics_recomputed": true,
+  "details": {
+    "leader": {
+      "path_sha256": "2ddc927bb99532c08461af96778ef490023cd4881781b151dab288eca3ed9e54",
+      "exact_clearance_invalid_segments": 6,
+      "source_collision_free": true,
+      "independent_capsule_witnesses": 512,
+      "server_shutdown_confirmed": true
+    },
+    "f2c": {
+      "path_sha256": "12d1f89e6f9ca7ece7fa5346b800c900f57be374ee15a04b978c0c2e11f81e91",
+      "exact_clearance_invalid_segments": 14074,
+      "source_collision_free": false,
+      "independent_capsule_witnesses": 512,
+      "server_shutdown_confirmed": true
+    }
+  },
+  "unit_tests": "..........                                                               [100%]\n10 passed in 0.08s",
+  "ast_yaml_png_links_valid": true,
+  "independent_review_findings_addressed": [
+    "Use exact EDT instead of OpenCV approximate EDT for independent clearance audit",
+    "Remove invalid coverable-upper-bound metric"
+  ],
+  "motion_executed": false
+}

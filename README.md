@@ -116,3 +116,5 @@ BG1_Gazebo/
 ## 三算法离线 benchmark
 
 [独立模块](coverage_benchmark/README.md) 对接 Leader、Richey BCD 和 PythonRobotics Spiral-STC；输入导入 PNG/PGM，输出原图上的完整全局轨迹、覆盖率、总长度和路径有效性。固定版本、三张 PNG 的九组实际结果及失败原因见 [三场景对比](docs/benchmarks/three-planners-2026-10-27/README.md)。该入口只规划，不启动运动。
+
+Fields2Cover 的地图感知扩展及 [三图原生/修改版对照](docs/benchmarks/f2c-obstacle-2026-10-28/README.md) 已单列：保留原始条带来源，加入精确净空、条带裁剪和 A* 连接，每条路径边可追溯。复现入口为 `python3 -m coverage_benchmark.f2c_compare`，只规划、不运动。

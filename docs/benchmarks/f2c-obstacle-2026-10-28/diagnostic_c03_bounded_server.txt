@@ -1,0 +1,21 @@
+[INFO] [1793154019.706220011] [coverage_server]:
+	coverage_server lifecycle node launched.
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1793154019.706279322] [coverage_server]: Creating coverage_server
+[INFO] [1793154019.925463606] [coverage_server]: Configuring coverage_server
+[WARN] [1793154019.925620890] [coverage_server]: default_custom_order was not set! If using Custom Route mode, the custom order must be set per-request!
+[INFO] [1793154019.928454498] [coverage_server]: Activating coverage_server
+[INFO] [1793154019.930145500] [coverage_server]: Creating bond (coverage_server) to lifecycle manager.
+[INFO] [1793154020.001758403] [coverage_server]: Generating coverage path in map frame for zone with 6165 outer nodes and 152 inner polygons.
+[INFO] [1793154021.270017565] [coverage_server]: Generating coverage path in map frame for zone with 1125 outer nodes and 0 inner polygons.
+[INFO] [1793154021.281058588] [coverage_server]: Generating coverage path in map frame for zone with 1125 outer nodes and 0 inner polygons.
+[ERROR] [1793154022.518071098] [coverage_server]: Internal Fields2Cover error: std::bad_alloc
+[WARN] [1793154022.518176996] [coverage_server]: [compute_coverage_path] [ActionServer] Aborting handle.
+[INFO] [1793154022.519759474] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1793154022.519969186] [coverage_server]: Running Nav2 LifecycleNode rcl preshutdown (coverage_server)
+[INFO] [1793154022.520002529] [coverage_server]: Deactivating coverage_server
+[INFO] [1793154022.520018709] [coverage_server]: Destroying bond (coverage_server) to lifecycle manager.
+[INFO] [1793154022.530151153] [coverage_server]: Cleaning up coverage_server
+[INFO] [1793154022.531951720] [coverage_server]: Destroying bond (coverage_server) to lifecycle manager.
+[INFO] [1793154022.536399726] [coverage_server]: Destroying

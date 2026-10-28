@@ -121,6 +121,15 @@ python3 -m coverage_benchmark.verify
 
 运行前保留对应本地 PNG/PGM、构建 Leader；默认三图、0.6 m 作业宽度、1.0 m 中心净空。全量重新运行会更新结果目录，可用 `--output` 另存。只启动本次规划进程，不启动 Gazebo 或运动；不要与其他 domain 101 会话并用。
 
+Fields2Cover 地图感知扩展使用既有 coverage overlay、GDAL C API 和 Python numpy/scipy/Pillow/matplotlib/PyYAML。详细版本/依赖见 [模块说明](coverage_benchmark/README.md)。在无其他 domain 102 服务的会话中，顺序执行：
+
+```bash
+python3 -m coverage_benchmark.f2c_compare
+python3 -m coverage_benchmark.verify_f2c
+```
+
+结果写入独立 `docs/benchmarks/f2c-obstacle-2026-10-28/`，包括原生/修改版轨迹、三指标及逐段来源。新版本仅规划公共起点净空可达区，分母仍为全图自由像素；原生转弯失败可退回有序条带＋A*，原生错误保留。服务进程有2 GiB地址空间上限，不启动运动。不要把几何审计通过写成全区完成或真机保证。
+
 ## 常用检查
 
 ```bash

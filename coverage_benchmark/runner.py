@@ -25,7 +25,7 @@ def plot_scene(source, records, map_data, destination, tool_width):
     r = map_data.resolution
     h, w = image.shape
     extent = (0, w*r, 0, h*r)
-    fig, axes = plt.subplots(2, 3, figsize=(17, 12), constrained_layout=True)
+    fig, axes = plt.subplots(2, len(records), figsize=(17*len(records)/3, 12), squeeze=False, constrained_layout=True)
     for column, record in enumerate(records):
         path = np.asarray(record['path'])
         metrics = record['metrics']

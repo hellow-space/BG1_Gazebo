@@ -57,3 +57,5 @@ Fields2Cover：task.sh → /compute_coverage_path → 规划结果与 RViz 预�
 ### 独立离线 benchmark
 
 `coverage_benchmark` 不属于三个 ROS overlay。`map_io → PlanningInput → adapters/{leader,bcd,stc} → PlanningResult → metrics/runner`，共同输入/输出定义见 [模块说明](coverage_benchmark/README.md)。图像数组为 top-down，路径为左下局部原点的米制 XY。BCD 从只读子模块生成无界面兼容副本，STC 直接导入固定上游；Leader worker 独立加载现有 overlay、ROS domain 101，发布地图并顺序调用现有服务，完成后关闭自身规划器。模块不修复原生路线，不触发机器人运动。
+
+Fields2Cover 地图感知扩展仍位于独立 `coverage_benchmark`：`map_io → f2c_safe/raster_geometry → f2c_worker → swath_geometry → grid_connector → obstacle_connector → metrics`。worker 分别取得原生基线、独立有序条带及可选原生转弯；可选转弯失败时保留原生状态和已成功条带进入 A*，不冒称原生成功。`path_sections` 给所有路径边绑定原生条带/连接方式，`provenance` 绑定实际源文件/输入/依赖/二进制指纹，`verify_f2c` 可从条带完整重放。范围与接口见 [设计](docs/benchmarks/f2c-obstacle-design.md)；原有 ROS 工作区与运动接口不变。

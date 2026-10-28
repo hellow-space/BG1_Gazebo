@@ -32,3 +32,33 @@ python3 -m coverage_benchmark.verify
 - `verify.py`：已保存结果复算、版本/原图指纹、独立点到路径几何见证；不重跑规划。
 
 BCD 生成物在 `.build/`，临时地图和日志在 `.work/`，均忽略；上游 LICENSE 随子模块保留。公共层不添加 A*、不补接 disconnected components、不通过删坏段将无效路径改成有效。
+
+## Fields2Cover 障碍感知版本
+
+[设计](../docs/benchmarks/f2c-obstacle-design.md) · [三图原生/修改版对照](../docs/benchmarks/f2c-obstacle-2026-10-28/README.md)。固定原生基线不变，新增自有地图感知流水线；这是净空条带重生成＋裁剪＋连接的整体改动。
+
+```bash
+# 需要现有 coverage overlay；首次使用按 coverage_ws/README.md 构建
+bash coverage_ws/build.sh
+python3 -m coverage_benchmark.f2c_compare
+python3 -m coverage_benchmark.verify_f2c
+# 本模块含一个真实 ROS 原生调用测试；与 benchmark 顺序运行
+python3 -m pytest coverage_benchmark/tests -q
+```
+
+隔离 worktree 复用主目录构建/数据时，两个入口加 `--runtime-root /home/jimmy/Desktop/BG1_Gazebo`，测试设置 `BG1_RUNTIME_ROOT=/home/jimmy/Desktop/BG1_Gazebo`。`--output` 可另存；默认输出新目录，旧三算法结果不变。该流程会启动并关闭自身 domain 102 规划服务，不启动运动；同模块的原生服务调用有锁串行化，不要在同 domain 另启外部服务。
+
+| 模块 | 职责 |
+| --- | --- |
+| `raster_geometry.py` | GDAL 精确像素边界矢量化/孔洞/回填 |
+| `adapters/f2c_safe.py` | 显式起点可达区、原生调用编排、失败回退 |
+| `adapters/f2c_worker.py` | 独立 ROS 环境、真实有序条带/路径、进程生命周期及2 GiB地址空间限制 |
+| `swath_geometry.py` | 按格线精确裁剪，保留原条带方向 |
+| `grid_connector.py` | 无切角 A*、检查后的可见性简化 |
+| `obstacle_connector.py` | 原生索引匹配、连接/条带组装、逐段来源及整路复核 |
+| `provenance.py` | 实现、依赖、二进制、栅格和文件指纹 |
+| `f2c_compare.py` / `verify_f2c.py` | 六组对比、检查点、完整来源重放与独立几何复核 |
+
+每条输出边的来源在 safe JSON 的 `details.path_sections`：`kind`、`method`、`source_swath_index`、顶点索引范围和裁剪前后端点。manifest 绑定实际源码内容及数据指纹；只看基准 Git 提交不足以定位运行时尚未提交的新实现。
+
+1 m 净空可能使原图断连：只规划公共起点可达分量，其他区域仍计为未覆盖，不能称全图完成。可选原生转弯失败时保留已成功返回的有序条带及错误，再使用 A*；请求内任何连接/最终审计失败均不返回成功。该版本是可停车转向的折线规划，不保证 Dubins 曲率或真机执行。

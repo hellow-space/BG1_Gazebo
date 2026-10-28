@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "run_id": "8be54c9f8b1c4ee8ae42c82f0ecdca49",
+  "source_and_artifact_hashes_match": true,
+  "native_input_roundtrip": true,
+  "complete_trace_replayed": true,
+  "checks": [
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "f2c_native",
+      "metrics_recomputed": true,
+      "independent_capsule_witnesses": 256,
+      "path_sha256": "e2deecde738e0a36900100970c174b09bba3cadb690edbe2901f2cc9a04c930d"
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "f2c_safe",
+      "metrics_recomputed": true,
+      "independent_capsule_witnesses": 256,
+      "path_sha256": "4c6174bcfd672ee2f92f85806f5528fc920fb4fa4b75ea8d983365093cd85b5b"
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "f2c_native",
+      "metrics_recomputed": true,
+      "independent_capsule_witnesses": 256,
+      "path_sha256": "e56f836b8b716a000fd693006666902d1b022dd92104ebf8667731da35264665"
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "f2c_safe",
+      "metrics_recomputed": true,
+      "independent_capsule_witnesses": 256,
+      "path_sha256": "8d79d055abb2669ddba1fd327ce82f9b835410ceb61e1056bd1b3b77165104f6"
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "f2c_native",
+      "metrics_recomputed": true,
+      "independent_capsule_witnesses": 256,
+      "path_sha256": "f4e173fc4888509b7908f35ed60d546b36e1ed19a3e71ab49a55d8747dee0380"
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "f2c_safe",
+      "metrics_recomputed": true,
+      "independent_capsule_witnesses": 256,
+      "path_sha256": "61954e6f1b9c9b321eff301db8726adf7e48db646a4107d09b7f7375354d8730"
+    }
+  ],
+  "verifier_sha256": "2f4e4df2acb7ce4e5de4483b18f8bcb64b4b19a69adec4de898fcc00ff909255",
+  "motion_executed": false
+}

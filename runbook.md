@@ -130,6 +130,14 @@ python3 -m coverage_benchmark.verify_f2c
 
 结果写入独立 `docs/benchmarks/f2c-obstacle-2026-10-28/`，包括原生/修改版轨迹、三指标及逐段来源。新版本仅规划公共起点净空可达区，分母仍为全图自由像素；原生转弯失败可退回有序条带＋A*，原生错误保留。服务进程有2 GiB地址空间上限，不启动运动。不要把几何审计通过写成全区完成或真机保证。
 
+只汇总 Leader / BCD / STC / Fields2Cover修改版的已有结果、核对来源并重算三项指标，不重跑规划：
+
+```bash
+python3 -m coverage_benchmark.compare_saved
+```
+
+统一结果见 [四算法总览](docs/benchmarks/four-planners-2026-10-28/README.md)。需要原始实验JSON和本地三张PNG；该命令不会启动ROS/Gazebo或运动。历史实验继续保留。
+
 ## 常用检查
 
 ```bash

@@ -1,5 +1,7 @@
 # Fields2Cover 条带与连接避障对照
 
+最新统一总览：[Leader / BCD / STC / Fields2Cover 修改版四算法对比](../four-planners-2026-10-28/README.md)。
+
 2026-10-28，同一组三张原始 PNG，保留原生基线，新增 **Fields2Cover＋净空条带＋栅格 A***。新版本的三条完整输出都通过共同障碍/1 m 净空栅格审计；只验证规划几何，没有执行运动。
 
 ## 三项指标

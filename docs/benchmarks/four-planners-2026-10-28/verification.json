@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "source_records": 12,
+  "metrics_recomputed": true,
+  "map_metadata_identical": true,
+  "checks": [
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "leader",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "bcd",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "stc",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "f2c_safe",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "leader",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "bcd",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "stc",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "f2c_safe",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "leader",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "bcd",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "stc",
+      "metric_recomputation": true
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "f2c_safe",
+      "metric_recomputation": true
+    }
+  ],
+  "planners_rerun": false,
+  "motion_executed": false
+}

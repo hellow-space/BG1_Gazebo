@@ -1,4 +1,6 @@
-# 三算法地图覆盖基准
+# 栅格覆盖规划基准
+
+[四算法统一总览与三场景轨迹图](../docs/benchmarks/four-planners-2026-10-28/README.md)。仅汇总已有轨迹、核对参数并重算指标：`python3 -m coverage_benchmark.compare_saved`；不启动规划器。
 
 独立离线模块：PNG/PGM → 统一地图语义 → Leader / Richey BCD / Spiral-STC adapter → 完整世界坐标路径 → 三项指标与原图叠加图。只调用规划，不启动 Gazebo、导航或运动。
 

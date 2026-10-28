@@ -1,5 +1,7 @@
 # Leader / BCD / Spiral-STC 三场景规划 benchmark
 
+最新统一总览：[Leader / BCD / STC / Fields2Cover 修改版四算法对比](../four-planners-2026-10-28/README.md)。
+
 2026-10-27，三算法各运行三张原始 PNG，一组一次规划。未启动 Gazebo、导航或运动。九组包含明确失败，完整世界坐标路径及失败详情均保留。仅比较覆盖率、路径长度和路径有效性。
 
 ## 指标结果

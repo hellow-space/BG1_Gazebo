@@ -112,3 +112,7 @@ BG1_Gazebo/
 [用户手册](docs/manuals/BG1_Pro_User_Manual_用户手册-CN_0506.pdf)、
 [地图数据规则](data/maps/README.md)、[第三方来源](third_party/README.md)。
 工作区中的 `build/install/log` 是本地生成内容，不纳入 Git；仿真场景自带的地图仍随 ROS 包提交。
+
+## 三算法离线 benchmark
+
+[独立模块](coverage_benchmark/README.md) 对接 Leader、Richey BCD 和 PythonRobotics Spiral-STC；输入导入 PNG/PGM，输出原图上的完整全局轨迹、覆盖率、总长度和路径有效性。固定版本、三张 PNG 的九组实际结果及失败原因见 [三场景对比](docs/benchmarks/three-planners-2026-10-27/README.md)。该入口只规划，不启动运动。

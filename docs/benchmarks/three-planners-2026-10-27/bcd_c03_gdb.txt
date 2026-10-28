@@ -1,0 +1,39 @@
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7fffecefc6c0 (LWP 80139)]
+[New Thread 0x7fffecafb6c0 (LWP 80140)]
+[New Thread 0x7fffec6fa6c0 (LWP 80141)]
+[New Thread 0x7fffe7fff6c0 (LWP 80142)]
+[New Thread 0x7fffe7bfe6c0 (LWP 80143)]
+[New Thread 0x7fffe77fd6c0 (LWP 80144)]
+[New Thread 0x7fffe73fc6c0 (LWP 80145)]
+[New Thread 0x7fffe67f96c0 (LWP 80148)]
+[New Thread 0x7fffe6bfa6c0 (LWP 80147)]
+[New Thread 0x7fffe6ffb6c0 (LWP 80146)]
+[New Thread 0x7fffe63f86c0 (LWP 80149)]
+[New Thread 0x7fffe5ff76c0 (LWP 80150)]
+[New Thread 0x7fffe5bf66c0 (LWP 80151)]
+[New Thread 0x7fffe57f56c0 (LWP 80152)]
+[New Thread 0x7fffe53f46c0 (LWP 80153)]
+
+Thread 1 "bcd_debug" received signal SIGSEGV, Segmentation fault.
+0x000055555556c587 in ExtractRawContours (original_map=..., raw_wall_contours=std::vector of length 1, capacity 1 = {...}, raw_obstacle_contours=std::vector of length 0, capacity 0) at /tmp/bg1_coverage_benchmark_20261027/coverage_benchmark/.build/bcd/diagnostic/bcd_debug.cpp:3148
+3148	    std::vector<cv::Point> raw_wall_contour = contours[wall_cnt_indices.front()];
+#0  0x000055555556c587 in ExtractRawContours (original_map=..., raw_wall_contours=std::vector of length 1, capacity 1 = {...}, raw_obstacle_contours=std::vector of length 0, capacity 0) at /tmp/bg1_coverage_benchmark_20261027/coverage_benchmark/.build/bcd/diagnostic/bcd_debug.cpp:3148
+#1  0x000055555556d33a in ExtractContours (original_map=..., wall_contours=std::vector of length 1, capacity 1 = {...}, obstacle_contours=std::vector of length 0, capacity 0, robot_radius=11) at /tmp/bg1_coverage_benchmark_20261027/coverage_benchmark/.build/bcd/diagnostic/bcd_debug.cpp:3194
+#2  0x000055555557c688 in main (argc=6, argv=0x7fffffffcac8) at /tmp/bg1_coverage_benchmark_20261027/coverage_benchmark/.build/bcd/diagnostic/bcd_debug.cpp:5194
+#0  0x000055555556c587 in ExtractRawContours (original_map=..., raw_wall_contours=std::vector of length 1, capacity 1 = {...}, raw_obstacle_contours=std::vector of length 0, capacity 0) at /tmp/bg1_coverage_benchmark_20261027/coverage_benchmark/.build/bcd/diagnostic/bcd_debug.cpp:3148
+3148	    std::vector<cv::Point> raw_wall_contour = contours[wall_cnt_indices.front()];
+map = {flags = 1124024336, dims = 2, rows = 1729, cols = 1200, data = 0x555556771000 '\377' <repeats 200 times>..., datastart = 0x555556771000 '\377' <repeats 200 times>..., dataend = 0x555556d60a10 "", datalimit = 0x555556d60a10 "", allocator = 0x0, u = 0x555555d63e30, size = {p = 0x7fffffffc068}, step = {p = 0x7fffffffc0b0, buf = {3600, 3}}}
+contours = std::vector of length 0, capacity 0
+wall_cnt_indices = std::vector of length 0, capacity 0
+raw_wall_contour = std::vector of length 17592186042372, capacity 144955146274 = {<error reading variable raw_wall_contour (Cannot access memory at address 0x0)>
+mask = {flags = 0, dims = 0, rows = -15472, cols = 32767, data = 0x7fffffffc0f0 "\020\301\377\377\377\177", datastart = 0x7ffff753b561 "\213s\004\203\376\002~\bH\307C\b\377\377\377\377H\213C8H\205\300\017\204\242", dataend = 0x7fffffffc390 "", datalimit = 0xb <error: Cannot access memory at address 0xb>, allocator = 0x7fffffffc110, u = 0x7fffffffc3f0, size = {p = 0xb0000000b}, step = {p = 0x416afb400, buf = {140737488339248, 93824992453534}}}
+base = {flags = 1124024320, dims = 2, rows = 0, cols = 0, data = 0x0, datastart = 0x0, dataend = 0x0, datalimit = 0x0, allocator = 0x0, u = 0x0, size = {p = 0x7fffffffc128}, step = {p = 0x7fffffffc170, buf = {1200, 1}}}
+BCD_STAGE contour_extraction

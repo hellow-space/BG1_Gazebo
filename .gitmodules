@@ -6,3 +6,9 @@
 	path = third_party/Fields2Cover
 	url = https://github.com/Fields2Cover/Fields2Cover.git
 	branch = v1.2.1-devel
+[submodule "third_party/bcd_planner"]
+	path = third_party/bcd_planner
+	url = https://github.com/RicheyHuang/BoustrophedonCellularDecompositionPathPlanning.git
+[submodule "third_party/python_robotics"]
+	path = third_party/python_robotics
+	url = https://github.com/AtsushiSakai/PythonRobotics.git

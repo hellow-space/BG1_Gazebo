@@ -1,0 +1,62 @@
+BCD_STAGE contour_extraction
+BCD_STAGE cell_decomposition
+BCD_STAGE static_path_planning
+=================================================================
+==80012==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x522000004594 at pc 0x5e1822b69b49 bp 0x7ffc7d8d1d70 sp 0x7ffc7d8d1d60
+READ of size 4 at 0x522000004594 thread T0
+    #0 0x5e1822b69b48 in GetBoustrophedonPath(std::vector<CellNode, std::allocator<CellNode> >&, CellNode, int, int) coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:387
+    #1 0x5e1822bddb12 in StaticPathPlanning(cv::Mat const&, std::vector<CellNode, std::allocator<CellNode> >&, Point2D const&, int, bool, bool, int) coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:3375
+    #2 0x5e1822bf8b03 in main coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:5225
+    #3 0x732191a2a1c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #4 0x732191a2a28a in __libc_start_main_impl ../csu/libc-start.c:360
+    #5 0x5e1822b09dc4 in _start (/tmp/bg1_coverage_benchmark_20261027/coverage_benchmark/.build/bcd/diagnostic/bcd_asan+0x2c5dc4) (BuildId: 723dc522cfa90404a2cf21465d7b2b32b0c5c55c)
+
+0x522000004594 is located 4 bytes after 5264-byte region [0x522000003100,0x522000004590)
+allocated by thread T0 here:
+    #0 0x732194afe548 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:95
+    #1 0x5e1822c81315 in std::__new_allocator<Point2D>::allocate(unsigned long, void const*) /usr/include/c++/13/bits/new_allocator.h:151
+    #2 0x5e1822c81315 in std::allocator_traits<std::allocator<Point2D> >::allocate(std::allocator<Point2D>&, unsigned long) /usr/include/c++/13/bits/alloc_traits.h:482
+    #3 0x5e1822c81315 in std::_Vector_base<Point2D, std::allocator<Point2D> >::_M_allocate(unsigned long) /usr/include/c++/13/bits/stl_vector.h:381
+    #4 0x5e1822c81315 in Point2D* std::vector<Point2D, std::allocator<Point2D> >::_M_allocate_and_copy<std::_Deque_iterator<Point2D, Point2D&, Point2D*> >(unsigned long, std::_Deque_iterator<Point2D, Point2D&, Point2D*>, std::_Deque_iterator<Point2D, Point2D&, Point2D*>) /usr/include/c++/13/bits/stl_vector.h:1619
+    #5 0x5e1822c81315 in void std::vector<Point2D, std::allocator<Point2D> >::_M_assign_aux<std::_Deque_iterator<Point2D, Point2D&, Point2D*> >(std::_Deque_iterator<Point2D, Point2D&, Point2D*>, std::_Deque_iterator<Point2D, Point2D&, Point2D*>, std::forward_iterator_tag) /usr/include/c++/13/bits/vector.tcc:324
+    #6 0x5e1822b6702f in void std::vector<Point2D, std::allocator<Point2D> >::assign<std::_Deque_iterator<Point2D, Point2D&, Point2D*>, void>(std::_Deque_iterator<Point2D, Point2D&, Point2D*>, std::_Deque_iterator<Point2D, Point2D&, Point2D*>) /usr/include/c++/13/bits/stl_vector.h:829
+    #7 0x5e1822b6702f in GetBoustrophedonPath(std::vector<CellNode, std::allocator<CellNode> >&, CellNode, int, int) coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:276
+    #8 0x5e1822bddb12 in StaticPathPlanning(cv::Mat const&, std::vector<CellNode, std::allocator<CellNode> >&, Point2D const&, int, bool, bool, int) coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:3375
+    #9 0x5e1822bf8b03 in main coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:5225
+    #10 0x732191a2a1c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #11 0x732191a2a28a in __libc_start_main_impl ../csu/libc-start.c:360
+    #12 0x5e1822b09dc4 in _start (/tmp/bg1_coverage_benchmark_20261027/coverage_benchmark/.build/bcd/diagnostic/bcd_asan+0x2c5dc4) (BuildId: 723dc522cfa90404a2cf21465d7b2b32b0c5c55c)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:387 in GetBoustrophedonPath(std::vector<CellNode, std::allocator<CellNode> >&, CellNode, int, int)
+Shadow bytes around the buggy address:
+  0x522000004300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x522000004380: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x522000004400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x522000004480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x522000004500: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x522000004580: 00 00[fa]fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x522000004600: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x522000004680: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x522000004700: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x522000004780: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x522000004800: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==80012==ABORTING

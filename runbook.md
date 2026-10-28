@@ -111,6 +111,16 @@ ros2 run bg1_navigation demo_goal.py --x 4.8 --y 0 --yaw 0
 
 `verify_runtime.py` 主要依据轮式里程计；实际底盘运动仍需独立 Gazebo 位姿证据。历史证据位置见各工作区 README；本次初始化未重跑上述测试。
 
+三算法离线模块的依赖、输入和完整操作见 [模块 README](coverage_benchmark/README.md)，本次 [九组结果](docs/benchmarks/three-planners-2026-10-27/README.md) 保留原图轨迹及失败证据：
+
+```bash
+python3 -m pytest coverage_benchmark/tests -q
+python3 -m coverage_benchmark
+python3 -m coverage_benchmark.verify
+```
+
+运行前保留对应本地 PNG/PGM、构建 Leader；默认三图、0.6 m 作业宽度、1.0 m 中心净空。全量重新运行会更新结果目录，可用 `--output` 另存。只启动本次规划进程，不启动 Gazebo 或运动；不要与其他 domain 101 会话并用。
+
 ## 常用检查
 
 ```bash

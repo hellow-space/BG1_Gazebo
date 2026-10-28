@@ -10,7 +10,8 @@ BG1_Gazebo/
 │   └── bg1_scenarios/         # warehouse/office 配置及世界/地图生成器
 ├── leader_coverage_ws/src/    # bg1_leader_coverage + 自有 interfaces 包
 ├── coverage_ws/src/           # bg1_coverage_demo
-├── third_party/               # leader 原包、opennav 与 Fields2Cover 子模块
+├── third_party/               # leader 原包；opennav、Fields2Cover、BCD、PythonRobotics 子模块
+├── coverage_benchmark/        # 独立三算法离线适配、统一指标及原图轨迹
 ├── data/maps/                 # 本地导入地图与 SLAM 会话
 └── docs/                      # 手册及目录整理记录
 ```
@@ -52,3 +53,7 @@ Fields2Cover：task.sh → /compute_coverage_path → 规划结果与 RViz 预�
 - 场景 YAML 同时生成世界与 0.05 m 参考地图；本地导入地图不会自动接入 `/map`。数据规则见 [地图说明](data/maps/README.md)。
 
 - 本次导入原图运动演示使用本地 `data/maps/imported/A11123AJ04_231127_094529/gazebo_demo/` 中的挤出网格世界；临时启动配置复用底层仿真/Nav2 和 Leader 运动节点，AMCL 独立提供 `map → odom`。不是新增公共场景入口；复现配置与边界见 [本次运动记录](leader_coverage_ws/docs/verification/imported_A11123AJ04_20261022/motion/README.md)。
+
+### 独立离线 benchmark
+
+`coverage_benchmark` 不属于三个 ROS overlay。`map_io → PlanningInput → adapters/{leader,bcd,stc} → PlanningResult → metrics/runner`，共同输入/输出定义见 [模块说明](coverage_benchmark/README.md)。图像数组为 top-down，路径为左下局部原点的米制 XY。BCD 从只读子模块生成无界面兼容副本，STC 直接导入固定上游；Leader worker 独立加载现有 overlay、ROS domain 101，发布地图并顺序调用现有服务，完成后关闭自身规划器。模块不修复原生路线，不触发机器人运动。

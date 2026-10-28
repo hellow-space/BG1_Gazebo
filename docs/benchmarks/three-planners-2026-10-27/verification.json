@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "nine_cases": true,
+  "source_map_and_version_hashes_match": true,
+  "metrics_recomputed": true,
+  "checks": [
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "leader",
+      "path_sha256": "8a68e5fa5a574cc0b9d6ddafcfd3af7d0d5590236425635e17e5d6965d52fad7",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "bcd",
+      "path_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 0
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "stc",
+      "path_sha256": "a77bf01fe2a950667eec81d71e8127a6e029cfd8cb4e09bb9016e31a027a55fb",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "leader",
+      "path_sha256": "c13083374c510561b0f6d9d4b06894c408a1d0e0c3a30ae0c5157257a5e9208f",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "bcd",
+      "path_sha256": "c5a1edff8acb26ec296c59eabdf77a3f6d8beb24faaf9eb8807b3f3b0f3beed6",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "stc",
+      "path_sha256": "fac276c8bfe140e36aa9ac728dcc930a5443006011f7c3424fc13e3ee85f5dee",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "leader",
+      "path_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 0
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "bcd",
+      "path_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 0
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "stc",
+      "path_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 0
+    }
+  ],
+  "motion_executed": false
+}

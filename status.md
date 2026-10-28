@@ -2,9 +2,14 @@
 
 ## 当前目标
 
-筛选可接入 PGM / OccupancyGrid 的开源 BCD、STC 实现，作为后续同图 benchmark 候选（2026-10-27）。
+模块化适配 Richey BCD、PythonRobotics Spiral-STC，与 Leader 完成三图、三指标离线对比（2026-10-27）；用户已取消远端推送。
 
 ## 已完成
+
+- 之前工作本地提交为 `0f54459`；本次用户明确取消 push，不再重试远端推送。
+- 两个新候选已固定为 Git 子模块，独立 `coverage_benchmark/` 提供公共读图、净空、起点、三套 adapter、完整路径、指标/绘图和复算入口；上游原文件保留不改，现有 ROS 工作区接口不变。
+- 完成 AJ04、AC22、C03 三张 PNG × 三算法九组真实规划；统一作业宽度 0.6 m、中心净空 1.0 m，原图全部已知自由像素为分母。五组返回非空路径，四组明确失败；失败长度为空，不计零长度优势。结果见 [三场景 benchmark](docs/benchmarks/three-planners-2026-10-27/README.md)。
+- 当前 AJ04 Leader/STC 为 46.56%/43.08%、1,060.91/927.00 m；AC22 Leader/BCD/STC 为 18.49%/12.15%/6.80%、607.63/525.38/185.40 m。Leader 两图有少量严格净空临界段，三条 BCD/STC 返回路线通过共同栅格审计；不代表运动或全区覆盖。
 
 - 完成 [BCD / STC 候选核查](docs/benchmarks/2026-10-27-coverage-candidates.md)：确认 PythonRobotics Spiral-STC 实际生成树与四子格机制；IPA 标准 BCD 为配置 2（默认 8 是变体），Richey C++ BCD 为无 ROS 实验候选；Nobleo 虽类名 SpiralSTC，实装为 BSA，已单独分类。记录官方源码、输入语义、固定提交、许可及适配边界，未安装、构建或运行新候选。
 - 核查发现：IPA 的源码头与包许可声明不同，不能简写成纯 LGPL；IPA 中有 A* 但返回路径的跨 cell 拼接仍须验证。Richey 附带的 a-star.hpp 未集成到 main，跨 cell 使用图遍历/边界连接，不能据文件名宣称已有 A* 障碍重连。PythonRobotics 需统一栅格尺度、2×2 粗化及完整线段间连接后再比较。
@@ -42,17 +47,18 @@
 
 ## 当前进行
 
-本次 BCD/STC 开源候选检索与静态源码核查已完成；未新增依赖或启动规划/仿真/运动。此前 AJ04 benchmark 与 AC22 规划/通道资料保留，候选算法尚未接入或实测；Git 推送认证问题仍未处理，船模留在桌面独立目录。
+本轮适配、九组规划、原图对照、独立复核及 BCD 原生诊断已完成；结果和代码收录为本地提交，不推送远端。未启动仿真或运动。
 
 ## 当前问题
 
-- 新候选的 PGM 输入兼容、Jazzy 构建、完整连接及真实覆盖效果尚未运行验证。IPA 许可声明存在差异，Richey 为练习/未完成实现，PythonRobotics STC 会受子格尺度、2×2 完整自由条件和起点连通区限制。
+- BCD AJ04 分解产生不等长边缘，被 wrapper 拒绝；绕过 guard 后 ASAN 证实原生 sweep 独立堆越界。AC22 正常构建虽返回几何有效路径，ASAN 同样查出原生堆越界（`main.cpp:381`），不能认定实现稳定；见 [BCD 诊断](docs/benchmarks/three-planners-2026-10-27/bcd_diagnostics.md)。
+- C03 在统一参数下：Leader 返回空路径，BCD 原生轮廓提取 SIGSEGV，STC 净空/粗化后无完整 2×2 自由粗格。Richey 额外 0.55 m 内缩和最大外轮廓限制、STC 保守粗化和连通分量限制均未修复；这些是具体实现/参数的结果，不代表整个 BCD/STC 算法族能力。
 
 - 本次 F2C 原生条带/Dubins 流水线在复杂非凸地图上产生无效连接，不能以其更高的几何扫掠率声称更优或完整覆盖。Leader 也存在遗漏与少量精确净空临界差异；当前只是单图、单参数的规划基线，起点约束及接口计时能力不完全相同，未做区域分解、参数搜索或运动验证。
 
 - 本次 PNG 路线未覆盖完整选区；已确认膨胀断连/最大外轮廓选择、粗格筛选和一次 A* 路径组合并跳过均会造成遗漏，不能全部归因于机器人通不过。尚未量化遗漏面积，也未验证实际运动；PNG 的分辨率与局部原点仍为本次规划假设。
 
-- `git push origin main` 无法读取 HTTPS 用户名，本机未配置 credential helper，也无可用 SSH agent 密钥。已连接 GitHub 服务可写仓库，但其创建提交接口不能保留现有本地提交元数据；未改写历史代替原样推送。
+- 远端推送已按用户要求取消；历史 HTTPS 认证失败不作为当前待办。
 - 船模仅依据截图比例复刻，缺原始 CAD 和尺寸；遮挡结构简化，不应当作精确船舶模型。
 
 - 部分历史设计/进度含迁移前路径及旧阶段约束；当前入口与后续已批准扩展已在新文档中明确，历史文件原样保留。
@@ -62,18 +68,24 @@
 
 ## 下一步
 
-- 后续对比优先考虑 IPA 标准 BCD 与 PythonRobotics Spiral-STC；若侧重低成本 C++ 实验，可将 Richey BCD 作为另一个明确标注成熟度的基线。先做独立离线适配、固定版本和统一栅格/作业宽度口径，再复用 AJ04 评估器；BSA 应单列，不冒充 STC。
-
+- 后续若调参或修复 BCD 原生缺陷，另作新实验，保留当前固定版本/参数基线；IPA 尚未接入。
 - 若继续改进 AJ04 benchmark，先确认 PNG 元数据和实际作业宽度，再确定是否增加障碍感知区域分解/连接或参数扫描；本次未扩大范围替换、升级或修复第三方算法。
 
 - 如继续改进本次地图规划，先确认元数据，再明确物理通行、中心净空和覆盖粗格的不同要求，处理多轮廓及路径组合并遗漏；本次没有扩大范围修改算法或执行机器人运动。
 
-- 本机完成 GitHub Git 认证后执行 `git push origin main`，上传两个本地提交，再核对远端与本地一致；无需重新整理或提交文件。
 - 船模后续操作在桌面 `Workboat_Gazebo` 完成；BG1 工程按后续任务继续。
 - 当前没有仿真进程；船模使用方式见桌面独立目录 README。
 - 维护本地地图独立备份；加载导入地图前补齐并确认物理尺度、原点与阈值。
 
 ## 验证结果
+
+以下为 2026-10-27 运行、2026-10-28 收尾的三算法离线基准：
+
+- `python3 -m coverage_benchmark --runtime-root /home/jimmy/Desktop/BG1_Gazebo`：九组实际规划顺序完成，保存九份路径/失败 JSON、三张原图对照图及三指标 CSV。五组非空、四组失败；本次规划器已退出。
+- `python3 -m pytest coverage_benchmark/tests -q`：15 项通过，含地图语义、覆盖并集/全部自由分母、障碍/净空/越界、失败长度、STC 保守缩放和真实 BCD 构建/调用/超时/原文件不变。
+- `python3 -m coverage_benchmark.verify --runtime-root /home/jimmy/Desktop/BG1_Gazebo`：九组指标/CSV 全量复算、原图/固定版本/21个 Leader 原文件与构建清单/二进制哈希、三张图片解析通过；五条非空路线各 256 个独立点到完整路径距离见证通过。独立审查另完成每条 512 个见证，未发现公共指标、坐标或原生路径保真问题。
+- 2026-10-28 收尾复验：`python3 -m pytest coverage_benchmark/tests docs/benchmarks/2026-10-27-A11123AJ04/test_metrics.py docs/benchmarks/2026-10-27-A11123AJ04/test_raster_geometry.py -q`：25 项通过；九组已保存结果再次复算通过。目视核对三张原图叠加图，BCD 内存缺陷单独醒目标记；Markdown 链接/围栏、Python AST、YAML 与空白检查通过。
+- BCD 额外诊断：AJ04/AC22 的 ASAN/UBSAN 均报原生 heap-buffer-overflow，C03 GDB 证实空轮廓访问；日志已归档，诊断生成命令已执行核验。本次未重建 ROS 包、未运行无关包测试、未启动 Gazebo/运动或推送远端；BCD 生成副本已实际编译。
 
 以下为 2026-10-27 的开源 BCD/STC 候选研究：
 

@@ -1,0 +1,43 @@
+Breakpoint 1 at 0x2c5a60
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.ubuntu.com>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7fffd9bfb6c0 (LWP 80167)]
+[New Thread 0x7fffd97fa6c0 (LWP 80168)]
+[New Thread 0x7fffd88f06c0 (LWP 80169)]
+[New Thread 0x7fffd79e66c0 (LWP 80170)]
+[New Thread 0x7fffd6adc6c0 (LWP 80171)]
+[New Thread 0x7fffd66db6c0 (LWP 80172)]
+[New Thread 0x7fffd4acd6c0 (LWP 80173)]
+[New Thread 0x7fffd3bc36c0 (LWP 80174)]
+[New Thread 0x7fffd37c26c0 (LWP 80175)]
+[New Thread 0x7fffd33c16c0 (LWP 80176)]
+[New Thread 0x7fffd24b76c0 (LWP 80177)]
+[New Thread 0x7fffd0aa46c0 (LWP 80178)]
+[New Thread 0x7fffcfb9a6c0 (LWP 80179)]
+[New Thread 0x7fffcdf8c6c0 (LWP 80180)]
+[New Thread 0x7fffcdb8b6c0 (LWP 80181)]
+
+Thread 1 "bcd_asan" hit Breakpoint 1, __asan::__asan_report_load4 (addr=90022514563748) at ../../../../src/libsanitizer/asan/asan_rtl.cpp:130
+#0  __asan::__asan_report_load4 (addr=90022514563748) at ../../../../src/libsanitizer/asan/asan_rtl.cpp:130
+#1  0x0000555555879b49 in GetBoustrophedonPath (cell_graph=std::vector of length 22, capacity 32 = {...}, cell=..., corner_indicator=corner_indicator@entry=0, robot_radius=robot_radius@entry=11) at coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:387
+#2  0x00005555558edb13 in StaticPathPlanning (map=..., cell_graph=std::vector of length 22, capacity 32 = {...}, start_point=..., robot_radius=robot_radius@entry=11, visualize_cells=visualize_cells@entry=false, visualize_path=<optimized out>, color_repeats=<optimized out>) at coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:3375
+#3  0x0000555555908b04 in main (argc=<optimized out>, argv=<optimized out>) at coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:5225
+#1  0x0000555555879b49 in GetBoustrophedonPath (cell_graph=std::vector of length 22, capacity 32 = {...}, cell=..., corner_indicator=corner_indicator@entry=0, robot_radius=robot_radius@entry=11) at coverage_benchmark/.build/bcd/diagnostic/bcd_asan.cpp:387
+387	                    if((std::abs(ceiling[i+1].y-ceiling[i].y)>=2)&&(i+1<ceiling.size()))
+$1 = 17
+$2 = 323
+$3 = 0
+$4 = 11
+BCD_STAGE contour_extraction
+BCD_STAGE cell_decomposition
+native decomposition returned malformed cell edges: cell=4 ceiling=14 floor=13 ceiling_x=383:395 floor_x=383:395
+CEILING 383,885 383,627 384,626 385,625 386,624 387,623 388,621 389,619 390,617 391,614 392,610 393,606 394,603 395,599
+FLOOR 383,1320 384,1320 385,1320 386,1320 387,1320 388,1320 389,1320 390,1320 391,1320 392,1320 393,1320 394,1320 395,1320
+BCD_STAGE static_path_planning
+warning: 130	../../../../src/libsanitizer/asan/asan_rtl.cpp: No such file or directory

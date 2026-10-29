@@ -2,7 +2,7 @@
 
 ## 当前目标
 
-ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完成（2026-10-29）；按用户最新要求在功能分支提交并推送远端同名分支，不合并 `main`。
+ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完成（2026-10-29）；功能提交为 `25d124c`，远端推送因本机缺少GitHub认证失败，未合并 `main`。
 
 ## 已完成
 
@@ -64,7 +64,7 @@ ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完�
 
 ## 当前进行
 
-本轮离线适配、实际规划、统一报告、证据复算和图像检查均已完成；提交前再次验证55项测试及15组证据复算，交付分支为 `feature/ethz-polygon-coverage`，不启动仿真/运动。
+本轮离线适配及提交前55项测试、15组证据复算均已完成；成果已提交至 `feature/ethz-polygon-coverage`，推送待本机GitHub认证可用后重试，不启动仿真/运动。
 
 ## 当前问题
 
@@ -79,7 +79,7 @@ ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完�
 
 - 本次 PNG 路线未覆盖完整选区；已确认膨胀断连/最大外轮廓选择、粗格筛选和一次 A* 路径组合并跳过均会造成遗漏，不能全部归因于机器人通不过。尚未量化遗漏面积，也未验证实际运动；PNG 的分辨率与局部原点仍为本次规划假设。
 
-- 用户现已重新要求推送功能分支；历史 HTTPS 认证失败不代表本次推送结果，需以本次实际返回和远端分支指纹核对。
+- 本次实际HTTPS推送返回 `could not read Username for 'https://github.com': terminal prompts disabled`；本机未安装 `gh`，没有默认SSH私钥且SSH agent无身份，SSH亦未配置信任GitHub主机。本次 `git ls-remote origin refs/heads/feature/ethz-polygon-coverage` 未返回该分支，尚未上传；需要先在本机完成GitHub Git认证。
 - 船模仅依据截图比例复刻，缺原始 CAD 和尺寸；遮挡结构简化，不应当作精确船舶模型。
 
 - 部分历史设计/进度含迁移前路径及旧阶段约束；当前入口与后续已批准扩展已在新文档中明确，历史文件原样保留。
@@ -108,6 +108,7 @@ ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完�
 
 - `python3 -m pytest coverage_benchmark/tests docs/benchmarks/2026-10-27-A11123AJ04/test_metrics.py docs/benchmarks/2026-10-27-A11123AJ04/test_raster_geometry.py -q`：55项通过（3.75秒）。
 - `python3 -m coverage_benchmark.verify_ethz`：15组原始轨迹、实现/输入/动态依赖指纹及独立几何见证全部通过；本轮未重跑三张大地图规划或运动。
+- `git diff --cached --check` 通过；功能提交 `25d124c` 收录161个文件。`GIT_TERMINAL_PROMPT=0 git push -u origin feature/ethz-polygon-coverage` 因认证缺失退出128；远端未出现该功能分支，未创建PR、未合并main，两个worktree均保留。
 
 以下为2026-10-29 ETHZ适配与五算法对比：
 

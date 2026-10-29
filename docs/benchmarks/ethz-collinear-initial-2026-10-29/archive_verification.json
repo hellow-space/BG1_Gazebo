@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "artifact_sha256": true,
+  "source_snapshots_sha256": true,
+  "readme_mapping": {
+    "README.md": "README.original.md"
+  },
+  "native_successes": 0
+}

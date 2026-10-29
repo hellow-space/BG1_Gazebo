@@ -1,0 +1,11 @@
+ETHZ_STAGE setup
+[INFO] Start creating sweep plan graph.
+[INFO] Successfully created boustrophedon decomposition with 59 polygon(s).
+[ERROR] Decomposition not fully connected.
+[ERROR] Failed to offset neighboring decomposition cells.
+[ERROR] Cannot create sweep plan graph.
+ETHZ_STAGE solve cells=59
+[INFO] Start solving GTSP using GK MA.
+[ERROR] Graph not created.
+[ERROR] Failed solving graph.
+ETHZ_ERROR native solve failed or empty path

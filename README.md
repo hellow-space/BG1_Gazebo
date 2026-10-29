@@ -113,10 +113,12 @@ BG1_Gazebo/
 [地图数据规则](data/maps/README.md)、[第三方来源](third_party/README.md)。
 工作区中的 `build/install/log` 是本地生成内容，不纳入 Git；仿真场景自带的地图仍随 ROS 包提交。
 
-## 三算法离线 benchmark
+## 覆盖算法离线 benchmark
 
 [独立模块](coverage_benchmark/README.md) 对接 Leader、Richey BCD 和 PythonRobotics Spiral-STC；输入导入 PNG/PGM，输出原图上的完整全局轨迹、覆盖率、总长度和路径有效性。固定版本、三张 PNG 的九组实际结果及失败原因见 [三场景对比](docs/benchmarks/three-planners-2026-10-27/README.md)。该入口只规划，不启动运动。
 
 Fields2Cover 的地图感知扩展及 [三图原生/修改版对照](docs/benchmarks/f2c-obstacle-2026-10-28/README.md) 已单列：保留原始条带来源，加入精确净空、条带裁剪和 A* 连接，每条路径边可追溯。复现入口为 `python3 -m coverage_benchmark.f2c_compare`，只规划、不运动。
 
 Leader、BCD、STC 与 Fields2Cover 修改版的结果现集中在 [四算法统一对比](docs/benchmarks/four-planners-2026-10-28/README.md)，包含12组指标及每图四列轨迹/覆盖图。`python3 -m coverage_benchmark.compare_saved` 可从既有原始路径重建总览，不调用规划器。
+
+新增 ETHZ Polygon Coverage（原生BCD＋可见图＋GK-MA）已适配，[五算法统一对比](docs/benchmarks/five-planners-2026-10-29/README.md)包含同三图15组指标和五列轨迹/覆盖图。ETHZ采用0.2 m保守多边形栅格，每块原像素必须全部满足1 m净空；最终在原图分辨率审计。复现：`python3 -m coverage_benchmark.ethz_compare`；复核：`python3 -m coverage_benchmark.verify_ethz`。构建、固定版本、预处理范围和原生失败诊断见[模块说明](coverage_benchmark/README.md)。

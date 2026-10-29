@@ -1,0 +1,100 @@
+{
+  "passed": true,
+  "run_id": "46b3425e743e4dcc8fe5b6d8a2c38389",
+  "cases": 15,
+  "checks": [
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "leader",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "bcd",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 0
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "stc",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "f2c_safe",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AJ04_231127_094529",
+      "algorithm": "ethz",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "leader",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "bcd",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "stc",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "f2c_safe",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A11123AC22_231213_163036",
+      "algorithm": "ethz",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "leader",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 0
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "bcd",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 0
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "stc",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 0
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "f2c_safe",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    },
+    {
+      "scene": "A111241C03_240410_144535",
+      "algorithm": "ethz",
+      "metric_recomputation": true,
+      "independent_capsule_witnesses": 256
+    }
+  ],
+  "native_output_replayed": true,
+  "source_and_input_fingerprints_match": true,
+  "motion_executed": false
+}

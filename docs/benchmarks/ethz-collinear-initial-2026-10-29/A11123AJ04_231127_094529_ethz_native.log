@@ -1,0 +1,4 @@
+ETHZ_STAGE setup
+[INFO] Start creating sweep plan graph.
+[INFO] Successfully created boustrophedon decomposition with 75 polygon(s).
+[ERROR] assertion failed: orientation != CGAL::COLLINEAR (/home/jimmy/Desktop/BG1_Gazebo/third_party/polygon_coverage_planning/polygon_coverage_geometry/src/visibility_graph.cc:74)

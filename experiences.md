@@ -7,3 +7,5 @@
 - 迁移源码后须重建受影响 CMake 缓存与 symlink install，并检查失效链接；本项目目录迁移已有重建、哈希和启动检查记录。依据：[目录整理验证](docs/development/2026-10-22-project-layout.md)。
 
 - 本机 `gz topic --json-output` 的时间戳 `sec` 可能为字符串，采样程序应显式转换数值类型后计算时间，避免采集线程退出而运动仍继续。此次导入图运动探针已遇到并修正，证据见 [运动记录](leader_coverage_ws/docs/verification/imported_A11123AJ04_20261022/motion/README.md)。
+
+- 栅格转多边形供CGAL覆盖库使用时，完整像素轮廓可能使候选/可见图计算过慢。本次采用“块内原格全可走才保留”的保守分块后可规划，并仍按原分辨率审计；分块可能切断通道，必须记录舍弃范围，不能只凭更短路径判断更优。依据：[ETHZ五算法对照与原生诊断](docs/benchmarks/five-planners-2026-10-29/README.md)。

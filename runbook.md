@@ -138,6 +138,18 @@ python3 -m coverage_benchmark.compare_saved
 
 统一结果见 [四算法总览](docs/benchmarks/four-planners-2026-10-28/README.md)。需要原始实验JSON和本地三张PNG；该命令不会启动ROS/Gazebo或运动。历史实验继续保留。
 
+ETHZ三图及五算法汇总在独立离线模块运行；首次需网络下载本地CGAL/Mono依赖，完整步骤见 [模块说明](coverage_benchmark/README.md)：
+
+```bash
+git submodule update --init third_party/polygon_coverage_planning
+python3 -m coverage_benchmark.adapters.ethz_build
+python3 -m pytest coverage_benchmark/tests/test_ethz.py -q
+python3 -m coverage_benchmark.ethz_compare
+python3 -m coverage_benchmark.verify_ethz
+```
+
+输出为 [五算法对照](docs/benchmarks/five-planners-2026-10-29/README.md)。ETHZ实际运行，其余四种读取既有路线；`--reuse`只复算已保存结果，`--output`另存。ETHZ单图限180秒/3 GiB，闭合路线包括回程；无需ROS 1，不启动Gazebo或运动。
+
 ## 常用检查
 
 ```bash

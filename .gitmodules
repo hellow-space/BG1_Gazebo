@@ -12,3 +12,6 @@
 [submodule "third_party/python_robotics"]
 	path = third_party/python_robotics
 	url = https://github.com/AtsushiSakai/PythonRobotics.git
+[submodule "third_party/polygon_coverage_planning"]
+	path = third_party/polygon_coverage_planning
+	url = https://github.com/ethz-asl/polygon_coverage_planning.git

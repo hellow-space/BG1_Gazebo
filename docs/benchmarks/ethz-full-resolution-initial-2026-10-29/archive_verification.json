@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "completed": false,
+  "source_snapshots_sha256": true,
+  "completed_case_artifacts_sha256": true,
+  "note": "partial diagnostic run; not a complete three-scene benchmark"
+}

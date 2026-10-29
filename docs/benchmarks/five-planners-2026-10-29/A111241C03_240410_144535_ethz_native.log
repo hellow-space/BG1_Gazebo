@@ -1,0 +1,11 @@
+ETHZ_STAGE setup
+[INFO] Start creating sweep plan graph.
+[INFO] Successfully created boustrophedon decomposition with 9 polygon(s).
+[INFO] Created sweep plan graph with 9 nodes and 72 edges.
+[INFO] Initially created 9 nodes.
+[INFO] Pruned 0 nodes.
+ETHZ_STAGE solve cells=9
+[INFO] Start solving GTSP using GK MA.
+[INFO] The adjacency matrix scale is: 550000.080525325
+[INFO] Start solving GTSP
+[INFO] Finished solving GTSP

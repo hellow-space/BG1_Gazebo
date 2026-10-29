@@ -1,0 +1,159 @@
+{
+  "run_id": "46b3425e743e4dcc8fe5b6d8a2c38389",
+  "started_utc": "2026-10-29T04:05:02.221008+00:00",
+  "completed": true,
+  "parameters": {
+    "resolution": 0.05,
+    "tool_width": 0.6,
+    "clearance": 1.0,
+    "scenes": [
+      "A11123AJ04_231127_094529",
+      "A11123AC22_231213_163036",
+      "A111241C03_240410_144535"
+    ]
+  },
+  "maps": {
+    "A11123AJ04_231127_094529": {
+      "source_sha256": "88ce806ef09044c2b57ba86e7dc3befab7a177b8a07690899900fc4ffca2b016",
+      "source_name": "A11123AJ04_231127_094529.png",
+      "width": 1208,
+      "height": 1710,
+      "free_pixels": 507209,
+      "target_pixels": 470743,
+      "navigable_pixels": 295111,
+      "free_components": 114,
+      "resolution_m": 0.05000000074505806,
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "free_thresh": 0.25,
+      "occupied_thresh": 0.65,
+      "metadata_assumptions": [
+        "0.05 m/pixel inferred from companion PGM; PNG YAML unavailable",
+        "arbitrary local origin [0,0,0]"
+      ],
+      "start": [
+        34.375000512227416,
+        52.475000781938434
+      ],
+      "clearance_m": 1.0
+    },
+    "A11123AC22_231213_163036": {
+      "source_sha256": "f06dd04d9b02db67dd850f04f06f628c326b3b72420a904f53edce7e40b10a5b",
+      "source_name": "A11123AC22_231213_163036.png",
+      "width": 2454,
+      "height": 1595,
+      "free_pixels": 645425,
+      "target_pixels": 644286,
+      "navigable_pixels": 241718,
+      "free_components": 35,
+      "resolution_m": 0.05000000074505806,
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "free_thresh": 0.25,
+      "occupied_thresh": 0.65,
+      "metadata_assumptions": [
+        "0.05 m/pixel inferred from companion PGM; PNG YAML unavailable",
+        "arbitrary local origin [0,0,0]"
+      ],
+      "start": [
+        24.22500036098063,
+        33.6750005017966
+      ],
+      "clearance_m": 1.0
+    },
+    "A111241C03_240410_144535": {
+      "source_sha256": "4df8ce46fec35f99276a251a875e588e7b0dcf02d112b44e0ad381b75ff89167",
+      "source_name": "A111241C03_240410_144535.png",
+      "width": 1200,
+      "height": 1729,
+      "free_pixels": 453369,
+      "target_pixels": 449461,
+      "navigable_pixels": 45650,
+      "free_components": 24,
+      "resolution_m": 0.05000000074505806,
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "free_thresh": 0.25,
+      "occupied_thresh": 0.65,
+      "metadata_assumptions": [
+        "0.05 m/pixel inferred from companion PGM; PNG YAML unavailable",
+        "arbitrary local origin [0,0,0]"
+      ],
+      "start": [
+        21.075000314041972,
+        49.22500073350966
+      ],
+      "clearance_m": 1.0
+    }
+  },
+  "completed_scenes": [
+    "A11123AJ04_231127_094529",
+    "A11123AC22_231213_163036",
+    "A111241C03_240410_144535"
+  ],
+  "ethz_planner_rerun": true,
+  "old_planners_rerun": false,
+  "motion_executed": false,
+  "base_commit": "e398f0ee2f21d9d0a91887b3438e33d333657871",
+  "implementation_sha256": {
+    "coverage_benchmark/adapters/ethz.py": "5e7c3bc14a69da9e29c4531de348336eff26cd97cbec3a172de10aba0303f575",
+    "coverage_benchmark/adapters/ethz_build.py": "9b984df4aa0a35fee8d75672b6411be4b522a9c4fca0a07502536fde7e0ef3e3",
+    "coverage_benchmark/ethz_compare.py": "6c31e747659ecfd1a0b0e459a7e2bacd18054a12ea05848ca001ee0d40096674",
+    "coverage_benchmark/verify_ethz.py": "320348bb6d177fa03dff9f2c236b15ed8c821783d6c176a813494be09f88ea4e",
+    "coverage_benchmark/map_io.py": "495324afb74f805f42bb7ea1b4a5772bdce1bc0ec3cf486cd3dd2d7e995e7f81",
+    "coverage_benchmark/models.py": "fcf9b17511665b28192a040991cf3c4d63e1cbc6dd2c069a8c43879d7d157ae3",
+    "coverage_benchmark/raster_geometry.py": "21cd379ed4c08e74ddfbb6df048f6b6dc34069cbca3cc3b4c46739649ba81f6a",
+    "coverage_benchmark/adapters/f2c_safe.py": "4e93a4a3e9fe3f000327b6d90c0210bd234017fe5dc94ccd0a39cd22bf91a2b2",
+    "coverage_benchmark/metrics.py": "a682ab2855cd28b4c9f329df86172bc3395180352f53c4aaec8f34d19915cf2f",
+    "coverage_benchmark/runner.py": "3a5fbcd415f69004142db85b55a8d495d8f92b32780b1fac2ff210b106d24757",
+    "coverage_benchmark/provenance.py": "78489afb26c72a1ee193b33ce044d7cc7a2170be3af6187fbb154fba2bcc2138"
+  },
+  "artifacts_sha256": {
+    "A11123AJ04_231127_094529_ethz_native.log": "979aec68cc374a25422a75d0c8e869b9083310d1d1909281ac37b32dbb149b77",
+    "A11123AJ04_231127_094529_ethz_output.txt": "f442d1c19ebb9b113861f16bf46836ab88ccc7d7365d6c8f7eb3fe6512130912",
+    "A11123AJ04_231127_094529_comparison.png": "af24228a863a507079c2dc707a54d7c88580d83e07a3193bce5464c7a9cd1d5a",
+    "A11123AJ04_231127_094529_ethz_input.json": "547fb3baba3cbfd7b766a3be7cf1cc8cc213ec2ba1072ab4ccc370e631a239e5",
+    "A11123AJ04_231127_094529_ethz_input.txt": "9818f2ac6635b21816ae1f56c8273ee4f49c47d3a6f95ce9ce941b11185fa9af",
+    "A11123AJ04_231127_094529_ethz.json": "57e0622fa91e0554c68aa39e51e58b01703b8dd33bef8964cdba13ee2ab8c99b",
+    "A11123AC22_231213_163036_ethz_input.json": "7a53e6e39ae8115219cb499d2d6ae07a5a873f492403723d4c7a693737072046",
+    "A11123AC22_231213_163036_ethz_native.log": "ad2060670f68923e8d13de69f6f4d153fa9361e818f9bde78402262d22ef5c05",
+    "A11123AC22_231213_163036_ethz.json": "ace0ad3aa3fe29920e417187119f1c7c147f368b5625200d789b7dd7e12cd59e",
+    "A11123AC22_231213_163036_ethz_output.txt": "af530d353834935a6a3d2df2124ccb58d0d1d667895d9e57adcd8b9715ce754b",
+    "A11123AC22_231213_163036_comparison.png": "193fc4ed57329d77ffa9ce02a51d509823d66272ac6c7c4cba623ea1268ebf91",
+    "A11123AC22_231213_163036_ethz_input.txt": "bd29f471261a38721a36b39817d9e30d7de77ba4dc25b1166255cafd4db33838",
+    "A111241C03_240410_144535_ethz_native.log": "6e3929c486a768c3246ef5941db1b77e173b1709fed2b4df79cecb39f5445f47",
+    "A111241C03_240410_144535_ethz.json": "5ac3a648753e0de43b2dbebe728fefabbddb442791a55609736af61f6a1c8c80",
+    "A111241C03_240410_144535_ethz_input.txt": "56e5e356489bea8e0cf3bf52631b11682ab96168860a8637071100986aee70a1",
+    "A111241C03_240410_144535_ethz_input.json": "dcb4924b27d39ee5573910c5e38b55bc44aed9a0b2760f4d08fef3fa63f66fd2",
+    "A111241C03_240410_144535_comparison.png": "24fdf43748328a3e0ed5534b2ddeb70ac655665f38780848166f779b3a837d09",
+    "A111241C03_240410_144535_ethz_output.txt": "2865f94c22617a81c78e3bdd9640a159bc5462bf468fddcdf12592d5e118c177",
+    "summary.csv": "a39f9858f7a059ebf6de9d76822ece650a5615e4597831ded10945b7d3f6809f",
+    "README.md": "166c9c59f43c8561bfd61238177a59c712d9ae80acef5f2fd4e0207d515987bf"
+  },
+  "source_sha256": {
+    "docs/benchmarks/three-planners-2026-10-27/manifest.json": "ea90db60b2d5993fc3517ae6db4b4b518478640ef22359cba2b6aabf8f69b761",
+    "docs/benchmarks/f2c-obstacle-2026-10-28/manifest.json": "aa6e2df26b94e7aeca38988d4289d3e1328a0702365235c2fd437080bb0cf9fa",
+    "docs/benchmarks/three-planners-2026-10-27/A11123AJ04_231127_094529_leader.json": "adcfd5a03057056cbcad07503df6122ddc8d33f98932fed6558c76c30ed864f4",
+    "docs/benchmarks/three-planners-2026-10-27/A11123AJ04_231127_094529_bcd.json": "b02b19f2727be9a62b4a903cb760782fb7af77f822ffc65694c15773b90ee4fa",
+    "docs/benchmarks/three-planners-2026-10-27/A11123AJ04_231127_094529_stc.json": "02554f4303e611f16e779eb3ac09bc90b40b0d338e0deb92aa0200a2b7952393",
+    "docs/benchmarks/f2c-obstacle-2026-10-28/A11123AJ04_231127_094529_safe.json": "eafc8affdad60b9a63499143c04dffb8c07b0b7e6c7964fb6907c0e19145e89d",
+    "docs/benchmarks/three-planners-2026-10-27/A11123AC22_231213_163036_leader.json": "45cbe017a70393db927f31467efad3b0c9b470239e65cf5dd80dc01332174056",
+    "docs/benchmarks/three-planners-2026-10-27/A11123AC22_231213_163036_bcd.json": "c99f47f4f32078a281b50d370ea81820714fb94f213a629eac1897f9c75e9ed5",
+    "docs/benchmarks/three-planners-2026-10-27/A11123AC22_231213_163036_stc.json": "d3af92a1b00daf298edc2297d7154fc3badd6db22928023b4e6ff8d99ccaf158",
+    "docs/benchmarks/f2c-obstacle-2026-10-28/A11123AC22_231213_163036_safe.json": "b63b11a7a67c13dec5b3af72056691759fb10d4b8737c3e1ab7ea828b1f2712a",
+    "docs/benchmarks/three-planners-2026-10-27/A111241C03_240410_144535_leader.json": "597ab7fbb4cf496da08839629616874b57d6b2f0854ee9ec0583fbe0c561f48a",
+    "docs/benchmarks/three-planners-2026-10-27/A111241C03_240410_144535_bcd.json": "666b694889d3584c5acc851354a25617d3fe48ef5fec139a53e11d7e3300ae33",
+    "docs/benchmarks/three-planners-2026-10-27/A111241C03_240410_144535_stc.json": "f1162ecc4805116db2b6ddf3d456d8ec88570c685f24cabf32259c77af992c13",
+    "docs/benchmarks/f2c-obstacle-2026-10-28/A111241C03_240410_144535_safe.json": "c9a3496bc596ef862cf44482baa0b338e0a82855e4f2b1f60d05cd629dcb7880"
+  },
+  "finished_utc": "2026-10-29T04:05:19.863656+00:00"
+}

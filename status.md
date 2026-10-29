@@ -2,10 +2,11 @@
 
 ## 当前目标
 
-ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完成（2026-10-29）；功能提交为 `25d124c`，远端推送因本机缺少GitHub认证失败，未合并 `main`。
+ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完成（2026-10-29）；功能提交为 `25d124c`，已按用户要求合并本地 `main`。功能分支已在远端，远端 `main` 尚未更新。
 
 ## 已完成
 
+- 按用户明确要求，将 `feature/ethz-polygon-coverage` 快进合并至本地 `main`（`e398f0e → 6348998`），当前目录切换到 `main`；功能分支与旧worktree均保留，合并后55项测试和15组证据复核通过。
 - 完成 [五算法统一对比](docs/benchmarks/five-planners-2026-10-29/README.md)：新增ETHZ三次真实规划，与历史Leader/BCD/STC/F2C修改版12组完整路径同图复算；15组只列覆盖率、完整长度、共同栅格有效性，三张五列轨迹/扫掠图已目视核对。
 - ETHZ AJ04/AC22/C03为57.6468% / 26.3248% / 2.8335%，1596.87 / 1313.23 / 147.31 m；均为闭合完整路线，通过原图/1 m精确净空栅格审计，未启动仿真或运动。
 - 上游固定子模块 `e4e977e5a52de72665f6f5f82e5770cf092068e1`，自有headless入口/兼容层独立部署；本地CGAL/Mono及原生GK-MA完成构建，原生BCD、最佳方向扫描、可见图和GK-MA负责规划。原文件未改；生成副本显式固定CGAL输出核、精确移除冗余共线点并核验面积不变。
@@ -64,7 +65,7 @@ ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完�
 
 ## 当前进行
 
-本轮离线适配及提交前55项测试、15组证据复算均已完成；成果已提交至 `feature/ethz-polygon-coverage`，推送待本机GitHub认证可用后重试，不启动仿真/运动。
+本轮离线适配已提交并合并本地 `main`，合并后55项测试、15组证据复核均通过；远端功能分支已核对为 `6348998`，本轮仅合并本地main，不启动仿真/运动。
 
 ## 当前问题
 
@@ -79,7 +80,7 @@ ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完�
 
 - 本次 PNG 路线未覆盖完整选区；已确认膨胀断连/最大外轮廓选择、粗格筛选和一次 A* 路径组合并跳过均会造成遗漏，不能全部归因于机器人通不过。尚未量化遗漏面积，也未验证实际运动；PNG 的分辨率与局部原点仍为本次规划假设。
 
-- 本次实际HTTPS推送返回 `could not read Username for 'https://github.com': terminal prompts disabled`；本机未安装 `gh`，没有默认SSH私钥且SSH agent无身份，SSH亦未配置信任GitHub主机。本次 `git ls-remote origin refs/heads/feature/ethz-polygon-coverage` 未返回该分支，尚未上传；需要先在本机完成GitHub Git认证。
+- 此前AI执行HTTPS推送因认证缺失失败；本轮合并期间检测到远端功能分支记录由另外一次push更新为 `6348998`，随后 `git ls-remote` 核对一致。此前失败不再代表功能分支未上传；远端 `main` 仍为 `190bced`，本轮未推送main。
 - 船模仅依据截图比例复刻，缺原始 CAD 和尺寸；遮挡结构简化，不应当作精确船舶模型。
 
 - 部分历史设计/进度含迁移前路径及旧阶段约束；当前入口与后续已批准扩展已在新文档中明确，历史文件原样保留。
@@ -103,6 +104,13 @@ ETHZ Polygon Coverage适配和三图实际规划、五算法统一对比已完�
 - 维护本地地图独立备份；加载导入地图前补齐并确认物理尺度、原点与阈值。
 
 ## 验证结果
+
+以下为2026-10-29用户授权合并本地main后的验证：
+
+- `git switch main`、`git merge --ff-only feature/ethz-polygon-coverage`：成功快进至 `6348998`，无冲突；切换时ETHZ非空子模块目录被保留，合并后恢复正常跟踪。
+- `python3 -m pytest coverage_benchmark/tests docs/benchmarks/2026-10-27-A11123AJ04/test_metrics.py docs/benchmarks/2026-10-27-A11123AJ04/test_raster_geometry.py -q`：55项通过（3.79秒）。
+- `python3 -m coverage_benchmark.verify_ethz`：15组原生轨迹重放、指纹和独立几何见证通过；本次未重跑三张大地图规划、仿真或运动，未再次尝试远端推送。
+- `git ls-remote origin refs/heads/main refs/heads/feature/ethz-polygon-coverage`：远端main为 `190bced`，远端功能分支为 `6348998`；功能分支远端跟踪reflog显示16:49:46由另一次push更新，本次合并任务未执行push。
 
 以下为2026-10-29用户授权提交/推送前的复验：
 

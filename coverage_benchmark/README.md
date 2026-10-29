@@ -6,7 +6,7 @@
 
 [四算法统一总览与三场景轨迹图](../docs/benchmarks/four-planners-2026-10-28/README.md)。仅汇总已有轨迹、核对参数并重算指标：`python3 -m coverage_benchmark.compare_saved`；不启动规划器。
 
-独立离线模块：PNG/PGM → 统一地图语义 → Leader / Richey BCD / Spiral-STC adapter → 完整世界坐标路径 → 三项指标与原图叠加图。只调用规划，不启动 Gazebo、导航或运动。
+独立离线模块：PNG/PGM → 统一地图语义 → Leader / Richey BCD / Spiral-STC / Fields2Cover修改版 / ETHZ adapter → 完整世界坐标路径 → 三项指标与原图叠加图。只调用规划，不启动 Gazebo、导航或运动。
 
 设计见 [统一设计](../docs/benchmarks/three-planner-design.md)，实测见 [三图结果](../docs/benchmarks/three-planners-2026-10-27/README.md)。
 

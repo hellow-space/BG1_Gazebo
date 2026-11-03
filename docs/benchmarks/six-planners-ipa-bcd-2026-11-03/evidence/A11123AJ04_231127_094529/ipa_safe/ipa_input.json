@@ -1,0 +1,18 @@
+{
+  "start": [
+    34.375000512227416,
+    52.475000781938434
+  ],
+  "resolution": 0.05000000074505806,
+  "tool_width": 0.6,
+  "clearance": 1.0,
+  "coverage_radius": 0.3,
+  "grid_spacing_m": 0.4242640687119285,
+  "planning_mode": "footprint",
+  "algorithm": 6,
+  "native_internal_half_grid_erosion": true,
+  "pixel_origin": [
+    0.02500000037252903,
+    0.02500000037252903
+  ]
+}

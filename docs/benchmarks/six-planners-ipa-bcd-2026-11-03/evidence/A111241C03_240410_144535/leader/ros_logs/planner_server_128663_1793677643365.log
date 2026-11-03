@@ -1,0 +1,17 @@
+[INFO] [1793677643.911863298] [leader_core]: The size of map is [ 1200,  1729] with resolution 0.0500,origin [0.0000,  0.0000]
+[INFO] [1793677643.999644346] [leader_core]: get_path_interface start:
+[INFO] [1793677644.001385310] [leader_core]: model_size_cell_=12,cell_free_thres_=10,path_type=0
+[INFO] [1793677644.002019024] [leader_core]: cells_poses_ size=145
+[INFO] [1793677644.007586087] [leader_core]: start inittheta is 0.00, start point is [10.5250, 49.5250]
+[WARN] [1793677644.007621564] [leader_core]: The program has gone through 2 steps
+[WARN] [1793677644.007625130] [leader_core]: CoveragePathPlanner: in function get_zigzag_indexed_path, loop reaches max(9000)
+[INFO] [1793677644.007628567] [leader_core]: transform start.
+[INFO] [1793677644.007656479] [leader_core]: transform finish.coarse_path_ size=1
+[INFO] [1793677644.007659885] [leader_core]: cut down way points start...
+[INFO] [1793677644.007662179] [leader_core]: cut down way points finish
+[INFO] [1793677644.007665205] [leader_core]: optimize path start...
+[INFO] [1793677644.007668221] [leader_core]: optimize path finish
+[INFO] [1793677644.007670214] [leader_core]: Generate 1 paths.
+[INFO] [1793677644.007674863] [leader_core]: get_merged_path size=1
+[WARN] [1793677644.008793514] [leader_coverage_planner]: Coverage request rejected: Leader planner returned no coverage path
+[INFO] [1793677644.015448340] [rclcpp]: signal_handler(SIGINT/SIGTERM)

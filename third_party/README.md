@@ -5,13 +5,13 @@
 | `leader/coverage_path_planner/` | Provided by the user's leader; original ROS 1 source snapshot | Read by the ROS 2 adapter generator in `leader_coverage_ws` |
 | `opennav_coverage/` | Git submodule: open-navigation/opennav_coverage, Jazzy | Built by `coverage_ws/build.sh` |
 | `Fields2Cover/` | Git submodule: Fields2Cover/Fields2Cover, v1.2.1-devel | Built by `coverage_ws/build.sh` |
-| `bcd_planner/` | Git submodule: RicheyHuang/BoustrophedonCellularDecompositionPathPlanning | Native BCD offline benchmark via `coverage_benchmark/adapters/bcd.py` |
 | `python_robotics/` | Git submodule: AtsushiSakai/PythonRobotics | Native Spiral-STC offline benchmark via `coverage_benchmark/adapters/stc.py` |
 | `polygon_coverage_planning/` | Git submodule: ethz-asl/polygon_coverage_planning | Native BCD, visibility graph and GK-MA via `coverage_benchmark/adapters/ethz.py` |
-
 | `ipa_coverage_planning/` | Git submodule: ipa320/ipa_coverage_planning, pinned noetic_dev commit | Native Grid Local Energy (algorithm 6) via `coverage_benchmark/adapters/ipa.py`; separate safe A* connections |
 
-All six submodule commits remain pinned in the parent repository. The
+Richey `bcd_planner/` was removed at the user's request. Its saved benchmark results remain historical evidence; the old adapter/build scripts were also removed; the current benchmark uses `coverage_benchmark/adapters/ipa_bcd.py` instead. IPA upstream algorithms remain intact; project variants `bcd_local` and `hybrid_local` were removed from the offline entry points.
+
+All five submodule commits remain pinned in the parent repository. The
 opennav/Fields2Cover section names in `.gitmodules` retain historical identifiers;
 the actual checkout paths are under `third_party/`.
 

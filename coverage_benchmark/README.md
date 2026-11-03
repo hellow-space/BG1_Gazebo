@@ -1,5 +1,9 @@
 # 栅格覆盖规划基准
 
+**[最新六算法全量重跑：IPA BCD 替换旧 BCD](../docs/benchmarks/six-planners-ipa-bcd-2026-11-03/README.md)** · [网页查看](../docs/benchmarks/six-planners-ipa-bcd-2026-11-03/report.html)。2026-11-03，原三图18组全部重新运行；原生证据、复核脚本与失败记录保留。
+
+当前可运行的纯 IPA BCD / Local Energy 见[模块说明](hybrid/README.md)；AJ04 分区与规划细节见[交互报告](../docs/benchmarks/ipa-bcd-aj04-walkthrough-2026-11-02/report.html)。下列三至六算法及四组消融均为历史结果。Richey `bcd_planner` 子模块已删除，旧 BCD 适配/构建脚本已删除，默认三算法已换为 Leader / IPA BCD / STC；`bcd_local`、`hybrid_local` 也已移除。
+
 [六算法统一对比：新增 IPA Grid Local Energy＋A*](../docs/benchmarks/six-planners-2026-10-30/README.md)。IPA实际跑同三图，旧五种完整路径保留并同口径复算18组。
 
 [五算法统一对比：新增 ETHZ Polygon Coverage](../docs/benchmarks/five-planners-2026-10-29/README.md)。ETHZ实际跑三图，其余四种复用已保存的完整轨迹并统一复算。
@@ -8,16 +12,18 @@
 
 [四算法统一总览与三场景轨迹图](../docs/benchmarks/four-planners-2026-10-28/README.md)。仅汇总已有轨迹、核对参数并重算指标：`python3 -m coverage_benchmark.compare_saved`；不启动规划器。
 
-独立离线模块：PNG/PGM → 统一地图语义 → Leader / Richey BCD / Spiral-STC / Fields2Cover修改版 / ETHZ / IPA Local Energy＋A* adapter → 完整世界坐标路径 → 三项指标与原图叠加图。只调用规划，不启动 Gazebo、导航或运动。
+独立离线模块：PNG/PGM → 统一地图语义 → Leader / IPA BCD / Spiral-STC / Fields2Cover修改版 / ETHZ / IPA Local Energy＋A* adapter → 完整世界坐标路径 → 三项指标与原图叠加图。只调用规划，不启动 Gazebo、导航或运动。
 
 设计见 [统一设计](../docs/benchmarks/three-planner-design.md)，实测见 [三图结果](../docs/benchmarks/three-planners-2026-10-27/README.md)。
 
-## 依赖与复现
+## 当前三算法依赖与复现
+
+当前默认三算法为 `leader`、`ipa_bcd`、`stc`。输出另存到 `docs/benchmarks/leader-ipa-bcd-stc-local/`；历史三算法目录不覆盖。可用 `--algorithm ipa_bcd` 单独运行 IPA BCD。
 
 现有 Ubuntu 24.04 / ROS 2 Jazzy 环境；Python 需要 numpy、scipy、Pillow、matplotlib、PyYAML、pytest，BCD 构建需要 g++、pkg-config、OpenCV4 开发包及 Eigen3。Leader 使用已构建的本项目 overlay。
 
 ```bash
-git submodule update --init third_party/bcd_planner third_party/python_robotics
+git submodule update --init third_party/python_robotics
 bash leader_coverage_ws/build.sh
 python3 -m pytest coverage_benchmark/tests -q
 python3 -m coverage_benchmark
@@ -33,13 +39,13 @@ python3 -m coverage_benchmark.verify
 - `models.py`：adapter 公共输入/输出；栅格为图像行序，输出路径为米制 XY、左下局部原点。
 - `map_io.py`：阈值、最大四邻接自由分量、精确 EDT 中心净空、公共起点。
 - `adapters/leader*.py`：隔离 ROS overlay/domain，发布地图并调用现有服务一次，退出时关闭自身进程。
-- `adapters/bcd*.py`、`bcd_wrapper.cpp.in`：只读上游；生成 OpenCV4/无界面 C++ 副本，执行原生分解/静态规划；保留所有段及连接，不作过滤或修复。
+- `adapters/ipa_bcd.py`：调用 `hybrid/planner.py` 的纯 IPA BCD 模式，仅运行 BCD 分解/扫线与安全调度连接，不运行 Local 或补扫；上游只读。
 - `adapters/stc.py`：保守图块缩放、偶数补障碍、原生 STC、还原原生插值连接；不改生成树逻辑。
 - `metrics.py`：全部线段长度、作业圆盘扫掠并集、逐格穿越的障碍/净空核验。
 - `runner.py`：顺序运行、完整路径 JSON、指纹、三指标 CSV、原图叠加图。
 - `verify.py`：已保存结果复算、版本/原图指纹、独立点到路径几何见证；不重跑规划。
 
-BCD 生成物在 `.build/`，临时地图和日志在 `.work/`，均忽略；上游 LICENSE 随子模块保留。公共层不添加 A*、不补接 disconnected components、不通过删坏段将无效路径改成有效。
+IPA BCD 生成物在 `.build/hybrid/`，临时地图和日志在 `.work/`，均忽略；上游 LICENSE 随子模块保留。安全连接只在相应 IPA/F2C 适配层使用；指标层不修改路线。IPA BCD 只规划起点可达净空分量，所有连接计入最终路径。
 
 ## Fields2Cover 障碍感知版本
 

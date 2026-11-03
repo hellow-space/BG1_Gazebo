@@ -10,17 +10,19 @@ import numpy as np
 from PIL import Image
 from coverage_benchmark.map_io import load_map
 from coverage_benchmark.metrics import evaluate_path, sweep_mask
-from coverage_benchmark.runner import ALGORITHMS, versions
+from coverage_benchmark.runner import ALGORITHMS, DEFAULT_OUTPUT, versions
 
 
 def verify(source_root, runtime_root, output):
     manifest = json.loads((output/'manifest.json').read_text())
     config = manifest['parameters']
-    assert versions(source_root,runtime_root) == manifest['versions']
-    for name in ('bcd_planner','python_robotics'):
+    algorithms=manifest['algorithms']
+    assert algorithms and all(name in ALGORITHMS for name in algorithms)
+    assert versions(source_root,runtime_root,algorithms) == manifest['versions']
+    for name in ('ipa_coverage_planning','python_robotics'):
         assert not subprocess.check_output(['git','-C',str(source_root/'third_party'/name),'status','--porcelain'],text=True).strip()
     rows = list(csv.DictReader((output/'summary.csv').open()))
-    assert len(rows)==9
+    assert len(rows)==len(config['scenes'])*len(algorithms)
     checks = []
     for scene in config['scenes']:
         path = runtime_root/'data/maps/imported'/scene/(scene+'.png')
@@ -29,7 +31,7 @@ def verify(source_root, runtime_root, output):
         # Companion metadata is the basis of the scale assumption, never the PNG input substitute.
         with path.with_suffix('.pgm').open('rb') as stream:
             assert b'0.05' in b''.join(stream.readline() for _ in range(6))
-        for algorithm in ALGORITHMS:
+        for algorithm in algorithms:
             record = json.loads((output/f'{scene}_{algorithm}.json').read_text())
             assert record['scene']==scene and record['algorithm']==algorithm
             actual = evaluate_path(record['path'],data.free,data.navigable,data.resolution,
@@ -47,7 +49,7 @@ def verify(source_root, runtime_root, output):
                 # Pointwise full-path distance, independent of bounding-box capsule rasterization.
                 swept = sweep_mask(xy,data.free.shape,data.resolution,config['tool_width'])
                 rng = np.random.default_rng(20261027)
-                indices = rng.choice(np.flatnonzero(np.flipud(data.free)),size=256,replace=False)
+                indices = rng.choice(np.flatnonzero(np.flipud(data.free)),size=min(256,int(data.free.sum())),replace=False)
                 a,b = xy[:-1],xy[1:]
                 v = b-a
                 vv = np.einsum('ij,ij->i',v,v)
@@ -65,7 +67,7 @@ def verify(source_root, runtime_root, output):
                                metric_recomputation=True,independent_capsule_witnesses=count))
         with Image.open(output/(scene+'_comparison.png')) as image:
             image.verify()
-    result = dict(passed=True,nine_cases=True,source_map_and_version_hashes_match=True,
+    result = dict(passed=True,cases=len(checks),source_map_and_version_hashes_match=True,
                   metrics_recomputed=True,checks=checks,motion_executed=False)
     (output/'verification.json').write_text(json.dumps(result,indent=2)+'\n')
     return result
@@ -75,7 +77,7 @@ if __name__=='__main__':
     root = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser()
     parser.add_argument('--runtime-root',type=Path,default=root)
-    parser.add_argument('--output',type=Path,default=root/'docs/benchmarks/three-planners-2026-10-27')
+    parser.add_argument('--output',type=Path,default=root/DEFAULT_OUTPUT)
     args = parser.parse_args()
-    verify(root,args.runtime_root.resolve(),args.output.resolve())
-    print('Verified 9 cases: input/version hashes, metrics, CSV, images and independent geometry witnesses.')
+    result=verify(root,args.runtime_root.resolve(),args.output.resolve())
+    print(f"Verified {result['cases']} cases: input/version hashes, metrics, CSV, images and independent geometry witnesses.")

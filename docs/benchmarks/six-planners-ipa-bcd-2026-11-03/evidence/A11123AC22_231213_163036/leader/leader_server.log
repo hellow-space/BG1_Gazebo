@@ -1,0 +1,22 @@
+[INFO] [1793677540.944074636] [leader_core]: The size of map is [ 2454,  1595] with resolution 0.0500,origin [0.0000,  0.0000]
+[INFO] [1793677541.537856748] [leader_core]: get_path_interface start:
+[INFO] [1793677541.540978496] [leader_core]: model_size_cell_=12,cell_free_thres_=10,path_type=0
+[INFO] [1793677541.541940515] [leader_core]: cells_poses_ size=133
+[INFO] [1793677541.548507186] [leader_core]: start inittheta is 0.00, start point is [24.3250, 33.9250]
+[WARN] [1793677541.548655924] [leader_core]: The program has gone through 823 steps
+[WARN] [1793677541.548659501] [leader_core]: CoveragePathPlanner: in function get_zigzag_indexed_path, loop reaches max(9000)
+[INFO] [1793677541.548662136] [leader_core]: transform start.
+[INFO] [1793677541.548741074] [leader_core]: transform finish.coarse_path_ size=35
+[INFO] [1793677541.548747195] [leader_core]: cut down way points start...
+[INFO] [1793677541.548751854] [leader_core]: cut down way points finish
+[INFO] [1793677541.548764678] [leader_core]: optimize path start...
+[INFO] [1793677541.550673077] [leader_core]: optimize path finish
+[INFO] [1793677541.550919648] [leader_core]: Generate 31 paths.
+[INFO] [1793677541.551189583] [leader_core]: get_merged_path size=31
+[INFO] [1793677541.556386622] [leader_core]: trying pair (0,1) astar size=141
+[INFO] [1793677541.556492510] [leader_core]: Initialized merged with pair (0,1)
+[WARN] [1793677541.583066238] [leader_core]: Cannot connect merged to path[23], skipping path[23].
+[WARN] [1793677541.593833805] [leader_core]: Cannot connect merged to path[24], skipping path[24].
+[INFO] [1793677541.605841131] [leader_core]: island=0,result_path size=10392
+[INFO] [1793677541.610011601] [leader_coverage_planner]: Coverage preview: 10392 poses
+[INFO] [1793677541.748433194] [rclcpp]: signal_handler(SIGINT/SIGTERM)

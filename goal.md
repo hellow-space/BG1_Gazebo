@@ -9,6 +9,7 @@
 - 差速底盘、前脚轮、简化碰撞体、等效二维激光及可替换外观。
 - Nav2 / RPP 已知地图点到点导航；SLAM Toolbox 遥控建图与地图保存。
 - `demo`、`warehouse`、`office` 场景与配套参考地图。
+- 独立 PNG/PGM 离线覆盖规划评测：保留 IPA、ETHZ 等现有适配、安全审计及历史对照；与 ROS 运动执行分开。当前入口与退役算法以 `structure.md` 和模块 README 为准。
 - 两套独立覆盖演示：opennav/Fields2Cover 的空矩形区域规划与执行；Leader 原算法的 ROS 2 适配、RViz 多边形选区和手动执行/取消。
 
 ## 约束

@@ -135,7 +135,9 @@ def _plan(data,f,cells,pieces,mode,work):
         fallback_used=False,astar_calls=route.connector.astar_calls))
 
 
-def compare(data,progress=None):
+def compare(data,progress=None,modes=('ipa_bcd','ipa_local')):
+    if not modes or any(mode not in ('ipa_bcd','ipa_local') for mode in modes):
+        raise ValueError('Unsupported IPA modes')
     r=data.resolution;allowed=np.flipud(data.navigable);components,_=label(allowed)
     x,y=np.floor(np.asarray(data.start)/r).astype(int)
     if not (0<=y<allowed.shape[0] and 0<=x<allowed.shape[1] and allowed[y,x]):raise ValueError('Start outside F')
@@ -147,7 +149,7 @@ def compare(data,progress=None):
     for cell in cells:
         values,bad=candidates(cell,f,r);pieces.append(values);rejected+=bad
     results={}
-    for mode in ('ipa_bcd','ipa_local'):
+    for mode in modes:
         if progress:progress(mode)
         try:result=_plan(data,f,cells,pieces,mode,work/mode)
         except (ValueError,RuntimeError) as error:

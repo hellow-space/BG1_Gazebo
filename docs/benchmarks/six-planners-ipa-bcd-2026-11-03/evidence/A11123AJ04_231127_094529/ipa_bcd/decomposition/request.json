@@ -1,0 +1,11 @@
+{
+  "mode": "decompose",
+  "resolution": 0.05000000074505806,
+  "tool_width": 0.6,
+  "start": [
+    34.375000512227416,
+    52.475000781938434
+  ],
+  "target_policy": "centres",
+  "allowed": "/home/jimmy/Desktop/BG1_Gazebo/docs/benchmarks/six-planners-ipa-bcd-2026-11-03/evidence/A11123AJ04_231127_094529/ipa_bcd/decomposition/allowed.png"
+}

@@ -13,7 +13,8 @@ from coverage_benchmark.map_io import load_map
 from coverage_benchmark.models import PlanningInput
 from coverage_benchmark.metrics import evaluate_path, sweep_mask, segment_validity
 
-ALGORITHMS = ('leader', 'bcd', 'stc')
+ALGORITHMS = ('leader', 'ipa_bcd', 'stc')
+DEFAULT_OUTPUT = 'docs/benchmarks/leader-ipa-bcd-stc-local'
 
 
 def plot_scene(source, records, map_data, destination, tool_width):
@@ -60,17 +61,21 @@ def plot_scene(source, records, map_data, destination, tool_width):
     plt.close(fig)
 
 
-def versions(source_root, runtime_root=None):
+def versions(source_root, runtime_root=None, algorithms=ALGORITHMS):
     result = {}
-    for name in ('bcd_planner','python_robotics'):
+    for name in ('ipa_coverage_planning','python_robotics'):
         directory = source_root/'third_party'/name
         result[name] = subprocess.check_output(['git','-C',str(directory),'rev-parse','HEAD'],text=True).strip()
     for name, relative in {
-        'bcd_main': 'third_party/bcd_planner/main.cpp',
+        'ipa_bcd_source': 'third_party/ipa_coverage_planning/ipa_room_exploration/common/src/boustrophedon_explorator.cpp',
+        'ipa_bcd_adapter': 'coverage_benchmark/adapters/ipa_bcd.py',
+        'ipa_bcd_planner': 'coverage_benchmark/hybrid/planner.py',
+        'ipa_bcd_build': 'coverage_benchmark/hybrid/build.py',
+        'ipa_bcd_native': 'coverage_benchmark/hybrid/native/main.cpp',
         'stc_source': 'third_party/python_robotics/PathPlanning/SpiralSpanningTreeCPP/spiral_spanning_tree_coverage_path_planner.py',
     }.items():
         result[name+'_sha256'] = hashlib.sha256((source_root/relative).read_bytes()).hexdigest()
-    if runtime_root is not None:
+    if runtime_root is not None and 'leader' in algorithms:
         manifest = runtime_root/'leader_coverage_ws/build/bg1_leader_coverage/generated/source_hashes.json'
         source_hashes = json.loads(manifest.read_text())
         for relative, digest in source_hashes.items():
@@ -86,7 +91,10 @@ def run(source_root, runtime_root, output, config_file, scene_filter=None, algor
     source_root, runtime_root, output = map(lambda x: Path(x).resolve(), (source_root,runtime_root,output))
     output.mkdir(parents=True, exist_ok=True)
     config = yaml.safe_load(Path(config_file).read_text())
-    manifest = {'parameters':config, 'versions':versions(source_root,runtime_root), 'maps':{}, 'motion_executed':False}
+    selected=tuple(algorithm_filter) if algorithm_filter else ALGORITHMS
+    if any(name not in ALGORITHMS for name in selected):raise ValueError('Unsupported algorithm')
+    config['scenes']=[scene for scene in config['scenes'] if not scene_filter or scene in scene_filter]
+    manifest = {'parameters':config, 'algorithms':list(selected), 'versions':versions(source_root,runtime_root,selected), 'maps':{}, 'motion_executed':False}
     rows = []
     for scene in config['scenes']:
         if scene_filter and scene not in scene_filter:
@@ -97,26 +105,21 @@ def run(source_root, runtime_root, output, config_file, scene_filter=None, algor
         request = PlanningInput(scene, data.target, data.navigable, data.resolution, data.start,
                                 config['tool_width'], config['clearance'], source_root, runtime_root)
         records = []
-        for algorithm in ALGORITHMS:
+        for algorithm in selected:
             path_file = output/f'{scene}_{algorithm}.json'
-            if algorithm_filter and algorithm not in algorithm_filter:
-                if not path_file.exists():
-                    continue
-                record = json.loads(path_file.read_text())
-            else:
-                print(f'Planning {scene} / {algorithm}', flush=True)
-                adapter = importlib.import_module(f'coverage_benchmark.adapters.{algorithm}')
-                result = adapter.plan(request, source_root/'coverage_benchmark/.work'/scene/algorithm)
-                metrics = evaluate_path(result.path, data.free, data.navigable, data.resolution,
-                                        config['tool_width'],result.success)
-                record = dict(scene=scene, algorithm=algorithm, planner_success=result.success,
-                              message=result.message, path=result.path, details=result.details, metrics=metrics)
-                path_file.write_text(json.dumps(record,separators=(',',':'),allow_nan=False)+'\n')
-                print(json.dumps(dict(scene=scene,algorithm=algorithm,**metrics)),flush=True)
+            print(f'Planning {scene} / {algorithm}', flush=True)
+            adapter = importlib.import_module(f'coverage_benchmark.adapters.{algorithm}')
+            result = adapter.plan(request, source_root/'coverage_benchmark/.work'/scene/algorithm)
+            metrics = evaluate_path(result.path, data.free, data.navigable, data.resolution,
+                                    config['tool_width'],result.success)
+            record = dict(scene=scene, algorithm=algorithm, planner_success=result.success,
+                          message=result.message, path=result.path, details=result.details, metrics=metrics)
+            path_file.write_text(json.dumps(record,separators=(',',':'),allow_nan=False)+'\n')
+            print(json.dumps(dict(scene=scene,algorithm=algorithm,**metrics)),flush=True)
             records.append(record)
             rows.append(dict(scene=scene,algorithm=algorithm,**{key:record['metrics'][key] for key in
                              ('coverage_percent','path_length_m','path_valid')}))
-        if len(records)==3:
+        if records:
             plot_scene(source,records,data,output/(scene+'_comparison.png'),config['tool_width'])
     (output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     with (output/'summary.csv').open('w',newline='') as stream:

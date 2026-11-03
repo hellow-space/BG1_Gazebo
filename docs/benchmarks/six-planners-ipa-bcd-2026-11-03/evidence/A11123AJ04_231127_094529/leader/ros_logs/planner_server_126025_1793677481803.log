@@ -1,0 +1,20 @@
+[INFO] [1793677482.358269004] [leader_core]: The size of map is [ 1208,  1710] with resolution 0.0500,origin [0.0000,  0.0000]
+[INFO] [1793677482.581508483] [leader_core]: get_path_interface start:
+[INFO] [1793677482.583148102] [leader_core]: model_size_cell_=12,cell_free_thres_=10,path_type=0
+[INFO] [1793677482.584043336] [leader_core]: cells_poses_ size=143
+[INFO] [1793677482.588087524] [leader_core]: start inittheta is 0.00, start point is [34.5250, 52.5250]
+[WARN] [1793677482.588416500] [leader_core]: The program has gone through 1735 steps
+[WARN] [1793677482.588419776] [leader_core]: CoveragePathPlanner: in function get_zigzag_indexed_path, loop reaches max(9000)
+[INFO] [1793677482.588422170] [leader_core]: transform start.
+[INFO] [1793677482.588547865] [leader_core]: transform finish.coarse_path_ size=18
+[INFO] [1793677482.588556001] [leader_core]: cut down way points start...
+[INFO] [1793677482.588562022] [leader_core]: cut down way points finish
+[INFO] [1793677482.588575537] [leader_core]: optimize path start...
+[INFO] [1793677482.592391517] [leader_core]: optimize path finish
+[INFO] [1793677482.593241007] [leader_core]: Generate 15 paths.
+[INFO] [1793677482.593909197] [leader_core]: get_merged_path size=15
+[INFO] [1793677482.593931529] [leader_core]: trying pair (0,1) astar size=2
+[INFO] [1793677482.594270834] [leader_core]: Initialized merged with pair (0,1)
+[INFO] [1793677482.613128119] [leader_core]: island=0,result_path size=20191
+[INFO] [1793677482.616680707] [leader_coverage_planner]: Coverage preview: 20191 poses
+[INFO] [1793677482.849554223] [rclcpp]: signal_handler(SIGINT/SIGTERM)

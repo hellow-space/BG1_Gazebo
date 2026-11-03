@@ -111,7 +111,7 @@ ros2 run bg1_navigation demo_goal.py --x 4.8 --y 0 --yaw 0
 
 `verify_runtime.py` 主要依据轮式里程计；实际底盘运动仍需独立 Gazebo 位姿证据。历史证据位置见各工作区 README；本次初始化未重跑上述测试。
 
-三算法离线模块的依赖、输入和完整操作见 [模块 README](coverage_benchmark/README.md)，本次 [九组结果](docs/benchmarks/three-planners-2026-10-27/README.md) 保留原图轨迹及失败证据：
+当前三算法为 Leader / IPA BCD / STC，Richey 依赖与适配已删除。依赖、输入和操作见 [模块 README](coverage_benchmark/README.md)，历史 [九组结果](docs/benchmarks/three-planners-2026-10-27/README.md) 保留原图轨迹及失败证据：
 
 ```bash
 python3 -m pytest coverage_benchmark/tests -q
@@ -119,7 +119,7 @@ python3 -m coverage_benchmark
 python3 -m coverage_benchmark.verify
 ```
 
-运行前保留对应本地 PNG/PGM、构建 Leader；默认三图、0.6 m 作业宽度、1.0 m 中心净空。全量重新运行会更新结果目录，可用 `--output` 另存。只启动本次规划进程，不启动 Gazebo 或运动；不要与其他 domain 101 会话并用。
+当前输出默认另存 `docs/benchmarks/leader-ipa-bcd-stc-local/`；只运行 IPA BCD 可执行 `python3 -m coverage_benchmark --algorithm ipa_bcd`（不需要 Leader 构建）。运行全部算法前保留对应本地 PNG/PGM、构建 Leader；默认三图、0.6 m 作业宽度、1.0 m 中心净空。全量重新运行会更新结果目录，可用 `--output` 另存。只启动本次规划进程，不启动 Gazebo 或运动；不要与其他 domain 101 会话并用。
 
 Fields2Cover 地图感知扩展使用既有 coverage overlay、GDAL C API 和 Python numpy/scipy/Pillow/matplotlib/PyYAML。详细版本/依赖见 [模块说明](coverage_benchmark/README.md)。在无其他 domain 102 服务的会话中，顺序执行：
 
@@ -202,3 +202,13 @@ find ros_ws/install leader_coverage_ws/install coverage_ws/install -xtype l -pri
 - office 规划失败：先核对场景专用 Dijkstra 配置是否生效，不修改所有场景的默认规划器。
 - Leader 预览只覆盖部分区域：粗栅格、1 m 默认净空和原算法连接策略可能排除窄道或跳过分组；预览路径不等于全区覆盖。
 - Fields2Cover 全量结果扫描提示损坏 XML：已有记录指出上游测试夹具含故意损坏样本；应检查实际包测试结果，不能仅凭该提示判断失败。
+
+## 当前六算法全量重跑（2026-11-03）
+
+最新[报告与完整复现说明](docs/benchmarks/six-planners-ipa-bcd-2026-11-03/README.md)包含 Leader、IPA BCD、STC、F2C safe、ETHZ 和 IPA Local Energy 的三图18组新调用。各规划器顺序运行；域101/102须无其他规划服务，不启动仿真或运动。只复核本次已保存证据：
+
+```bash
+python3 docs/benchmarks/six-planners-ipa-bcd-2026-11-03/verify.py
+```
+
+全量重跑使用报告目录中的 `rerun.py → assemble.py → verify.py`，先把三个脚本复制到新的 `docs/benchmarks/<目录>/` 再运行；已有 manifest 时规划脚本拒绝覆盖。旧 Richey/历史汇总代码不用于本轮重跑。

@@ -1,0 +1,18 @@
+[INFO] [1793677615.898554542] [coverage_server]: 
+	coverage_server lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[INFO] [1793677615.898659718] [coverage_server]: Creating coverage_server
+[INFO] [1793677616.051056371] [coverage_server]: Configuring coverage_server
+[WARN] [1793677616.051533613] [coverage_server]: default_custom_order was not set! If using Custom Route mode, the custom order must be set per-request!
+[INFO] [1793677616.060698423] [coverage_server]: Activating coverage_server
+[INFO] [1793677616.065294082] [coverage_server]: Creating bond (coverage_server) to lifecycle manager.
+[INFO] [1793677616.168738338] [coverage_server]: Generating coverage path in map frame for zone with 7621 outer nodes and 174 inner polygons.
+[INFO] [1793677618.449458925] [coverage_server]: Generating coverage path in map frame for zone with 2885 outer nodes and 1 inner polygons.
+[INFO] [1793677618.478493903] [coverage_server]: Generating coverage path in map frame for zone with 2885 outer nodes and 1 inner polygons.
+[INFO] [1793677620.704387176] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1793677620.705226765] [coverage_server]: Running Nav2 LifecycleNode rcl preshutdown (coverage_server)
+[INFO] [1793677620.705281999] [coverage_server]: Deactivating coverage_server
+[INFO] [1793677620.705304130] [coverage_server]: Destroying bond (coverage_server) to lifecycle manager.
+[INFO] [1793677620.715499295] [coverage_server]: Cleaning up coverage_server
+[INFO] [1793677620.727791249] [coverage_server]: Destroying bond (coverage_server) to lifecycle manager.

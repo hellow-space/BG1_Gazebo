@@ -2,10 +2,13 @@
 
 基于 **ROS 2 Jazzy / Gazebo Harmonic** 的 BG1 Pro 轻量仿真与覆盖规划对比项目。
 包含差速机器人模型、Nav2/RPP 点到点导航、SLAM 建图、Leader 与 opennav/Fields2Cover
-两套独立覆盖演示，以及面向 PNG/PGM 地图的六算法离线 benchmark。
+两套独立覆盖演示，以及面向 PNG/PGM 地图的离线 benchmark（当前六算法均已重跑）。
 
-- **[六算法同图对比：新增 IPA Local Energy＋A*，三张地图18组指标与全局轨迹](docs/benchmarks/six-planners-2026-10-30/README.md)**
-- [IPA Hybrid Local-BCD：同三图四组消融、轨迹与分区](docs/benchmarks/hybrid-local-bcd-2026-10-30/README.md)
+- **[最新六算法全量重跑：IPA BCD 替换旧 BCD，三图18组指标与轨迹](docs/benchmarks/six-planners-ipa-bcd-2026-11-03/report.html)**
+- [历史六算法对比（含旧 Richey BCD）](docs/benchmarks/six-planners-2026-10-30/README.md)
+- [历史 IPA Hybrid Local-BCD 四组消融（混合变体已移除）](docs/benchmarks/hybrid-local-bcd-2026-10-30/README.md)
+- [AJ04 IPA BCD 全流程交互报告](docs/benchmarks/ipa-bcd-aj04-walkthrough-2026-11-02/report.html)
+- [当前纯 IPA BCD / Local Energy 入口](coverage_benchmark/hybrid/README.md)
 - [离线评测模块与复现步骤](coverage_benchmark/README.md)
 - [导航、建图和底层构建](ros_ws/README.md)
 - [Leader ROS 2 适配、选区与执行](leader_coverage_ws/README.md)
@@ -27,7 +30,7 @@ cd BG1_Gazebo
 git submodule update --init --recursive
 ```
 
-六个子模块分别为 opennav_coverage、Fields2Cover、Richey BCD、PythonRobotics、ETHZ
+五个子模块分别为 opennav_coverage、Fields2Cover、PythonRobotics、ETHZ
 polygon_coverage_planning 和 IPA coverage planning；实际版本以主仓库记录的提交为准，来源见 [第三方清单](third_party/README.md)。
 Leader 原始 ROS 1 源码直接保存在主仓库中。先按 [底层说明](ros_ws/README.md) 构建，
 再按需构建覆盖 overlay：
@@ -119,7 +122,6 @@ BG1_Gazebo/
 │   ├── leader/coverage_path_planner/
 │   ├── opennav_coverage/      # Git 子模块
 │   ├── Fields2Cover/          # Git 子模块
-│   ├── bcd_planner/           # Richey BCD 子模块
 │   ├── python_robotics/       # 含 Spiral-STC 的子模块
 │   ├── polygon_coverage_planning/ # ETHZ 子模块
 │   └── ipa_coverage_planning/  # IPA Local Energy 子模块
@@ -135,14 +137,16 @@ BG1_Gazebo/
 
 ## 覆盖算法离线 benchmark
 
-[六算法统一报告](docs/benchmarks/six-planners-2026-10-30/README.md) 是当前对比入口：
-同三张 PNG 地图，保留18组完整轨迹、失败记录、三项指标和六列对照图。
+[最新六算法报告](docs/benchmarks/six-planners-ipa-bcd-2026-11-03/README.md) · [网页查看](docs/benchmarks/six-planners-ipa-bcd-2026-11-03/report.html)：2026-11-03，同三张 PNG 地图 18 组全部重新调用规划器，包含三项指标、原生证据及六列对照图。
+
+当前 BCD 为 `ipa_bcd`（IPA 原生内核）；旧 Richey 依赖/适配、`bcd_local`、`hybrid_local` 已删除。[旧六算法报告](docs/benchmarks/six-planners-2026-10-30/README.md)仅作历史证据保留，不改名或覆写。纯 IPA BCD/Local 入口见[模块说明](coverage_benchmark/hybrid/README.md)。
+
 输入适配支持 PNG/PGM；本轮实测使用 PNG。该模块只规划，不启动 Gazebo 或机器人运动。
 
-| 对比实现 | 核心流程 | 本项目适配入口 |
+| 当前实现 | 核心流程 | 本项目适配入口 |
 | --- | --- | --- |
 | Leader | 粗栅格启发式覆盖遍历、A*连接与轨迹处理 | `coverage_benchmark/adapters/leader.py` |
-| Richey BCD | 牛耕式单元分解与往复扫描 | `coverage_benchmark/adapters/bcd.py` |
+| IPA BCD＋安全连接 | IPA 原生牛耕分区/扫线，项目层调度与安全连接 | `coverage_benchmark/adapters/ipa_bcd.py` |
 | PythonRobotics Spiral-STC | 生成树与四子格覆盖遍历 | `coverage_benchmark/adapters/stc.py` |
 | Fields2Cover＋净空条带＋A* | 原生有序条带、净空裁剪与避障连接 | `coverage_benchmark/adapters/f2c_safe.py` |
 | ETHZ Polygon Coverage | 原生BCD、最佳方向扫描、可见图与GK-MA排序 | `coverage_benchmark/adapters/ethz.py` |
@@ -152,18 +156,16 @@ BG1_Gazebo/
 覆盖率以原图全部已知自由像素为分母；有效性检查完整路线上的障碍、净空和越界。
 各实现的内部规划范围与起终点约束有差异，不能只凭更短路径判断优劣。
 
-![AJ04六算法全局轨迹与作业扫掠对照](docs/benchmarks/six-planners-2026-10-30/A11123AJ04_231127_094529_comparison.png)
+![AJ04六算法全局轨迹与作业扫掠对照](docs/benchmarks/six-planners-ipa-bcd-2026-11-03/A11123AJ04_231127_094529_comparison.png)
 
 ETHZ 本次采用0.2 m保守多边形栅格，每块原像素必须全部满足净空；可能舍弃窄通道和区域，最终仍按原图分辨率审计。
-Leader 有少量严格净空不合格段，Richey BCD 有已确认原生内存缺陷；失败和限制均保留在报告中。
+本轮 Leader 在 AJ04/AC22 返回路线有严格净空违规段，C03 的 Leader/STC 规划失败；其余 14 条路线通过共同栅格几何检查。失败和限制保留在报告中。
 栅格几何通过不代表全图覆盖、曲率/动力学可执行或真机能力。
 
-准备本地地图和依赖后，可重跑 IPA 并与其余五种已保存路线统一对比。原生目标序列另存诊断，最终路线保留全部目标顺序并补入起点接近及安全连接：
+本轮完整复现脚本与新目录要求见[报告说明](docs/benchmarks/six-planners-ipa-bcd-2026-11-03/README.md)。仅复核本次已保存结果：
 
 ```bash
-python3 -m coverage_benchmark.adapters.ipa_build
-python3 -m coverage_benchmark.ipa_compare --output docs/benchmarks/six-planners-local
-python3 -m coverage_benchmark.verify_ipa --output docs/benchmarks/six-planners-local
+python3 docs/benchmarks/six-planners-ipa-bcd-2026-11-03/verify.py
 ```
 
 导入地图默认不随 Git 提交，需单独准备 `data/maps/imported/<场景>/<场景>.png`。

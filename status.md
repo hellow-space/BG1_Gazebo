@@ -2,13 +2,27 @@
 
 ## 当前目标
 
+2026-11-03：当前六算法三图18组全量重新运行及独立复核完成，见[最新报告](docs/benchmarks/six-planners-ipa-bcd-2026-11-03/README.md)与[网页](docs/benchmarks/six-planners-ipa-bcd-2026-11-03/report.html)。BCD 已用 IPA 替换，全部新调用，无历史路线复用。
+
+2026-11-03：通用 benchmark 的 BCD 已替换为 `ipa_bcd`：默认 Leader / IPA BCD / STC，旧 Richey 适配、构建脚本和测试删除，历史 `bcd` 数据保留原身份。
+
 2026-11-03：已按用户要求移除 `bcd_local`、`hybrid_local` 两个项目变体；当前独立入口仅保留纯 IPA BCD 与纯 Local Energy。IPA 全部上游算法、原 IPA 适配和历史结果保留。
 
 AJ04 的 IPA BCD 全流程报告与浏览器交互验收已完成（2026-11-02），见[中文报告入口](docs/benchmarks/ipa-bcd-aj04-walkthrough-2026-11-02/README.md)及同目录 report.html。数据重放、资源完整性、静态图及实际 Chrome 核心交互检查通过。
 
-IPA Hybrid Local-BCD首版实现及原三图×四组消融完成（2026-10-30）。12条最终路线通过栅格安全及独立证据重放，但Hybrid三图覆盖仍略低于纯BCD，AJ04/C03长度也更高，尚未达到性能优化目标。当前分支`feature/ipa`，本轮未提交、合并或推送。
+IPA Hybrid Local-BCD首版实现及原三图×四组消融完成（2026-10-30）。12条最终路线通过栅格安全及独立证据重放，但Hybrid三图覆盖仍略低于纯BCD，AJ04/C03长度也更高，尚未达到性能优化目标。这是 2026-10-30 的历史实现记录，混合变体现已删除；当前 Git 状态以实际检查为准。
 
 ## 已完成
+
+- 本轮顺序真实运行 Leader、IPA BCD、Spiral-STC、Fields2Cover safe、ETHZ、IPA Local Energy，原三图共18组；0.05 m、0.6 m作业宽、1 m净空、同原图与请求起点，原图自由格分母507209 / 645425 / 453369不变。16组返回路径，14条通过共同栅格几何；Leader AJ04/AC22分别6/22段净空违规但0段穿原图障碍，C03的Leader/STC明确失败，不伪造路线或记零长度优势。
+- IPA BCD AJ04/AC22/C03本次为59.384790% / 32.634776% / 8.717844%，2493.437449 / 3210.196438 / 565.929532 m，三条通过共同栅格、闭格及独立像素方框审计。其余算法详见本轮总表；内部范围与起终点差异在报告说明，不据单一长度排名。
+- 实际运行命令：`python3 -u docs/benchmarks/six-planners-ipa-bcd-2026-11-03/rerun.py`（18组原生/服务调用完成）、同目录 `assemble.py`（三张5100×1800六列对照图、18行CSV、Markdown/HTML完成）、`verify.py`（18组重算、各算法原生结果/目标/连接重放、108项结果/证据/脚本SHA与4096个独立覆盖见证通过，证书run_id为`7fcb12370d684be2b09ceefb49f690fa`）。三张图片已目视检查，HTML 21表格行/3图及资源链接检查通过；未执行真实浏览器交互测试。
+- 根/模块README和runbook已加入本轮入口，plan记录此次方案；`git diff --check`和本地文档链接检查通过。源码/算法及参数本轮未修改，未重复运行算法单元测试（上一入口替换阶段70项通过）；只运行隔离规划服务，未启动Gazebo、导航执行或运动，未提交/推送，旧报告/证书未覆盖。下一步可直接查看新报告；若再跑，复制三个实验脚本到新输出目录，避免覆盖本轮证据。
+
+- 当前 BCD 入口为 `coverage_benchmark/adapters/ipa_bcd.py`，只调用已有 IPA BCD 原生分解/扫线及项目安全调度连接，不运行 Local/补扫；原 IPA 上游不改。CLI、版本指纹与复核器均移除 Richey 依赖，默认输出另存 `docs/benchmarks/leader-ipa-bcd-stc-local/`，筛选运行的 manifest/复核数量按实际算法和场景记录。当前 README、结构和运行说明已同步。
+- 本次替换验证：新增真实单算法运行/复核及 CLI 用例，先观察 2 项失败（缺 IPA BCD adapter、CLI 无该选项），实现后 2 项通过；`python3 -m pytest coverage_benchmark/tests -q` 全部 70 项通过（16.19 s）。`python3 -m coverage_benchmark --help` 显示 `{leader,ipa_bcd,stc}`；`git diff --check` 通过，IPA 子模块无本地修改。未重跑三张真实地图/Leader 会话，未覆盖任何历史报告，未运行仿真或运动，未提交/推送。下一步需要新对照结果时使用新默认目录运行。
+
+- 2026-11-03 文档同步复核：补齐根 README 的 benchmark/交互报告入口、五个现有子模块清单、Richey 依赖删除后的旧命令限制；将旧 Hybrid 计划与经验明确标为历史，更新 `goal.md` 离线评测范围。`AGENTS.md` 按其通用规则不改。当前新两算法三图结果尚未生成，原结果及证书未改写。本次仅文档修改，未重跑算法测试；验证 Markdown 本地链接和 `git diff --check`，结果见本次交付。
 
 - 移除混合区域分类、区域算法切换、Local 补扫及其参数/调用入口；同步两算法报告和证据重放、测试与当前模块说明。`hybrid/` 目录名保留供报告导入，默认输出改为新目录 `docs/benchmarks/ipa-native-local`，历史四组文件未改。
 - 本次验证：`python3 -m pytest coverage_benchmark/tests/test_hybrid.py coverage_benchmark/tests/test_hybrid_native.py coverage_benchmark/tests/test_ipa.py -q`，30 项通过（12.27 s）。另在 `/tmp/ipa-two-modes-b89snq_q` 使用合成障碍地图执行 `experiment.run(..., plots=True)`，仅生成两种算法，报告/轨迹图/分区图生成成功，2 条路线安全审计、原生目标重放及 512 个独立覆盖见证通过。`git diff --check`、`git diff --cached --check` 通过，IPA/ETHZ 子模块无本地改动。未重跑三张真实地图，未修改历史证书，未启动仿真或运动，未提交/推送。下一步如需新的真实地图对照，使用新输出目录运行两算法入口。

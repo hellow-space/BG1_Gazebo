@@ -150,6 +150,29 @@ python3 -m coverage_benchmark.verify_ethz
 
 输出为 [五算法对照](docs/benchmarks/five-planners-2026-10-29/README.md)。ETHZ实际运行，其余四种读取既有路线；`--reuse`只复算已保存结果，`--output`另存。ETHZ单图限180秒/3 GiB，闭合路线包括回程；无需ROS 1，不启动Gazebo或运动。
 
+IPA Local Energy＋A*及六算法统一总览使用独立离线入口（依赖g++、pkg-config、OpenCV4/Eigen3开发头及既有Python环境）：
+
+```bash
+git submodule update --init third_party/ipa_coverage_planning
+python3 -m coverage_benchmark.adapters.ipa_build
+python3 -m pytest coverage_benchmark/tests/test_ipa.py -q
+python3 -m coverage_benchmark.ipa_compare --output docs/benchmarks/six-planners-local
+python3 -m coverage_benchmark.verify_ipa --output docs/benchmarks/six-planners-local
+```
+
+默认输出为 [六算法对照](docs/benchmarks/six-planners-2026-10-30/README.md)，示例另存以保留本次证据。IPA真实运行，其余五种读取历史路径；`--reuse`只复算，`--runtime-root`选择本地地图目录。最终完整路线保留所有原生目标，并含公共起点接近和无切角A*，通过闭格审计后才成功；独立入口再复核解析线段/阻塞像素相交，不启动ROS/Gazebo或运动。上游只读，原生进程限180秒/3 GiB。
+
+IPA BCD / Local Energy 两组对照（同三图；独立模块，不改旧IPA），依赖同上并需nlohmann/json.hpp：
+
+```bash
+python3 -m pytest coverage_benchmark/tests/test_hybrid.py coverage_benchmark/tests/test_hybrid_native.py -q
+python3 -m coverage_benchmark.hybrid.experiment --output docs/benchmarks/ipa-native-local
+python3 -m coverage_benchmark.hybrid.experiment --verify --output docs/benchmarks/ipa-native-local
+```
+
+当前入口仅运行纯 IPA BCD 和纯 Local Energy；`bcd_local`、`hybrid_local` 已移除。`--maps-root` 指定本地 imported 目录；新目录避免覆盖[历史四组证据](docs/benchmarks/hybrid-local-bcd-2026-10-30/README.md)。失败撤销旧成功证书，保留原生候选和逐段来源；几何安全不代表运动或整机能力。细节见[模块说明](coverage_benchmark/hybrid/README.md)。
+
+
 ## 常用检查
 
 ```bash

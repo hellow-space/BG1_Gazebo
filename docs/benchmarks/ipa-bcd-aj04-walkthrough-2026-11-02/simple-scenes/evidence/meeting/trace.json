@@ -1,0 +1,196 @@
+{
+  "adjacency": [
+    {
+      "label": 1,
+      "neighbors": [
+        3
+      ],
+      "pixels": 60.0
+    },
+    {
+      "label": 2,
+      "neighbors": [
+        3
+      ],
+      "pixels": 54.0
+    },
+    {
+      "label": 3,
+      "neighbors": [
+        1,
+        2
+      ],
+      "pixels": 168.0
+    }
+  ],
+  "before_merge_count": 3,
+  "directions": [],
+  "events": [
+    {
+      "after": 2,
+      "before": 1,
+      "critical_points": [],
+      "cuts": [],
+      "type": "IN",
+      "y": 7
+    },
+    {
+      "after": 1,
+      "before": 2,
+      "critical_points": [
+        [
+          9,
+          13
+        ],
+        [
+          10,
+          13
+        ],
+        [
+          11,
+          13
+        ],
+        [
+          12,
+          13
+        ],
+        [
+          13,
+          13
+        ],
+        [
+          14,
+          13
+        ],
+        [
+          15,
+          13
+        ],
+        [
+          16,
+          13
+        ],
+        [
+          17,
+          13
+        ]
+      ],
+      "cuts": [
+        [
+          3,
+          13,
+          8,
+          13
+        ],
+        [
+          18,
+          13,
+          26,
+          13
+        ]
+      ],
+      "type": "OUT",
+      "y": 14
+    },
+    {
+      "after": 0,
+      "before": 1,
+      "critical_points": [],
+      "cuts": [],
+      "type": "OUT",
+      "y": 21
+    }
+  ],
+  "final_label_count": 3,
+  "first_scan_row": 3,
+  "initial_segments": 1,
+  "polygon_count": 3,
+  "rotations": [],
+  "rows": [
+    {
+      "segments": 1,
+      "y": 3
+    },
+    {
+      "segments": 1,
+      "y": 4
+    },
+    {
+      "segments": 1,
+      "y": 5
+    },
+    {
+      "segments": 1,
+      "y": 6
+    },
+    {
+      "segments": 2,
+      "y": 7
+    },
+    {
+      "segments": 2,
+      "y": 8
+    },
+    {
+      "segments": 2,
+      "y": 9
+    },
+    {
+      "segments": 2,
+      "y": 10
+    },
+    {
+      "segments": 2,
+      "y": 11
+    },
+    {
+      "segments": 2,
+      "y": 12
+    },
+    {
+      "segments": 2,
+      "y": 13
+    },
+    {
+      "segments": 1,
+      "y": 14
+    },
+    {
+      "segments": 1,
+      "y": 15
+    },
+    {
+      "segments": 1,
+      "y": 16
+    },
+    {
+      "segments": 1,
+      "y": 17
+    },
+    {
+      "segments": 1,
+      "y": 18
+    },
+    {
+      "segments": 1,
+      "y": 19
+    },
+    {
+      "segments": 1,
+      "y": 20
+    },
+    {
+      "segments": 0,
+      "y": 21
+    },
+    {
+      "segments": 0,
+      "y": 22
+    },
+    {
+      "segments": 0,
+      "y": 23
+    }
+  ],
+  "sweeps": []
+}

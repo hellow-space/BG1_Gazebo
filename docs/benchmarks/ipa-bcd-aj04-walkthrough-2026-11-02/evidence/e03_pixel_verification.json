@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "event": "E03",
+  "critical_pixels": 196,
+  "border_pixels": 66,
+  "border_runs": [
+    [
+      930,
+      257,
+      993,
+      257
+    ],
+    [
+      1311,
+      257,
+      1312,
+      257
+    ]
+  ],
+  "independent_local_event_replay": true,
+  "source_sha256": "74a9c2481cd95cb72ac1e083feaea129b5928bdaa297785196a12de7c33e6ae4",
+  "trace_sha256": "fecab57db854ea7cb2d1d8842846b94384e2d46a668a31a5ecce66667d0e5c00",
+  "figures": [
+    "18_e03_pixel_overview",
+    "19_e03_pixel_before_after"
+  ],
+  "generator_sha256": "004eb2c0fb4c971f81cc4b77befee6dcabd06818b89a13b117206773b0793147"
+}

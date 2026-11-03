@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1080pt" height="684pt" viewBox="0 0 1080 684" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-02T16:08:55.996820</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.6.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 684 
+L 1080 684 
+L 1080 0 
+L 0 0 
+z
+" style="fill: #f4f7fb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 146.497018 194.428966 
+L 201.5315 194.428966 
+L 201.5315 249.463448 
+L 146.497018 249.463448 
+z
+" clip-path="url(#p13158c1416)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 149.248742 197.18069 
+L 198.779776 197.18069 
+L 198.779776 246.711724 
+L 149.248742 246.711724 
+L 149.248742 197.18069 
+z
+" clip-path="url(#p13158c1416)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 201.5315 194.428966 
+L 256.565983 194.428966 
+L 256.565983 249.463448 
+L 201.5315 249.463448 
+z
+" clip-path="url(#p13158c1416)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 204.283225 197.18069 
+L 253.814259 197.18069 
+L 253.814259 246.711724 
+L 204.283225 246.711724 
+L 204.283225 197.18069 
+z
+" clip-path="url(#p13158c1416)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 256.565983 194.428966 
+L 311.600466 194.428966 
+L 311.600466 249.463448 
+L 256.565983 249.463448 
+z
+" clip-path="url(#p13158c1416)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 259.317707 197.18069 
+L 308.848742 197.18069 
+L 308.848742 246.711724 
+L 259.317707 246.711724 
+L 259.317707 197.18069 
+z
+" clip-path="url(#p13158c1416)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 146.497018 249.463448 
+L 201.5315 249.463448 
+L 201.5315 304.497931 
+L 146.497018 304.497931 
+z
+" clip-path="url(#p13158c1416)" style="fill: #ffffff; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 201.5315 249.463448 
+L 256.565983 249.463448 
+L 256.565983 304.497931 
+L 201.5315 304.497931 
+z
+" clip-path="url(#p13158c1416)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 256.565983 249.463448 
+L 311.600466 249.463448 
+L 311.600466 304.497931 
+L 256.565983 304.497931 
+z
+" clip-path="url(#p13158c1416)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="139.89288" y="225.009019" transform="rotate(-0 139.89288 225.009019)">y=255</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="174.014259" y="225.347457" transform="rotate(-0 174.014259 225.347457)">黑</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="174.014259" y="187.824828" transform="rotate(-0 174.014259 187.824828)">993</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="229.048742" y="225.347457" transform="rotate(-0 229.048742 225.347457)">黑</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="229.048742" y="187.824828" transform="rotate(-0 229.048742 187.824828)">994</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="284.083225" y="225.347457" transform="rotate(-0 284.083225 225.347457)">黑</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="284.083225" y="187.824828" transform="rotate(-0 284.083225 187.824828)">995</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="139.89288" y="280.043502" transform="rotate(-0 139.89288 280.043502)">y=256</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="174.014259" y="280.38194" transform="rotate(-0 174.014259 280.38194)">白</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="229.048742" y="280.38194" transform="rotate(-0 229.048742 280.38194)">黑</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="284.083225" y="280.38194" transform="rotate(-0 284.083225 280.38194)">黑</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #18334c; font: 700 13px 'Noto Sans CJK JP'; text-anchor: middle" x="208.410811" y="146.16" transform="rotate(-0 208.410811 146.16)">E01：左侧白段之后</text>
+   </g>
+   <g id="PathCollection_1">
+    <path d="M 229.048742 291.558069 
+C 232.914708 291.558069 236.622855 290.022105 239.356506 287.288454 
+C 242.090157 284.554803 243.626122 280.846656 243.626122 276.98069 
+C 243.626122 273.114723 242.090157 269.406577 239.356506 266.672926 
+C 236.622855 263.939275 232.914708 262.40331 229.048742 262.40331 
+C 225.182776 262.40331 221.474629 263.939275 218.740978 266.672926 
+C 216.007327 269.406577 214.471362 273.114723 214.471362 276.98069 
+C 214.471362 280.846656 216.007327 284.554803 218.740978 287.288454 
+C 221.474629 290.022105 225.182776 291.558069 229.048742 291.558069 
+L 229.048742 291.558069 
+z
+" clip-path="url(#p13158c1416)" style="fill: none; stroke: #e7a026; stroke-width: 2.5"/>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_11">
+    <path d="M 505.086207 194.428966 
+L 560.12069 194.428966 
+L 560.12069 249.463448 
+L 505.086207 249.463448 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 507.837931 197.18069 
+L 557.368966 197.18069 
+L 557.368966 246.711724 
+L 507.837931 246.711724 
+L 507.837931 197.18069 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 560.12069 194.428966 
+L 615.155172 194.428966 
+L 615.155172 249.463448 
+L 560.12069 249.463448 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 562.872414 197.18069 
+L 612.403448 197.18069 
+L 612.403448 246.711724 
+L 562.872414 246.711724 
+L 562.872414 197.18069 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 615.155172 194.428966 
+L 670.189655 194.428966 
+L 670.189655 249.463448 
+L 615.155172 249.463448 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 617.906897 197.18069 
+L 667.437931 197.18069 
+L 667.437931 246.711724 
+L 617.906897 246.711724 
+L 617.906897 197.18069 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 505.086207 249.463448 
+L 560.12069 249.463448 
+L 560.12069 304.497931 
+L 505.086207 304.497931 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: #ffffff; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 560.12069 249.463448 
+L 615.155172 249.463448 
+L 615.155172 304.497931 
+L 560.12069 304.497931 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 615.155172 249.463448 
+L 670.189655 249.463448 
+L 670.189655 304.497931 
+L 615.155172 304.497931 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_13">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="498.482069" y="225.009019" transform="rotate(-0 498.482069 225.009019)">y=255</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="532.603448" y="225.347457" transform="rotate(-0 532.603448 225.347457)">黑</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="532.603448" y="187.824828" transform="rotate(-0 532.603448 187.824828)">1312</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="587.637931" y="225.347457" transform="rotate(-0 587.637931 225.347457)">黑</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="587.637931" y="187.824828" transform="rotate(-0 587.637931 187.824828)">1313</text>
+   </g>
+   <g id="text_18">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="642.672414" y="225.347457" transform="rotate(-0 642.672414 225.347457)">黑</text>
+   </g>
+   <g id="text_19">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="642.672414" y="187.824828" transform="rotate(-0 642.672414 187.824828)">1314</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="498.482069" y="280.043502" transform="rotate(-0 498.482069 280.043502)">y=256</text>
+   </g>
+   <g id="text_21">
+    <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="532.603448" y="280.38194" transform="rotate(-0 532.603448 280.38194)">白</text>
+   </g>
+   <g id="text_22">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="587.637931" y="280.38194" transform="rotate(-0 587.637931 280.38194)">黑</text>
+   </g>
+   <g id="text_23">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="642.672414" y="280.38194" transform="rotate(-0 642.672414 280.38194)">黑</text>
+   </g>
+   <g id="text_24">
+    <text style="fill: #18334c; font: 700 13px 'Noto Sans CJK JP'; text-anchor: middle" x="567" y="146.16" transform="rotate(-0 567 146.16)">E01：2 像素白段之后</text>
+   </g>
+   <g id="PathCollection_2">
+    <path d="M 587.637931 291.558069 
+C 591.503897 291.558069 595.212044 290.022105 597.945695 287.288454 
+C 600.679346 284.554803 602.215311 280.846656 602.215311 276.98069 
+C 602.215311 273.114723 600.679346 269.406577 597.945695 266.672926 
+C 595.212044 263.939275 591.503897 262.40331 587.637931 262.40331 
+C 583.771965 262.40331 580.063818 263.939275 577.330167 266.672926 
+C 574.596516 269.406577 573.060551 273.114723 573.060551 276.98069 
+C 573.060551 280.846656 574.596516 284.554803 577.330167 287.288454 
+C 580.063818 290.022105 583.771965 291.558069 587.637931 291.558069 
+L 587.637931 291.558069 
+z
+" clip-path="url(#p0dcd9fe481)" style="fill: none; stroke: #e7a026; stroke-width: 2.5"/>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="text_25">
+    <text style="fill: #18334c; font: 13px 'Noto Sans CJK JP'" transform="translate(806.059459 169.304009)">图中是各段的首个黑格。</text>
+    <text style="fill: #18334c; font: 13px 'Noto Sans CJK JP'" transform="translate(806.059459 190.906759)">代码还检查该段后面的每个黑格。</text>
+   </g>
+   <g id="text_26">
+    <text style="fill: #dd4b4b; font: 13px 'Noto Sans CJK JP'" transform="translate(806.059459 232.399328)">E01：727 次检查，全部失败。</text>
+    <text style="fill: #dd4b4b; font: 13px 'Noto Sans CJK JP'" transform="translate(806.059459 254.002078)">E02：612 次检查，全部失败。</text>
+    <text style="fill: #dd4b4b; font: 13px 'Noto Sans CJK JP'" transform="translate(806.059459 275.604828)">完整逐格结果保存在 CSV。</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_20">
+    <path d="M 146.497018 476.755862 
+L 201.5315 476.755862 
+L 201.5315 531.790345 
+L 146.497018 531.790345 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 149.248742 479.507586 
+L 198.779776 479.507586 
+L 198.779776 529.038621 
+L 149.248742 529.038621 
+L 149.248742 479.507586 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 201.5315 476.755862 
+L 256.565983 476.755862 
+L 256.565983 531.790345 
+L 201.5315 531.790345 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 204.283225 479.507586 
+L 253.814259 479.507586 
+L 253.814259 529.038621 
+L 204.283225 529.038621 
+L 204.283225 479.507586 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 256.565983 476.755862 
+L 311.600466 476.755862 
+L 311.600466 531.790345 
+L 256.565983 531.790345 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 259.317707 479.507586 
+L 308.848742 479.507586 
+L 308.848742 529.038621 
+L 259.317707 529.038621 
+L 259.317707 479.507586 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 146.497018 531.790345 
+L 201.5315 531.790345 
+L 201.5315 586.824828 
+L 146.497018 586.824828 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: #ffffff; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 201.5315 531.790345 
+L 256.565983 531.790345 
+L 256.565983 586.824828 
+L 201.5315 586.824828 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 256.565983 531.790345 
+L 311.600466 531.790345 
+L 311.600466 586.824828 
+L 256.565983 586.824828 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_27">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="139.89288" y="507.335916" transform="rotate(-0 139.89288 507.335916)">y=256</text>
+   </g>
+   <g id="text_28">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="174.014259" y="507.674353" transform="rotate(-0 174.014259 507.674353)">黑</text>
+   </g>
+   <g id="text_29">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="174.014259" y="470.151724" transform="rotate(-0 174.014259 470.151724)">999</text>
+   </g>
+   <g id="text_30">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="229.048742" y="507.674353" transform="rotate(-0 229.048742 507.674353)">黑</text>
+   </g>
+   <g id="text_31">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="229.048742" y="470.151724" transform="rotate(-0 229.048742 470.151724)">1000</text>
+   </g>
+   <g id="text_32">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="284.083225" y="507.674353" transform="rotate(-0 284.083225 507.674353)">黑</text>
+   </g>
+   <g id="text_33">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="284.083225" y="470.151724" transform="rotate(-0 284.083225 470.151724)">1001</text>
+   </g>
+   <g id="text_34">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="139.89288" y="562.370399" transform="rotate(-0 139.89288 562.370399)">y=257</text>
+   </g>
+   <g id="text_35">
+    <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="174.014259" y="562.708836" transform="rotate(-0 174.014259 562.708836)">白</text>
+   </g>
+   <g id="text_36">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="229.048742" y="562.708836" transform="rotate(-0 229.048742 562.708836)">黑</text>
+   </g>
+   <g id="text_37">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="284.083225" y="562.708836" transform="rotate(-0 284.083225 562.708836)">黑</text>
+   </g>
+   <g id="text_38">
+    <text style="fill: #18334c; font: 700 13px 'Noto Sans CJK JP'; text-anchor: middle" x="208.410811" y="428.486897" transform="rotate(-0 208.410811 428.486897)">E02：左侧白段之后</text>
+   </g>
+   <g id="PathCollection_3">
+    <path d="M 229.048742 573.884966 
+C 232.914708 573.884966 236.622855 572.349001 239.356506 569.61535 
+C 242.090157 566.881699 243.626122 563.173553 243.626122 559.307586 
+C 243.626122 555.44162 242.090157 551.733473 239.356506 548.999822 
+C 236.622855 546.266171 232.914708 544.730206 229.048742 544.730206 
+C 225.182776 544.730206 221.474629 546.266171 218.740978 548.999822 
+C 216.007327 551.733473 214.471362 555.44162 214.471362 559.307586 
+C 214.471362 563.173553 216.007327 566.881699 218.740978 569.61535 
+C 221.474629 572.349001 225.182776 573.884966 229.048742 573.884966 
+L 229.048742 573.884966 
+z
+" clip-path="url(#pa350ab59aa)" style="fill: none; stroke: #e7a026; stroke-width: 2.5"/>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g id="patch_29">
+    <path d="M 505.086207 476.755862 
+L 560.12069 476.755862 
+L 560.12069 531.790345 
+L 505.086207 531.790345 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 507.837931 479.507586 
+L 557.368966 479.507586 
+L 557.368966 529.038621 
+L 507.837931 529.038621 
+L 507.837931 479.507586 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 560.12069 476.755862 
+L 615.155172 476.755862 
+L 615.155172 531.790345 
+L 560.12069 531.790345 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 562.872414 479.507586 
+L 612.403448 479.507586 
+L 612.403448 529.038621 
+L 562.872414 529.038621 
+L 562.872414 479.507586 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 615.155172 476.755862 
+L 670.189655 476.755862 
+L 670.189655 531.790345 
+L 615.155172 531.790345 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 617.906897 479.507586 
+L 667.437931 479.507586 
+L 667.437931 529.038621 
+L 617.906897 529.038621 
+L 617.906897 479.507586 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_35">
+    <path d="M 505.086207 531.790345 
+L 560.12069 531.790345 
+L 560.12069 586.824828 
+L 505.086207 586.824828 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: #ffffff; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_36">
+    <path d="M 560.12069 531.790345 
+L 615.155172 531.790345 
+L 615.155172 586.824828 
+L 560.12069 586.824828 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_37">
+    <path d="M 615.155172 531.790345 
+L 670.189655 531.790345 
+L 670.189655 586.824828 
+L 615.155172 586.824828 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_39">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="498.482069" y="507.335916" transform="rotate(-0 498.482069 507.335916)">y=256</text>
+   </g>
+   <g id="text_40">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="532.603448" y="507.674353" transform="rotate(-0 532.603448 507.674353)">黑</text>
+   </g>
+   <g id="text_41">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="532.603448" y="470.151724" transform="rotate(-0 532.603448 470.151724)">1288</text>
+   </g>
+   <g id="text_42">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="587.637931" y="507.674353" transform="rotate(-0 587.637931 507.674353)">黑</text>
+   </g>
+   <g id="text_43">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="587.637931" y="470.151724" transform="rotate(-0 587.637931 470.151724)">1289</text>
+   </g>
+   <g id="text_44">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="642.672414" y="507.674353" transform="rotate(-0 642.672414 507.674353)">黑</text>
+   </g>
+   <g id="text_45">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="642.672414" y="470.151724" transform="rotate(-0 642.672414 470.151724)">1290</text>
+   </g>
+   <g id="text_46">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="498.482069" y="562.370399" transform="rotate(-0 498.482069 562.370399)">y=257</text>
+   </g>
+   <g id="text_47">
+    <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="532.603448" y="562.708836" transform="rotate(-0 532.603448 562.708836)">白</text>
+   </g>
+   <g id="text_48">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="587.637931" y="562.708836" transform="rotate(-0 587.637931 562.708836)">黑</text>
+   </g>
+   <g id="text_49">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="642.672414" y="562.708836" transform="rotate(-0 642.672414 562.708836)">黑</text>
+   </g>
+   <g id="text_50">
+    <text style="fill: #18334c; font: 700 13px 'Noto Sans CJK JP'; text-anchor: middle" x="567" y="428.486897" transform="rotate(-0 567 428.486897)">E02：新增中间白段之后</text>
+   </g>
+   <g id="PathCollection_4">
+    <path d="M 587.637931 573.884966 
+C 591.503897 573.884966 595.212044 572.349001 597.945695 569.61535 
+C 600.679346 566.881699 602.215311 563.173553 602.215311 559.307586 
+C 602.215311 555.44162 600.679346 551.733473 597.945695 548.999822 
+C 595.212044 546.266171 591.503897 544.730206 587.637931 544.730206 
+C 583.771965 544.730206 580.063818 546.266171 577.330167 548.999822 
+C 574.596516 551.733473 573.060551 555.44162 573.060551 559.307586 
+C 573.060551 563.173553 574.596516 566.881699 577.330167 569.61535 
+C 580.063818 572.349001 583.771965 573.884966 587.637931 573.884966 
+L 587.637931 573.884966 
+z
+" clip-path="url(#pb411dfdb91)" style="fill: none; stroke: #e7a026; stroke-width: 2.5"/>
+   </g>
+  </g>
+  <g id="axes_6">
+   <g id="patch_38">
+    <path d="M 863.675396 476.755862 
+L 918.709879 476.755862 
+L 918.709879 531.790345 
+L 863.675396 531.790345 
+z
+" clip-path="url(#pf90feec823)" style="fill: #ffffff; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_39">
+    <path d="M 918.709879 476.755862 
+L 973.744362 476.755862 
+L 973.744362 531.790345 
+L 918.709879 531.790345 
+z
+" clip-path="url(#pf90feec823)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_40">
+    <path d="M 921.461603 479.507586 
+L 970.992637 479.507586 
+L 970.992637 529.038621 
+L 921.461603 529.038621 
+L 921.461603 479.507586 
+z
+" clip-path="url(#pf90feec823)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_41">
+    <path d="M 973.744362 476.755862 
+L 1028.778844 476.755862 
+L 1028.778844 531.790345 
+L 973.744362 531.790345 
+z
+" clip-path="url(#pf90feec823)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_42">
+    <path d="M 976.496086 479.507586 
+L 1026.02712 479.507586 
+L 1026.02712 529.038621 
+L 976.496086 529.038621 
+L 976.496086 479.507586 
+z
+" clip-path="url(#pf90feec823)" style="fill: none; stroke: #dd4b4b; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_43">
+    <path d="M 863.675396 531.790345 
+L 918.709879 531.790345 
+L 918.709879 586.824828 
+L 863.675396 586.824828 
+z
+" clip-path="url(#pf90feec823)" style="fill: #ffffff; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_44">
+    <path d="M 918.709879 531.790345 
+L 973.744362 531.790345 
+L 973.744362 586.824828 
+L 918.709879 586.824828 
+z
+" clip-path="url(#pf90feec823)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_45">
+    <path d="M 973.744362 531.790345 
+L 1028.778844 531.790345 
+L 1028.778844 586.824828 
+L 973.744362 586.824828 
+z
+" clip-path="url(#pf90feec823)" style="fill: #293b4c; stroke: #9baeba; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_51">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="857.071258" y="507.335916" transform="rotate(-0 857.071258 507.335916)">y=256</text>
+   </g>
+   <g id="text_52">
+    <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="891.192637" y="507.674353" transform="rotate(-0 891.192637 507.674353)">白</text>
+   </g>
+   <g id="text_53">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="891.192637" y="470.151724" transform="rotate(-0 891.192637 470.151724)">1312</text>
+   </g>
+   <g id="text_54">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="946.22712" y="507.674353" transform="rotate(-0 946.22712 507.674353)">黑</text>
+   </g>
+   <g id="text_55">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="946.22712" y="470.151724" transform="rotate(-0 946.22712 470.151724)">1313</text>
+   </g>
+   <g id="text_56">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="1001.261603" y="507.674353" transform="rotate(-0 1001.261603 507.674353)">黑</text>
+   </g>
+   <g id="text_57">
+    <text style="fill: #18334c; font: 10px 'Noto Sans CJK JP'; text-anchor: middle" x="1001.261603" y="470.151724" transform="rotate(-0 1001.261603 470.151724)">1314</text>
+   </g>
+   <g id="text_58">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: end" x="857.071258" y="562.370399" transform="rotate(-0 857.071258 562.370399)">y=257</text>
+   </g>
+   <g id="text_59">
+    <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="891.192637" y="562.708836" transform="rotate(-0 891.192637 562.708836)">白</text>
+   </g>
+   <g id="text_60">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="946.22712" y="562.708836" transform="rotate(-0 946.22712 562.708836)">黑</text>
+   </g>
+   <g id="text_61">
+    <text style="fill: #ffffff; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="1001.261603" y="562.708836" transform="rotate(-0 1001.261603 562.708836)">黑</text>
+   </g>
+   <g id="text_62">
+    <text style="fill: #18334c; font: 700 13px 'Noto Sans CJK JP'; text-anchor: middle" x="925.589189" y="428.486897" transform="rotate(-0 925.589189 428.486897)">E02：右侧白段之后</text>
+   </g>
+   <g id="PathCollection_5">
+    <path d="M 946.22712 573.884966 
+C 950.093087 573.884966 953.801233 572.349001 956.534884 569.61535 
+C 959.268535 566.881699 960.8045 563.173553 960.8045 559.307586 
+C 960.8045 555.44162 959.268535 551.733473 956.534884 548.999822 
+C 953.801233 546.266171 950.093087 544.730206 946.22712 544.730206 
+C 942.361154 544.730206 938.653007 546.266171 935.919356 548.999822 
+C 933.185705 551.733473 931.64974 555.44162 931.64974 559.307586 
+C 931.64974 563.173553 933.185705 566.881699 935.919356 569.61535 
+C 938.653007 572.349001 942.361154 573.884966 946.22712 573.884966 
+L 946.22712 573.884966 
+z
+" clip-path="url(#pf90feec823)" style="fill: none; stroke: #e7a026; stroke-width: 2.5"/>
+   </g>
+  </g>
+  <g id="text_63">
+   <text style="fill: #18334c; font: 700 23px 'Noto Sans CJK JP'; text-anchor: start" x="54" y="41.04" transform="rotate(-0 54 41.04)">E01、E02：把每段黑色的起点逐格拿出来看</text>
+  </g>
+  <g id="text_64">
+   <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: start" x="54" y="88.92" transform="rotate(-0 54 88.92)">IN 需要：圆圈里的当前格是黑色，且上方三个格全部为白色；红框标出导致失败的上一行黑格。</text>
+  </g>
+  <g id="text_65">
+   <text style="fill: #18334c; font: 700 13px 'Noto Sans CJK JP'; text-anchor: start" x="54" y="653.22" transform="rotate(-0 54 653.22)">注意：旧白段继续存在，并不是 IN 临界点。上一行只有 2 个连续白格，也容纳不了“三格全白”的检查窗口。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p13158c1416">
+   <rect x="99.717707" y="164.16" width="217.386207" height="148.593103"/>
+  </clipPath>
+  <clipPath id="p0dcd9fe481">
+   <rect x="458.306897" y="164.16" width="217.386207" height="148.593103"/>
+  </clipPath>
+  <clipPath id="pa350ab59aa">
+   <rect x="99.717707" y="446.486897" width="217.386207" height="148.593103"/>
+  </clipPath>
+  <clipPath id="pb411dfdb91">
+   <rect x="458.306897" y="446.486897" width="217.386207" height="148.593103"/>
+  </clipPath>
+  <clipPath id="pf90feec823">
+   <rect x="816.896086" y="446.486897" width="217.386207" height="148.593103"/>
+  </clipPath>
+ </defs>
+</svg>

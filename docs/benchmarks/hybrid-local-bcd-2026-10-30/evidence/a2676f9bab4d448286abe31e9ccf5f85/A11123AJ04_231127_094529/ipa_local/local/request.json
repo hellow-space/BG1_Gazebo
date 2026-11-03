@@ -1,0 +1,13 @@
+{
+  "mode": "local",
+  "resolution": 0.05000000074505806,
+  "tool_width": 0.6,
+  "start": [
+    34.375000512227416,
+    52.475000781938434
+  ],
+  "target_policy": "centres",
+  "allowed": "/home/jimmy/Desktop/BG1_Gazebo/docs/benchmarks/hybrid-local-bcd-2026-10-30/evidence/a2676f9bab4d448286abe31e9ccf5f85/A11123AJ04_231127_094529/ipa_local/local/allowed.png",
+  "task": "/home/jimmy/Desktop/BG1_Gazebo/docs/benchmarks/hybrid-local-bcd-2026-10-30/evidence/a2676f9bab4d448286abe31e9ccf5f85/A11123AJ04_231127_094529/ipa_local/local/task.png",
+  "covered": "/home/jimmy/Desktop/BG1_Gazebo/docs/benchmarks/hybrid-local-bcd-2026-10-30/evidence/a2676f9bab4d448286abe31e9ccf5f85/A11123AJ04_231127_094529/ipa_local/local/covered.png"
+}

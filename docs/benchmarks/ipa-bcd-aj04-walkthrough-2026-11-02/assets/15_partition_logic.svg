@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1152pt" height="626.4pt" viewBox="0 0 1152 626.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-02T14:43:39.668800</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.6.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 626.4 
+L 1152 626.4 
+L 1152 0 
+L 0 0 
+z
+" style="fill: #f4f7fb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 64.098462 168.639692 
+L 300.406154 168.639692 
+L 300.406154 464.024308 
+L 64.098462 464.024308 
+z
+" clip-path="url(#p854c06163f)" style="fill: #ffffff; stroke: #293b4c; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="fill: #147db3; font: 13px 'Noto Sans CJK JP'; text-anchor: start" x="310.744615" y="210.72438" transform="rotate(-0 310.744615 210.72438)">1 段</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #147db3; font: 13px 'Noto Sans CJK JP'; text-anchor: start" x="310.744615" y="320.016687" transform="rotate(-0 310.744615 320.016687)">2 段</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #147db3; font: 13px 'Noto Sans CJK JP'; text-anchor: start" x="310.744615" y="429.308995" transform="rotate(-0 310.744615 429.308995)">1 段</text>
+   </g>
+   <g id="patch_3">
+    <path d="M 44.898462 176.55075 
+Q 44.898462 316.33478 44.898462 453.882743 
+" style="fill: none; stroke: #147db3; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 46.898462 449.882743 
+L 44.898462 453.882743 
+L 42.898462 449.882743 
+" style="fill: none; stroke: #147db3; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="182.252308" y="486.178154" transform="rotate(-0 182.252308 486.178154)">宽窄变化、一直两段：继续延伸</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #18334c; font: 700 16px 'Noto Sans CJK JP'; text-anchor: start" x="34.56" y="121.101231" transform="rotate(-0 34.56 121.101231)">① 看扫描线上的白色段数</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 152.713846 257.255077 
+L 211.790769 257.255077 
+L 211.790769 375.408923 
+L 152.713846 375.408923 
+z
+" clip-path="url(#p854c06163f)" style="fill: #293b4c"/>
+   </g>
+   <g id="text_6">
+    <text style="fill: #ffffff; font: 14px 'Noto Sans CJK JP'" transform="translate(175.252308 312.010812)">障</text>
+    <text style="fill: #ffffff; font: 14px 'Noto Sans CJK JP'" transform="translate(175.252308 328.589437)">碍</text>
+   </g>
+   <g id="line2d_1">
+    <path d="M 66.461538 207.039692 
+L 298.043077 207.039692 
+" clip-path="url(#p854c06163f)" style="fill: none; stroke: #147db3; stroke-width: 5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 66.461538 316.332 
+L 150.350769 316.332 
+" clip-path="url(#p854c06163f)" style="fill: none; stroke: #147db3; stroke-width: 5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 214.153846 316.332 
+L 298.043077 316.332 
+" clip-path="url(#p854c06163f)" style="fill: none; stroke: #147db3; stroke-width: 5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 66.461538 425.624308 
+L 298.043077 425.624308 
+" clip-path="url(#p854c06163f)" style="fill: none; stroke: #147db3; stroke-width: 5; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <g id="patch_5">
+     <path d="M 78.921779 251.705365 
+L 137.890529 251.705365 
+L 137.890529 235.325365 
+L 78.921779 235.325365 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="fill: #dd4b4b; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="108.406154" y="246.916615" transform="rotate(-0 108.406154 246.916615)">1 → 2：IN</text>
+   </g>
+   <g id="text_8">
+    <g id="patch_6">
+     <path d="M 72.645216 397.92075 
+L 144.167091 397.92075 
+L 144.167091 381.54075 
+L 72.645216 381.54075 
+z
+" style="fill: #ffffff"/>
+    </g>
+    <text style="fill: #dd4b4b; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="108.406154" y="393.132" transform="rotate(-0 108.406154 393.132)">2 → 1：OUT</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="M 439.827692 168.639692 
+L 676.135385 168.639692 
+L 676.135385 464.024308 
+L 439.827692 464.024308 
+z
+" clip-path="url(#p5e3b643d7c)" style="fill: #ffffff; stroke: #293b4c; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_9">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: middle" x="557.981538" y="486.178154" transform="rotate(-0 557.981538 486.178154)">红线向左右延伸，遇到障碍或墙停止</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #18334c; font: 700 16px 'Noto Sans CJK JP'; text-anchor: start" x="410.289231" y="121.101231" transform="rotate(-0 410.289231 121.101231)">② 确认临界点，再画分界线</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 528.443077 257.255077 
+L 587.52 257.255077 
+L 587.52 375.408923 
+L 528.443077 375.408923 
+z
+" clip-path="url(#p5e3b643d7c)" style="fill: #293b4c"/>
+   </g>
+   <g id="text_11">
+    <text style="fill: #ffffff; font: 14px 'Noto Sans CJK JP'" transform="translate(550.981538 312.010812)">障</text>
+    <text style="fill: #ffffff; font: 14px 'Noto Sans CJK JP'" transform="translate(550.981538 328.589437)">碍</text>
+   </g>
+   <g id="line2d_5">
+    <path d="M 439.827692 257.255077 
+L 528.443077 257.255077 
+" clip-path="url(#p5e3b643d7c)" style="fill: none; stroke: #dd4b4b; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 587.52 257.255077 
+L 676.135385 257.255077 
+" clip-path="url(#p5e3b643d7c)" style="fill: none; stroke: #dd4b4b; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 439.827692 375.408923 
+L 528.443077 375.408923 
+" clip-path="url(#p5e3b643d7c)" style="fill: none; stroke: #dd4b4b; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 587.52 375.408923 
+L 676.135385 375.408923 
+" clip-path="url(#p5e3b643d7c)" style="fill: none; stroke: #dd4b4b; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 551.803456 222.084836 
+Q 540.677192 238.835994 530.478809 254.190179 
+" style="fill: none; stroke: #e7a026; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 534.745836 251.742225 
+L 530.478809 254.190179 
+L 531.080662 249.307785 
+" style="fill: none; stroke: #e7a026; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_12">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: middle" x="557.981538" y="215.901231" transform="rotate(-0 557.981538 215.901231)">障碍开始：检查 IN 临界点</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 551.756641 410.249857 
+Q 540.65552 393.659797 530.487047 378.463532 
+" style="fill: none; stroke: #e7a026; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 531.105575 383.343842 
+L 530.487047 378.463532 
+L 534.762412 380.896896 
+" style="fill: none; stroke: #e7a026; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="fill: #18334c; font: 11px 'Noto Sans CJK JP'; text-anchor: middle" x="557.981538" y="422.670462" transform="rotate(-0 557.981538 422.670462)">障碍结束：检查 OUT 临界点</text>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="meaa9c8756b" d="M 0 4.609772 
+C 1.222526 4.609772 2.395145 4.124058 3.259601 3.259601 
+C 4.124058 2.395145 4.609772 1.222526 4.609772 0 
+C 4.609772 -1.222526 4.124058 -2.395145 3.259601 -3.259601 
+C 2.395145 -4.124058 1.222526 -4.609772 0 -4.609772 
+C -1.222526 -4.609772 -2.395145 -4.124058 -3.259601 -3.259601 
+C -4.124058 -2.395145 -4.609772 -1.222526 -4.609772 0 
+C -4.609772 1.222526 -4.124058 2.395145 -3.259601 3.259601 
+C -2.395145 4.124058 -1.222526 4.609772 0 4.609772 
+z
+" style="stroke: #ffffff; stroke-width: 1.2"/>
+    </defs>
+    <g clip-path="url(#p5e3b643d7c)">
+     <use xlink:href="#meaa9c8756b" x="528.443077" y="257.255077" style="fill: #e7a026; stroke: #ffffff; stroke-width: 1.2"/>
+    </g>
+   </g>
+   <g id="PathCollection_2">
+    <g clip-path="url(#p5e3b643d7c)">
+     <use xlink:href="#meaa9c8756b" x="528.443077" y="375.408923" style="fill: #e7a026; stroke: #ffffff; stroke-width: 1.2"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_11">
+    <path d="M 815.556923 168.639692 
+L 1051.864615 168.639692 
+L 1051.864615 464.024308 
+L 815.556923 464.024308 
+z
+" clip-path="url(#p910306b6fd)" style="fill: #ffffff; stroke: #293b4c; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 815.556923 168.639692 
+L 1051.864615 168.639692 
+L 1051.864615 257.255077 
+L 815.556923 257.255077 
+z
+" clip-path="url(#p910306b6fd)" style="fill: #d8eafa"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 815.556923 257.255077 
+L 904.172308 257.255077 
+L 904.172308 375.408923 
+L 815.556923 375.408923 
+z
+" clip-path="url(#p910306b6fd)" style="fill: #d4eee5"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 963.249231 257.255077 
+L 1051.864615 257.255077 
+L 1051.864615 375.408923 
+L 963.249231 375.408923 
+z
+" clip-path="url(#p910306b6fd)" style="fill: #fbe9c8"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 815.556923 375.408923 
+L 1051.864615 375.408923 
+L 1051.864615 464.024308 
+L 815.556923 464.024308 
+z
+" clip-path="url(#p910306b6fd)" style="fill: #e8ddf5"/>
+   </g>
+   <g id="text_14">
+    <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: middle" x="933.710769" y="486.178154" transform="rotate(-0 933.710769 486.178154)">四连通填充 → 这个示意图有 4 区</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #18334c; font: 700 16px 'Noto Sans CJK JP'; text-anchor: start" x="786.018462" y="121.101231" transform="rotate(-0 786.018462 121.101231)">③ 用分界线隔开，再编号</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 904.172308 257.255077 
+L 963.249231 257.255077 
+L 963.249231 375.408923 
+L 904.172308 375.408923 
+z
+" clip-path="url(#p910306b6fd)" style="fill: #293b4c"/>
+   </g>
+   <g id="text_16">
+    <text style="fill: #ffffff; font: 14px 'Noto Sans CJK JP'" transform="translate(926.710769 312.010812)">障</text>
+    <text style="fill: #ffffff; font: 14px 'Noto Sans CJK JP'" transform="translate(926.710769 328.589437)">碍</text>
+   </g>
+   <g id="line2d_9">
+    <path d="M 815.556923 257.255077 
+L 904.172308 257.255077 
+" clip-path="url(#p910306b6fd)" style="fill: none; stroke: #dd4b4b; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_10">
+    <path d="M 963.249231 257.255077 
+L 1051.864615 257.255077 
+" clip-path="url(#p910306b6fd)" style="fill: none; stroke: #dd4b4b; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_11">
+    <path d="M 815.556923 375.408923 
+L 904.172308 375.408923 
+" clip-path="url(#p910306b6fd)" style="fill: none; stroke: #dd4b4b; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_12">
+    <path d="M 963.249231 375.408923 
+L 1051.864615 375.408923 
+" clip-path="url(#p910306b6fd)" style="fill: none; stroke: #dd4b4b; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="text_17">
+    <text style="fill: #18334c; font: 700 23px 'Noto Sans CJK JP'; text-anchor: middle" x="933.710769" y="219.651525" transform="rotate(-0 933.710769 219.651525)">A</text>
+   </g>
+   <g id="text_18">
+    <text style="fill: #18334c; font: 700 23px 'Noto Sans CJK JP'; text-anchor: middle" x="859.864615" y="323.036141" transform="rotate(-0 859.864615 323.036141)">B</text>
+   </g>
+   <g id="text_19">
+    <text style="fill: #18334c; font: 700 23px 'Noto Sans CJK JP'; text-anchor: middle" x="1007.556923" y="323.036141" transform="rotate(-0 1007.556923 323.036141)">C</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #18334c; font: 700 23px 'Noto Sans CJK JP'; text-anchor: middle" x="933.710769" y="426.420756" transform="rotate(-0 933.710769 426.420756)">D</text>
+   </g>
+  </g>
+  <g id="text_21">
+   <text style="fill: #18334c; font: 700 25px 'Noto Sans CJK JP'; text-anchor: start" x="46.08" y="37.584" transform="rotate(-0 46.08 37.584)">BCD 怎么把一个房间切成几个区域？</text>
+  </g>
+  <g id="text_22">
+   <text style="fill: #18334c; font: 13px 'Noto Sans CJK JP'; text-anchor: start" x="46.08" y="72.036" transform="rotate(-0 46.08 72.036)">教学示意｜三个画面是同一个房间；白色可通行，深色为墙或障碍；扫描线向下移动。</text>
+  </g>
+  <g id="text_23">
+   <text style="fill: #dd4b4b; font: 700 18px 'Noto Sans CJK JP'; text-anchor: start" x="46.08" y="541.836" transform="rotate(-0 46.08 541.836)">关键：段数变化只触发候选检查；满足临界点条件，才真正画线。</text>
+  </g>
+  <g id="text_24">
+   <text style="fill: #18334c; font: 12px 'Noto Sans CJK JP'; text-anchor: start" x="46.08" y="580.6728" transform="rotate(-0 46.08 580.6728)">分区线是临时的编号边界，机器人仍可跨区通行。这里的 4 区是教学示意；AJ04 的实际结果是 80 区。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p854c06163f">
+   <rect x="34.56" y="139.101231" width="354.461538" height="354.461538"/>
+  </clipPath>
+  <clipPath id="p5e3b643d7c">
+   <rect x="410.289231" y="139.101231" width="354.461538" height="354.461538"/>
+  </clipPath>
+  <clipPath id="p910306b6fd">
+   <rect x="786.018462" y="139.101231" width="354.461538" height="354.461538"/>
+  </clipPath>
+ </defs>
+</svg>

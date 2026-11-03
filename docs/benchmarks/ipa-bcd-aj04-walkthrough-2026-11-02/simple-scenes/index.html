@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>四个简单场景看懂 IPA BCD 分区</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#eef3f8;color:#18334c;font:17px/1.65 system-ui,sans-serif}
+    header,main{max-width:1300px;margin:auto;padding:24px}h1{font-size:clamp(27px,4vw,42px);line-height:1.25;margin:.3em 0}
+    h2{font-size:clamp(22px,2.5vw,30px);margin:0 0 8px}p{margin:8px 0 18px}
+    nav{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}nav a,.zoom{color:#126394;text-decoration:none;background:white;border:1px solid #cbdbe7;border-radius:8px;padding:8px 12px}
+    nav a:focus-visible,.zoom:focus-visible{outline:3px solid #1581bd;outline-offset:2px}
+    .legend{background:#fff;border-radius:10px;padding:15px 18px}.legend span{display:inline-block;margin:2px 15px 2px 0}
+    .blue{color:#087ab8}.yellow{color:#a37800}.red{color:#c52e37}
+    section{background:white;border-radius:12px;padding:24px;margin:0 0 24px;scroll-margin-top:10px}
+    .frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:18px 0}
+    .frames img{display:block;width:100%;height:auto;border:1px solid #d8e4ed;border-radius:8px}
+    .summary{font-size:1.05em;font-weight:600;color:#154669;margin-bottom:16px}
+    .small{font-size:.9em;color:#4d6273}.zoom{display:inline-block;margin-top:6px}
+    footer{max-width:1300px;margin:auto;padding:0 24px 32px;color:#4d6273;font-size:.9em}
+    @media(max-width:500px){header,main{padding:14px}section{padding:14px}.frames{gap:8px}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>四个简单场景，看懂 BCD 怎么分区</h1>
+  <p>每张图按 ① → ② → ③ 顺序看。地图一开始就是完整的；蓝线逐行向下移动，“出现”是指蓝线扫到了那一段。</p>
+  <nav aria-label="跳到场景"><a href="#empty">1 空房间</a><a href="#island">2 中央障碍</a><a href="#meeting">3 两条入口汇合</a><a href="#notch">4 侧墙凸起</a></nav>
+  <div class="legend"><span>⬜ 白色：可通行</span><span>⬛ 深色：不可通行</span><span class="blue">┄ 蓝线：扫描行</span><span class="blue">▭ 蓝框：检查三格</span><span class="yellow">● 黄点：检查通过的黑格</span><span class="red">■ 红格：临时界</span><span>彩色：最终区域</span><span>黑细线：最终区域之间的交界</span></div>
+</header>
+<main>
+  <section id="empty"><h2>场景 1：空房间</h2><p class="summary">一直是一段 → 房间内部不切 → 最终 1 区。</p>
+    <div class="frames">
+      <img src="assets/empty-01.png" alt="场景一第1步：空房间输入">
+      <img src="assets/empty-02.png" alt="场景一第2步：扫描行始终只有一段">
+      <img src="assets/empty-03.png" alt="场景一第3步：扫描离开房间，没有画界">
+      <img src="assets/empty-04.png" alt="场景一第4步：最终一个区域A">
+    </div><a class="zoom" href="assets/empty.svg" target="_blank">打开整张图放大</a>
+  </section>
+  <section id="island"><h2>场景 2：中央有障碍</h2><p class="summary">1 段 → 2 段 → 1 段；障碍开头、结束各画一次界 → 最终 4 区。</p>
+    <div class="frames">
+      <img loading="lazy" src="assets/island-01.png" alt="场景二第1步：中央障碍输入">
+      <img loading="lazy" src="assets/island-02.png" alt="场景二第2步：IN事件，检查黄点上方三个格">
+      <img loading="lazy" src="assets/island-03.png" alt="场景二第3步：在障碍开头标出临时界">
+      <img loading="lazy" src="assets/island-04.png" alt="场景二第4步：OUT事件，检查黄点下方三个格">
+      <img loading="lazy" src="assets/island-05.png" alt="场景二第5步：障碍末尾画第二道临时界">
+      <img loading="lazy" src="assets/island-06.png" alt="场景二第6步：最终上左右下四个区域">
+    </div><a class="zoom" href="assets/island.svg" target="_blank">打开整张图放大</a>
+  </section>
+  <section id="meeting"><h2>场景 3：两条入口后来汇合</h2><p class="summary">IN 检查失败，不画界；OUT 检查通过再画界 → 最终 3 区。</p>
+    <div class="frames">
+      <img loading="lazy" src="assets/meeting-01.png" alt="场景三第1步：两条入口在下方相连">
+      <img loading="lazy" src="assets/meeting-02.png" alt="场景三第2步：新入口出现，白段一变二">
+      <img loading="lazy" src="assets/meeting-03.png" alt="场景三第3步：检查上方三格失败，没有画界">
+      <img loading="lazy" src="assets/meeting-04.png" alt="场景三第4步：两段汇合，黑格通过OUT检查">
+      <img loading="lazy" src="assets/meeting-05.png" alt="场景三第5步：补画临时界">
+      <img loading="lazy" src="assets/meeting-06.png" alt="场景三第6步：左入口右入口和下方共三个区域">
+    </div><a class="zoom" href="assets/meeting.svg" target="_blank">打开整张图放大</a>
+  </section>
+  <section id="notch"><h2>场景 4：侧墙凸起</h2><p class="summary">通道虽然变窄，但每行仍是一段 → 房间内部不切 → 最终 1 区。</p>
+    <div class="frames">
+      <img loading="lazy" src="assets/notch-01.png" alt="场景四第1步：侧墙凸起">
+      <img loading="lazy" src="assets/notch-02.png" alt="场景四第2步：上方扫描一段">
+      <img loading="lazy" src="assets/notch-03.png" alt="场景四第3步：窄处扫描仍是一段">
+      <img loading="lazy" src="assets/notch-04.png" alt="场景四第4步：最终一个区域">
+    </div><a class="zoom" href="assets/notch.svg" target="_blank">打开整张图放大</a>
+  </section>
+</main>
+<footer>这些是人为构造的小地图，直接运行 IPA BCD 分区函数；扫描方向固定向下，不是 AJ04 地图实测。红格只是分区时的临时标记，不是新障碍墙。</footer>
+</body>
+</html>

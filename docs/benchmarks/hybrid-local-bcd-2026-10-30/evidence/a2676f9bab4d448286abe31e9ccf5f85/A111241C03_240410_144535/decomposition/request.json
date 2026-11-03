@@ -1,0 +1,11 @@
+{
+  "mode": "decompose",
+  "resolution": 0.05000000074505806,
+  "tool_width": 0.6,
+  "start": [
+    21.075000314041972,
+    49.22500073350966
+  ],
+  "target_policy": "centres",
+  "allowed": "/home/jimmy/Desktop/BG1_Gazebo/docs/benchmarks/hybrid-local-bcd-2026-10-30/evidence/a2676f9bab4d448286abe31e9ccf5f85/A111241C03_240410_144535/decomposition/allowed.png"
+}

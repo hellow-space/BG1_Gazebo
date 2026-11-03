@@ -1,12 +1,14 @@
 # 栅格覆盖规划基准
 
+[六算法统一对比：新增 IPA Grid Local Energy＋A*](../docs/benchmarks/six-planners-2026-10-30/README.md)。IPA实际跑同三图，旧五种完整路径保留并同口径复算18组。
+
 [五算法统一对比：新增 ETHZ Polygon Coverage](../docs/benchmarks/five-planners-2026-10-29/README.md)。ETHZ实际跑三图，其余四种复用已保存的完整轨迹并统一复算。
 
 [Leader / Fields2Cover 形象流程分镜与Headland特写](../docs/diagrams/coverage_logic_2026-10-29/README.md)：同一示例地图展示每一步的变化。
 
 [四算法统一总览与三场景轨迹图](../docs/benchmarks/four-planners-2026-10-28/README.md)。仅汇总已有轨迹、核对参数并重算指标：`python3 -m coverage_benchmark.compare_saved`；不启动规划器。
 
-独立离线模块：PNG/PGM → 统一地图语义 → Leader / Richey BCD / Spiral-STC / Fields2Cover修改版 / ETHZ adapter → 完整世界坐标路径 → 三项指标与原图叠加图。只调用规划，不启动 Gazebo、导航或运动。
+独立离线模块：PNG/PGM → 统一地图语义 → Leader / Richey BCD / Spiral-STC / Fields2Cover修改版 / ETHZ / IPA Local Energy＋A* adapter → 完整世界坐标路径 → 三项指标与原图叠加图。只调用规划，不启动 Gazebo、导航或运动。
 
 设计见 [统一设计](../docs/benchmarks/three-planner-design.md)，实测见 [三图结果](../docs/benchmarks/three-planners-2026-10-27/README.md)。
 
@@ -94,3 +96,33 @@ python3 -m coverage_benchmark.verify_ethz
 沿用1 m中心净空和0.6 m条带间距；先取公共起点净空分量，再按0.2 m（4×4原像素）保守分块，仅全部原格可走的完整块保留，含障碍或部分边缘块丢弃，再取起点分量并保留其孔洞。该处理降低多边形复杂度，可能舍弃细通道/区域，JSON记录舍弃像素数；原图及共同审计栅格不变。为避免半开栅格边界歧义，输入多边形向可行侧内退1微米，该微退前后像素中心归属不变；不移动或修复输出路径。原生选项为offset_polygons=false、sweep_single_direction=true（每cell只用最佳方向扫描方案）。ETHZ本次起终点都为公共起点，原生接近及回程均计长。每图进程限180秒、3 GiB地址空间。`--reuse`只重算已有ETHZ结果；`--output`另存，历史报告不覆盖。不启动ROS/Gazebo/运动。
 
 上游GPL-3.0-or-later；GK-MA另有限非商业用途条款，见[原仓库说明](https://github.com/ethz-asl/polygon_coverage_planning#licensing)。
+
+## IPA Grid Local Energy＋安全连接
+
+[设计与边界](../docs/benchmarks/ipa-local-energy-design.md) · [六算法对照及原生诊断](../docs/benchmarks/six-planners-2026-10-30/README.md)。固定子模块 `ipa_coverage_planning@986c18384ed884dadd3bc857cd0c47c13b7d4716`，原生算法6、footprint模式；只读原文件，兼容ROS消息/日志，FOV模式显式拒绝。不迁移ROS 1执行器，不需要COIN-OR/Gurobi求解器。
+
+```bash
+git submodule update --init third_party/ipa_coverage_planning
+python3 -m coverage_benchmark.adapters.ipa_build
+python3 -m pytest coverage_benchmark/tests/test_ipa.py -q
+python3 -m coverage_benchmark.ipa_compare --output docs/benchmarks/six-planners-local
+python3 -m coverage_benchmark.verify_ipa --output docs/benchmarks/six-planners-local
+```
+
+依赖g++、pkg-config、OpenCV4/Eigen3开发头和既有Python环境。默认实际运行原三图，另五种只读取历史完整路径；核对原图/参数/起点/SHA并重算三指标，不改历史结果。`--reuse`仅复算已有IPA，`--runtime-root`指定本地地图根目录。输出另存可以保留基线。
+
+| 文件 | 职责 |
+| --- | --- |
+| `adapters/ipa_build.py`、`ipa_native/` | 固定上游、原生C++编译、薄兼容层及源码/编译器/二进制/实际动态依赖指纹 |
+| `adapters/ipa.py` | 共同起点净空分量、原生输入/输出、受限进程和失败处理 |
+| `ipa_connection.py` | 保留全部原生目标顺序、起点接近、无切角A*和闭格接触审计 |
+| `ipa_audit.py` | 独立解析线段/阻塞像素方框相交检查 |
+| `ipa_compare.py`、`verify_ipa.py` | 六列图/18组三指标、原生点和连接逐段重放、独立扫掠见证 |
+
+输入与共同benchmark相同；原生旋转和半格内缩保留，0.3 m覆盖半径推导约0.4243 m格距（内部按像素取整），额外内缩不能冒充公共1 m净空。原生返回的是访问点序列，跨点直接连线可能穿障；完整原生点/指标单独保留。最终路线从公共起点接近，逐一保留所有目标，不挪动、不裁点；所有连接通过共同原图/净空及严格闭格审计才成功，连接失败整路返回空。不要求回起点，全部接近/绕行/重复计长。路径来源在 `details.connections.sections`。
+
+原生进程限180秒/3 GiB，中断会终止并回收其进程组。通过只说明当前已知栅格模型的离线几何安全；不代表完整覆盖、动态避障、曲率/动力学或真机能力。许可声明保留上游原文。
+
+## IPA BCD / Local Energy
+
+[独立模块](hybrid/README.md)现仅保留纯 IPA BCD 与纯 IPA Local Energy，使用公共净空、安全连接及覆盖统计。`bcd_local` 和 `hybrid_local` 已移除；IPA 上游全部算法源码、原 IPA 适配及历史证据保留。[原四组结果](../docs/benchmarks/hybrid-local-bcd-2026-10-30/README.md)为历史记录。

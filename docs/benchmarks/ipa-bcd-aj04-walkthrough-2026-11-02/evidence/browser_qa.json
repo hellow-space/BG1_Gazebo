@@ -1,0 +1,166 @@
+{
+  "passed": true,
+  "date": "2026-11-02",
+  "browser": "Chrome / CUA",
+  "viewer_sha256": "b4301829b0cbb963ac136d92c1e1ea6b31afeb23fc5750a9bb5eaa6304478554",
+  "html_sha256": "2d4b67577bf66f37b763229ab6a02d63fdebf2de42d7abb08d150e113eb24fc4",
+  "test_script_sha256": "cc753e831dd2ce2b1398c657b6b4bd003fa05809594ed8aa67853d5a9657f17b",
+  "regression_red_observed": "顶点输入 1.5 触发 TypeError，旧说明停留在 79224；修复前实际浏览器断言失败。",
+  "numeric_checks": [
+    {
+      "control": "vertex-index",
+      "input": "1.5",
+      "index": 1
+    },
+    {
+      "control": "vertex-index",
+      "input": "-5",
+      "index": 0
+    },
+    {
+      "control": "vertex-index",
+      "input": "100000",
+      "index": 79224
+    },
+    {
+      "control": "vertex-index",
+      "input": "",
+      "index": 0
+    },
+    {
+      "control": "vertex-index",
+      "input": "12.9",
+      "index": 12
+    },
+    {
+      "control": "raw-index",
+      "input": "1.5",
+      "index": 1
+    },
+    {
+      "control": "raw-index",
+      "input": "-5",
+      "index": 0
+    },
+    {
+      "control": "raw-index",
+      "input": "100000",
+      "index": 3067
+    },
+    {
+      "control": "raw-index",
+      "input": "",
+      "index": 0
+    },
+    {
+      "control": "raw-index",
+      "input": "12.9",
+      "index": 12
+    }
+  ],
+  "selection_checks": {
+    "cells": 80,
+    "events": 66,
+    "orders": 61,
+    "filters": {
+      "visited": 61,
+      "missing": 19,
+      "all": 80
+    }
+  },
+  "playback_checks": [
+    {
+      "control": "#event-range",
+      "key": "Home",
+      "expected": "E01 /"
+    },
+    {
+      "control": "#event-range",
+      "key": "End",
+      "expected": "E66 /"
+    },
+    {
+      "control": "#order-range",
+      "key": "Home",
+      "expected": "第 1/61"
+    },
+    {
+      "control": "#order-range",
+      "key": "End",
+      "expected": "第 61/61"
+    },
+    {
+      "control": "#vertex-range",
+      "key": "Home",
+      "expected": "顶点 0/79224"
+    },
+    {
+      "control": "#vertex-range",
+      "key": "End",
+      "expected": "顶点 79224/79224"
+    },
+    {
+      "control": "#raw-progress",
+      "key": "Home",
+      "expected": "索引 0/3067"
+    },
+    {
+      "control": "#raw-progress",
+      "key": "End",
+      "expected": "索引 3067/3067"
+    },
+    {
+      "control": "#cell-prev",
+      "expectedCell": 0
+    },
+    {
+      "control": "#cell-next",
+      "expectedCell": 79
+    },
+    {
+      "control": "show-cells",
+      "toggleAndRestore": true
+    },
+    {
+      "control": "show-f",
+      "toggleAndRestore": true
+    },
+    {
+      "control": "show-grid",
+      "toggleAndRestore": true
+    },
+    {
+      "control": "show-raw",
+      "toggleAndRestore": true
+    },
+    {
+      "control": "show-safe",
+      "toggleAndRestore": true
+    },
+    {
+      "control": "show-final",
+      "toggleAndRestore": true
+    },
+    {
+      "control": "show-labels",
+      "toggleAndRestore": true
+    }
+  ],
+  "visual_checks": {
+    "wheel_zoom": true,
+    "pointer_pan": true,
+    "cell_focus_and_reset": true,
+    "single_pixel_C04": true,
+    "event_E07": true,
+    "candidate_highlight_order37": true
+  },
+  "console_errors_in_fresh_postfix_tab": [],
+  "screenshots": {
+    "evidence/browser-map-before.png": "9d4808f3668794144abf3fc37ecd83d057ec42eb67c38c5f04d24a632747a47f",
+    "evidence/browser-map-zoom.png": "76c11faae720c6a1eadc8ceac4d19b61ddbdacfcb7d051ef4ef0989ca660d1a4",
+    "evidence/browser-map-pan.png": "f22673097e0480c65bbc0e2b99729c2cb202068b130641675bec4f7812cead55",
+    "evidence/browser-C04.png": "a174b4a7714b69b39be3e1a730ef32ae8c61ac3b843a6893861b0912ce811917",
+    "evidence/browser-event-E07.png": "66d4f2205a20f1783afbca212138c11a2ab0b7321dfb43f5a6158e34ede07b5f",
+    "evidence/browser-final.png": "c95a52ab2bf9e1559c6da206d5a6c1134c07149e61a938d5c189e5eb01a325ac"
+  }
+}

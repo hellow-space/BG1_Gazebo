@@ -1,0 +1,150 @@
+<div id="bcd-pixel-lesson">
+  <style>
+    #bcd-pixel-lesson{color:var(--foreground);--lesson-check:var(--viz-series-1);--lesson-point:var(--yellow);--lesson-border:var(--red)}
+    #bcd-pixel-lesson .lesson-heading{margin:0 0 12px}
+    #bcd-pixel-lesson .lesson-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding-right:90px}
+    #bcd-pixel-lesson .lesson-event-buttons{display:flex;gap:6px;flex-wrap:wrap}
+    #bcd-pixel-lesson .lesson-counts{display:block;width:100%;height:94px;margin:12px 0}
+    #bcd-pixel-lesson .lesson-title{margin:14px 0 8px}
+    #bcd-pixel-lesson .lesson-grid{display:grid;grid-template-columns:38px repeat(7,minmax(0,1fr));gap:3px;max-width:580px;margin:16px auto}
+    #bcd-pixel-lesson .lesson-axis{display:flex;align-items:center;justify-content:center;color:var(--muted-foreground)}
+    #bcd-pixel-lesson .lesson-pixel{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);transition:background-color .24s,color .24s}
+    #bcd-pixel-lesson .is-white{background:var(--background);color:var(--foreground)}
+    #bcd-pixel-lesson .is-black{background:var(--foreground);color:var(--background)}
+    #bcd-pixel-lesson .is-border{background:var(--lesson-border);color:var(--background)}
+    #bcd-pixel-lesson .is-focus{outline:3px solid var(--lesson-check);outline-offset:-3px;color:var(--foreground)}
+    #bcd-pixel-lesson .is-neighbor{box-shadow:inset 0 0 0 3px var(--lesson-check)}
+    #bcd-pixel-lesson .is-failed{box-shadow:inset 0 0 0 3px var(--lesson-border)}
+    #bcd-pixel-lesson .is-candidate:after{content:"";position:absolute;inset:16%;border:2px solid var(--lesson-point);border-radius:50%;pointer-events:none}
+    #bcd-pixel-lesson .is-passed:before{content:"";position:absolute;top:8%;right:8%;width:10px;height:10px;border-radius:50%;background:var(--lesson-point)}
+    #bcd-pixel-lesson .lesson-grid .is-scan{border-bottom:2px dashed var(--lesson-point)}
+    #bcd-pixel-lesson .lesson-result{min-height:26px;margin:10px 0;text-align:center}
+    #bcd-pixel-lesson .lesson-legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:10px 0 16px}
+    #bcd-pixel-lesson .legend-check{color:var(--lesson-check)}
+    #bcd-pixel-lesson .legend-point{color:var(--lesson-point)}
+    #bcd-pixel-lesson .legend-border{color:var(--lesson-border)}
+    #bcd-pixel-lesson .lesson-nav{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
+    @media(prefers-reduced-motion:reduce){#bcd-pixel-lesson .lesson-pixel{transition:none}}
+  </style>
+  <h3 class="lesson-heading">一格一格看：白格怎样变成“界”</h3>
+  <div class="lesson-top">
+    <div class="lesson-event-buttons" aria-label="跳到事件">
+      <button type="button" class="btn" data-event="1" aria-pressed="true">E01</button>
+      <button type="button" class="btn" data-event="2" aria-pressed="false">E02</button>
+      <button type="button" class="btn" data-event="3" aria-pressed="false">E03</button>
+    </div>
+    <span class="text-small">右侧局部 · x 向右，y 向下</span>
+  </div>
+  <svg class="lesson-counts" role="img" aria-label="当前事件相邻两行的白段数量"></svg>
+  <h3 class="lesson-title" aria-live="polite"></h3>
+  <div class="lesson-grid" role="img" aria-label="右侧局部真实像素，逐格检查及写入边界"></div>
+  <div class="lesson-result" aria-live="polite"></div>
+  <div class="lesson-legend text-small">
+    <span>白＝可行　黑＝不可行</span>
+    <span><span class="legend-check">□</span> 正在检查</span>
+    <span><span class="legend-point">●</span> 通过的黑格</span>
+    <span><span class="legend-border">界</span> 新增分界</span>
+    <span><span class="legend-point">┄</span> 扫描行</span>
+  </div>
+  <div class="lesson-nav">
+    <button type="button" class="btn" data-action="prev">← 上一步</button>
+    <span class="lesson-position text-small tabular-nums"></span>
+    <button type="button" class="btn btn-primary" data-action="next">下一步 →</button>
+  </div>
+  <script>
+    (()=>{
+      const root=document.getElementById('bcd-pixel-lesson');
+      const q=selector=>root.querySelector(selector);
+      const grid=q('.lesson-grid');
+      const pixels=[
+        [0,0,0,0,0,0,0],
+        [0,0,0,1,1,0,0],
+        [0,0,1,1,1,0,0],
+        [1,1,1,1,0,0,0],
+        [1,1,1,1,0,0,0]
+      ];
+      const runs={255:[[930,991]],256:[[930,993],[1311,1312]],257:[[930,999],[1181,1288],[1310,1312]],258:[[930,1079],[1084,1311]]};
+      const key=(x,y)=>x+','+y;
+      const steps=[
+        {e:1,title:'E01：白段 1 → 2，进入 IN',scan:256,result:'整行多了一段；还没有画界。'},
+        {e:1,title:'① 找当前行的黑格 1313',scan:256,candidate:[1313,256],focus:[[1313,256]],result:'当前格必须是“黑”，才进入临界点检查。'},
+        {e:1,title:'② 看它上方的三个格',scan:256,candidate:[1313,256],check:[[1312,255],[1313,255],[1314,255]],fail:true,result:'黑、黑、黑 → 不通过。'},
+        {e:1,title:'③ E01：没有通过点，不画界',scan:256,result:'IN 是检查分支；这次没有任何白格变成界。'},
+        {e:2,title:'E02：白段 2 → 3，再次进入 IN',scan:257,result:'中间新增一段；右侧旧白段只是变宽。'},
+        {e:2,title:'① 旧白格继续存在，不是临界点',scan:257,focus:[[1311,256],[1312,256],[1310,257],[1311,257],[1312,257]],result:'1311、1312 仍是白格；检查要从黑格开始。'},
+        {e:2,title:'② 找当前行黑格 1313',scan:257,candidate:[1313,257],focus:[[1313,257]],result:'接下来检查它上方的三个位置。'},
+        {e:2,title:'③ 上方只有一格白，仍然失败',scan:257,candidate:[1313,257],check:[[1312,256],[1313,256],[1314,256]],fail:true,result:'白、黑、黑 ≠ 三格全白 → 不画界。'},
+        {e:2,title:'④ E02：全部检查失败，仍没有界',scan:257,result:'段数增加，并不等于实际切割。'},
+        {e:3,title:'E03：白段 3 → 2，进入 OUT',scan:258,result:'OUT 回看上一行的黑格，再检查它的下方。'},
+        {e:3,title:'① 找上一行的黑格 1309',scan:258,candidate:[1309,257],focus:[[1309,257]],result:'先找起点：检查的是黑格，还不是画界。'},
+        {e:3,title:'② 检查它下方的三个格',scan:258,candidate:[1309,257],check:[[1308,258],[1309,258],[1310,258]],result:'白、白、白 → 通过！'},
+        {e:3,title:'③ 得到黄点：允许从这里左右尝试',scan:258,candidate:[1309,257],passed:true,result:'黄点仍然是黑格；没有变成“界”。'},
+        {e:3,title:'④ 向左：1308 是黑格，停止',scan:258,candidate:[1309,257],passed:true,focus:[[1308,257]],result:'接下来改向右走；仍在 257 行。'},
+        {e:3,title:'⑤ 向右到 1310：看本格和上方',scan:258,candidate:[1309,257],passed:true,focus:[[1310,257]],check:[[1310,256]],fail:true,result:'本格白，上方黑 → 不能写界。'},
+        {e:3,title:'⑥ 跳过 1310，保持白色',scan:258,candidate:[1309,257],passed:true,focus:[[1310,257]],result:'跳过不是停止；继续向右走。'},
+        {e:3,title:'⑦ 到 1311：本格白，上方也白',scan:258,candidate:[1309,257],passed:true,focus:[[1311,257]],check:[[1311,256]],result:'两格都是白 → 允许把本格标成界。'},
+        {e:3,title:'⑧ 写入：1311 从“白”变成“界”',scan:258,candidate:[1309,257],passed:true,focus:[[1311,257]],marked:[1311],result:'这一步，程序真正改写了分区标记。'},
+        {e:3,title:'⑨ 到 1312：本格白，上方也白',scan:258,candidate:[1309,257],passed:true,focus:[[1312,257]],check:[[1312,256]],marked:[1311],result:'画界看上方；不再对本格检查下方三格。'},
+        {e:3,title:'⑩ 写入：1312 也变成“界”',scan:258,candidate:[1309,257],passed:true,focus:[[1312,257]],marked:[1311,1312],result:'现在有两个“界”格，其他像素保持原样。'},
+        {e:3,title:'⑪ 到 1313：黑格，停止向右',scan:258,candidate:[1309,257],passed:true,focus:[[1313,257]],marked:[1311,1312],result:'本处画线结束：只标记了 1311、1312。'},
+        {e:3,title:'完成：两格临时边界，供分区编号',scan:258,candidate:[1309,257],passed:true,marked:[1311,1312],result:'上方小白区被暂时隔开；这不是新增的障碍墙。'}
+      ];
+      const cellNodes=new Map();
+      function addAxis(text){const el=document.createElement('div');el.className='lesson-axis text-small tabular-nums';el.textContent=text;grid.appendChild(el);}
+      addAxis('y / x');for(let x=1308;x<=1314;x++)addAxis(x);
+      for(let y=255;y<=259;y++){
+        addAxis(y);
+        for(let x=1308;x<=1314;x++){
+          const el=document.createElement('div');el.className='lesson-pixel';el.dataset.x=x;el.dataset.y=y;
+          el.setAttribute('data-tooltip','('+x+', '+y+')');grid.appendChild(el);cellNodes.set(key(x,y),el);
+        }
+      }
+      function readStep(state){const value=state?.privateContent?.step;return Number.isInteger(value)&&value>=0&&value<steps.length?value:0;}
+      let index=readStep(window.openai?.widgetState);
+      function drawCounts(){
+        const step=steps[index],current=255+step.e;
+        const el=q('.lesson-counts'),width=Math.max(280,el.getBoundingClientRect().width);
+        el.setAttribute('viewBox','0 0 '+width+' 94');
+        const left=74,right=width-54,scale=(right-left)/(1318-925);
+        let content='<title>整行白段计数，横向按真实像素比例</title>';
+        [current-1,current].forEach((y,i)=>{
+          const top=12+i*41;
+          content+='<text x="0" y="'+(top+15)+'" fill="var(--foreground)">y='+y+'</text>';
+          content+='<rect x="'+left+'" y="'+top+'" width="'+(right-left)+'" height="22" fill="var(--foreground)"/>';
+          runs[y].forEach(([a,b])=>{content+='<rect x="'+(left+(a-.5-925)*scale)+'" y="'+(top+2)+'" width="'+((b-a+1)*scale)+'" height="18" fill="var(--background)" stroke="var(--border)"/>';});
+          content+='<text x="'+(right+10)+'" y="'+(top+15)+'" fill="var(--foreground)">'+runs[y].length+'段</text>';
+        });
+        el.innerHTML=content;
+      }
+      function render(){
+        const step=steps[index],focus=new Set((step.focus||[]).map(p=>key(...p))),check=new Set((step.check||[]).map(p=>key(...p)));
+        for(const [cellKey,el] of cellNodes){
+          const x=Number(el.dataset.x),y=Number(el.dataset.y),white=pixels[y-255][x-1308]===1;
+          const marked=y===257&&(step.marked||[]).includes(x);
+          el.className='lesson-pixel '+(marked?'is-border':white?'is-white':'is-black');
+          el.textContent=marked?'界':white?'白':'黑';
+          if(y===step.scan)el.classList.add('is-scan');
+          if(focus.has(cellKey))el.classList.add('is-focus');
+          if(check.has(cellKey))el.classList.add(step.fail&&!white?'is-failed':'is-neighbor');
+          if(step.candidate&&cellKey===key(...step.candidate)){el.classList.add('is-candidate');if(step.passed)el.classList.add('is-passed');}
+          el.setAttribute('aria-label','x='+x+'，y='+y+'，'+el.textContent);
+        }
+        q('.lesson-title').textContent=step.title;q('.lesson-result').textContent=step.result;
+        q('.lesson-position').textContent=(index+1)+' / '+steps.length;
+        q('[data-action="prev"]').disabled=index===0;q('[data-action="next"]').disabled=index===steps.length-1;
+        root.querySelectorAll('[data-event]').forEach(el=>el.setAttribute('aria-pressed',String(Number(el.dataset.event)===step.e)));
+        drawCounts();
+      }
+      function go(next){
+        index=Math.max(0,Math.min(steps.length-1,next));render();
+        if(window.openai?.setWidgetState)window.openai.setWidgetState({modelContent:{event:'E0'+steps[index].e,step:index+1,caption:steps[index].title},privateContent:{step:index}}).catch(()=>{});
+      }
+      q('[data-action="prev"]').addEventListener('click',()=>go(index-1));
+      q('[data-action="next"]').addEventListener('click',()=>go(index+1));
+      root.querySelectorAll('[data-event]').forEach(el=>el.addEventListener('click',()=>go(steps.findIndex(s=>s.e===Number(el.dataset.event)))));
+      window.addEventListener('openai:set_globals',event=>{if(event.detail?.globals?.widgetState){index=readStep(event.detail.globals.widgetState);render();}});
+      if(typeof ResizeObserver!=='undefined')new ResizeObserver(drawCounts).observe(q('.lesson-counts'));
+      render();
+    })();
+  </script>
+</div>

@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "results": {
+    "empty": {
+      "events": [
+        [
+          21,
+          "OUT",
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "cells": 1,
+      "free_pixels": 432,
+      "boundary_pixels": 0,
+      "cut_pixels_covered": true,
+      "input_sha256": "249d55901f816ada3cc99b0b8bc2cf97150c08b6724895055cde5e02c59af211",
+      "trace_sha256": "b7b5f25eb7b858de82c3fb3116474b4f30a056f5b3e8962a1615b38e9fb14a58"
+    },
+    "island": {
+      "events": [
+        [
+          8,
+          "IN",
+          1,
+          2,
+          6,
+          2
+        ],
+        [
+          14,
+          "OUT",
+          2,
+          1,
+          6,
+          2
+        ],
+        [
+          21,
+          "OUT",
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "cells": 4,
+      "free_pixels": 396,
+      "boundary_pixels": 36,
+      "cut_pixels_covered": true,
+      "input_sha256": "ac136a3a059f6c75b02a2e390dd661732dcbb88b0e1a35b55c29f26eb9456d86",
+      "trace_sha256": "543d256e048d027cfee99ef64de8ffef6afaf8f9db7e8f43b9f37311326c8c68"
+    },
+    "meeting": {
+      "events": [
+        [
+          7,
+          "IN",
+          1,
+          2,
+          0,
+          0
+        ],
+        [
+          14,
+          "OUT",
+          2,
+          1,
+          9,
+          2
+        ],
+        [
+          21,
+          "OUT",
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "cells": 3,
+      "free_pixels": 297,
+      "boundary_pixels": 15,
+      "cut_pixels_covered": true,
+      "input_sha256": "72ec35dcac203a29b52cd11d4bd32e10797ae01f8bae40276bbfc5b6b97a36fa",
+      "trace_sha256": "3fd2902017ee63d194d07c94c21046c59c21be123feb200c5f3f86d7cebe057f"
+    },
+    "notch": {
+      "events": [
+        [
+          21,
+          "OUT",
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "cells": 1,
+      "free_pixels": 378,
+      "boundary_pixels": 0,
+      "cut_pixels_covered": true,
+      "input_sha256": "0e25c48e2b54e6d4829eb23a91e9ff26bd35f952d910bad314915a12420c8130",
+      "trace_sha256": "bde4a4adbd93541e1a0f8e732ff0fa67f4da9861082ceec0cf634e4d61caede7"
+    }
+  },
+  "native_original_commit": "986c18384ed884dadd3bc857cd0c47c13b7d4716",
+  "native_source_trace_sha256": "556306f66102287927166daf41e5a300bfd92bc494c5111d4c1e814c5d5aa524",
+  "cpp_sha256": "64192439f21623d4eab83ab6395af5c37f28da4b6082862a3af7f91fb91717fe",
+  "build_script_sha256": "a731677ef4833d9d8f09e4b02282bb8c786c1352cb2139df4e4255463e245299",
+  "binary_sha256": "cb46a216001e36b4b19c1827b5281472aed2f56060e9a4f37d11e02ffb6a0d7c",
+  "compile_command": "/usr/bin/x86_64-linux-gnu-g++-13 -include /home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/.build/ipa_bcd_report/7cc09fdeaa6aa63e/trace.hpp -std=c++14 -O2 -include /home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/hybrid/native/context.hpp -I/home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/.build/hybrid/7a92abf420bc35f05578/include -I/home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/hybrid/native -I/home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/hybrid/native/compat -I/home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/adapters/ipa_native/compat -I/usr/include/eigen3 -I/home/jimmy/Desktop/BG1_Gazebo/third_party/ipa_coverage_planning/ipa_room_exploration/common/include -I/home/jimmy/Desktop/BG1_Gazebo/third_party/ipa_coverage_planning/ipa_building_navigation/common/include /home/jimmy/Desktop/BG1_Gazebo/docs/benchmarks/ipa-bcd-aj04-walkthrough-2026-11-02/simple-scenes/native_demo.cpp /home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/.build/hybrid/7a92abf420bc35f05578/energy_functional_explorator.cpp /home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/.build/ipa_bcd_report/7cc09fdeaa6aa63e/boustrophedon_explorator.cpp /home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/.build/ipa_bcd_report/7cc09fdeaa6aa63e/room_rotator.cpp /home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/.build/hybrid/7a92abf420bc35f05578/meanshift2d.cpp /home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/.build/hybrid/7a92abf420bc35f05578/A_star_pathplanner.cpp /home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/.build/hybrid/7a92abf420bc35f05578/node.cpp -o /home/jimmy/Desktop/BG1_Gazebo/coverage_benchmark/.build/ipa_bcd_simple_scenes/native_demo -I/usr/include/opencv4 -lopencv_stitching -lopencv_alphamat -lopencv_aruco -lopencv_barcode -lopencv_bgsegm -lopencv_bioinspired -lopencv_ccalib -lopencv_cvv -lopencv_dnn_objdetect -lopencv_dnn_superres -lopencv_dpm -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hdf -lopencv_hfs -lopencv_img_hash -lopencv_intensity_transform -lopencv_line_descriptor -lopencv_mcc -lopencv_quality -lopencv_rapid -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_shape -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_superres -lopencv_optflow -lopencv_surface_matching -lopencv_tracking -lopencv_highgui -lopencv_datasets -lopencv_text -lopencv_plot -lopencv_ml -lopencv_videostab -lopencv_videoio -lopencv_viz -lopencv_wechat_qrcode -lopencv_ximgproc -lopencv_video -lopencv_xobjdetect -lopencv_objdetect -lopencv_calib3d -lopencv_imgcodecs -lopencv_features2d -lopencv_dnn -lopencv_flann -lopencv_xphoto -lopencv_photo -lopencv_imgproc -lopencv_core",
+  "independent_masks": true,
+  "global_rotation_applied": false,
+  "note": "教学输入，直接调用带追踪的 IPA 分区函数；固定扫描方向，面积和宽度合并阈值均为0。"
+}

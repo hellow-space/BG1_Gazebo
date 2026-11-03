@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "assets_sha256": {
+    "empty": {
+      "png": "106be18afccd34919e5b88e10c6bb5555389d3b43526413ee537c2965aad2772",
+      "svg": "f85fe17cb09031aca94c039343343c15cabd969b936e1949507a079621145f0e",
+      "frames": {
+        "empty-01.png": "e044598413a9a43bbc9e320875a45e49108f2d7635bcb8266cfa763e95b401e1",
+        "empty-02.png": "f9214c41d265e8f610b28f3394aed79abfb87802ed01f2bd188d3a79626fc71a",
+        "empty-03.png": "eebe079661fcde471a14a2e3de5e9a41dfcf131ad93c23ffd706b1acc42974e6",
+        "empty-04.png": "9cce4f62875f744c83529f45935cbbf860b7fd12ca2ed4acec1b5dda98f52cf5"
+      }
+    },
+    "island": {
+      "png": "62fe515b4b3bbfedc3539b5c33da4ebafa4900c6ffc5969130baf8212e9d924e",
+      "svg": "0f646dd22e6fc02325b46f0987ec0cb708066d24bc41f7862ade5e8df3f30d75",
+      "frames": {
+        "island-01.png": "ba147bf725dd3c65ced10d378035d0833fd5d998704e9707b70e46ce0e93ff77",
+        "island-02.png": "5e0ffd0edef1c48beb184ef7974bd36b2eb78c2bf33d3283d12010bfc7475ad7",
+        "island-03.png": "95148b1528280666d1843f4cb12e7d5fd7439ee45fd33f419e0d12d740f598c2",
+        "island-04.png": "a24b59c9349600d7825d0296e60256441fa186f9d304a3d7f41a96d634ceeb21",
+        "island-05.png": "1016bf1ea005aef5cceac2f2b995df40c1cace160e892dfa37c5eef30a86ace0",
+        "island-06.png": "a0c456180ff915c0fb540799e4aa07015fa379d36ee7c5e7ba24a834c1f11268"
+      }
+    },
+    "meeting": {
+      "png": "7defb181e794fa4ef65a04018cee515a379915112f1d86507f5164ee8f8be7a0",
+      "svg": "2c6a18d934be674d3a829b7d340a0a6443ed49ae29aa689654e140c1b427a2fa",
+      "frames": {
+        "meeting-01.png": "318b3054fdc5c28beced4466e0f4894adb71d1a14739be8612d83c8f2957c2d7",
+        "meeting-02.png": "e69f26bc366467c60e009b1b7a10595c864bc52f4b6145eead9bb611380d502f",
+        "meeting-03.png": "18b576f032023c5fafe74b9ea65f1a195c73679d9ba473ea5daec70f950e01d9",
+        "meeting-04.png": "ae90ba435f114a3b1a790b4f779b75ac235c4776264b00bbbd0b33958f18d7b7",
+        "meeting-05.png": "12e84e627935046631b5ba9a11c3e195375fd85a9a7e0d099b0d036335387ab5",
+        "meeting-06.png": "3cb9a2bc219a21c07b3a5207af427f67446798786f8883e91f518a6cef9fb321"
+      }
+    },
+    "notch": {
+      "png": "db90112a1ad8e02028cae1536cf4030e6a681b0fe6056f1142f73ab1a702b710",
+      "svg": "e7374a293891781843e1775cc334c1456196805a7f295013b0d377898416dcac",
+      "frames": {
+        "notch-01.png": "52ef3d33ee019afece56e4a70f3c23c87f70741bac2c39e7eebec8464891017e",
+        "notch-02.png": "165436376ea6619385042421173212f9771b67c929c2e240ca86cf6b50ee5a2d",
+        "notch-03.png": "a03a19cccf85a25758fb3bd38b71e3cf7a1eafabf0128b2f792a4d63baf25bb7",
+        "notch-04.png": "dc5dde10a76b08710c67587d523c2a97ab343b764cdcb1bf5428413c2d9ed563"
+      }
+    }
+  },
+  "script_sha256": "786f1dc34c2b3cb81028a81003655bb3c53cc4e1de2ff6bfaecf8167654b8aba"
+}

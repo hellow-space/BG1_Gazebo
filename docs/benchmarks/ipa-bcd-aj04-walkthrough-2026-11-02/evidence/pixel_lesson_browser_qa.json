@@ -1,0 +1,322 @@
+{
+  "passed": true,
+  "fragment_sha256": "bd3360be45227f11bd07e929cdf1f40ca26c9f045adfa262ad94214382e4c5bf",
+  "forward_states": [
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 0,
+      "position": "1 / 22",
+      "title": "E01：白段 1 → 2，进入 IN"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 0,
+      "position": "2 / 22",
+      "title": "① 找当前行的黑格 1313"
+    },
+    {
+      "borders": [],
+      "checks": 3,
+      "passed": 0,
+      "position": "3 / 22",
+      "title": "② 看它上方的三个格"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 0,
+      "position": "4 / 22",
+      "title": "③ E01：没有通过点，不画界"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 0,
+      "position": "5 / 22",
+      "title": "E02：白段 2 → 3，再次进入 IN"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 0,
+      "position": "6 / 22",
+      "title": "① 旧白格继续存在，不是临界点"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 0,
+      "position": "7 / 22",
+      "title": "② 找当前行黑格 1313"
+    },
+    {
+      "borders": [],
+      "checks": 3,
+      "passed": 0,
+      "position": "8 / 22",
+      "title": "③ 上方只有一格白，仍然失败"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 0,
+      "position": "9 / 22",
+      "title": "④ E02：全部检查失败，仍没有界"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 0,
+      "position": "10 / 22",
+      "title": "E03：白段 3 → 2，进入 OUT"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 0,
+      "position": "11 / 22",
+      "title": "① 找上一行的黑格 1309"
+    },
+    {
+      "borders": [],
+      "checks": 3,
+      "passed": 0,
+      "position": "12 / 22",
+      "title": "② 检查它下方的三个格"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 1,
+      "position": "13 / 22",
+      "title": "③ 得到黄点：允许从这里左右尝试"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 1,
+      "position": "14 / 22",
+      "title": "④ 向左：1308 是黑格，停止"
+    },
+    {
+      "borders": [],
+      "checks": 1,
+      "passed": 1,
+      "position": "15 / 22",
+      "title": "⑤ 向右到 1310：看本格和上方"
+    },
+    {
+      "borders": [],
+      "checks": 0,
+      "passed": 1,
+      "position": "16 / 22",
+      "title": "⑥ 跳过 1310，保持白色"
+    },
+    {
+      "borders": [],
+      "checks": 1,
+      "passed": 1,
+      "position": "17 / 22",
+      "title": "⑦ 到 1311：本格白，上方也白"
+    },
+    {
+      "borders": [
+        {
+          "text": "界",
+          "x": "1311",
+          "y": "257"
+        }
+      ],
+      "checks": 0,
+      "passed": 1,
+      "position": "18 / 22",
+      "title": "⑧ 写入：1311 从“白”变成“界”"
+    },
+    {
+      "borders": [
+        {
+          "text": "界",
+          "x": "1311",
+          "y": "257"
+        }
+      ],
+      "checks": 1,
+      "passed": 1,
+      "position": "19 / 22",
+      "title": "⑨ 到 1312：本格白，上方也白"
+    },
+    {
+      "borders": [
+        {
+          "text": "界",
+          "x": "1311",
+          "y": "257"
+        },
+        {
+          "text": "界",
+          "x": "1312",
+          "y": "257"
+        }
+      ],
+      "checks": 0,
+      "passed": 1,
+      "position": "20 / 22",
+      "title": "⑩ 写入：1312 也变成“界”"
+    },
+    {
+      "borders": [
+        {
+          "text": "界",
+          "x": "1311",
+          "y": "257"
+        },
+        {
+          "text": "界",
+          "x": "1312",
+          "y": "257"
+        }
+      ],
+      "checks": 0,
+      "passed": 1,
+      "position": "21 / 22",
+      "title": "⑪ 到 1313：黑格，停止向右"
+    },
+    {
+      "borders": [
+        {
+          "text": "界",
+          "x": "1311",
+          "y": "257"
+        },
+        {
+          "text": "界",
+          "x": "1312",
+          "y": "257"
+        }
+      ],
+      "checks": 0,
+      "passed": 1,
+      "position": "22 / 22",
+      "title": "完成：两格临时边界，供分区编号"
+    }
+  ],
+  "reverse_positions": [
+    "21 / 22",
+    "20 / 22",
+    "19 / 22",
+    "18 / 22",
+    "17 / 22",
+    "16 / 22",
+    "15 / 22",
+    "14 / 22",
+    "13 / 22",
+    "12 / 22",
+    "11 / 22",
+    "10 / 22",
+    "9 / 22",
+    "8 / 22",
+    "7 / 22",
+    "6 / 22",
+    "5 / 22",
+    "4 / 22",
+    "3 / 22",
+    "2 / 22",
+    "1 / 22"
+  ],
+  "jump_e02": "5 / 22",
+  "jump_e03": "10 / 22",
+  "returned_to_start": "1 / 22",
+  "console_errors": [],
+  "visual_check": "对比度更新后已查看真实浏览器的黄点通过画面；尚无红格；35格标签可读。",
+  "forward_check_scope": "22帧前进检查在颜色对比度更新前完成；更新后完成全部21帧回退、事件跳转及通过帧检查。",
+  "screenshot": "evidence/pixel_lesson_passed.png",
+  "external_extension_errors": [
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:00:29.819Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:00:29.819Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:00:30.021Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "Immersive Translate ERROR: [frame-bridge] register subscriber failed Object",
+      "timestamp": "2026-11-02T08:00:59.816Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "Immersive Translate ERROR: [frame-bridge] register subscriber failed Object",
+      "timestamp": "2026-11-02T08:00:59.816Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:00:59.962Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:00:59.977Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:02:39.296Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:02:39.296Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:02:39.486Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "Immersive Translate ERROR: [frame-bridge] register subscriber failed Object",
+      "timestamp": "2026-11-02T08:03:09.294Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "Immersive Translate ERROR: [frame-bridge] register subscriber failed Object",
+      "timestamp": "2026-11-02T08:03:09.294Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:03:09.420Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    },
+    {
+      "level": "error",
+      "message": "SyntaxError: Failed to execute 'postMessage' on 'Window': Invalid target origin 'null' in a call to 'postMessage'.\n    at a (chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js:5564:13373)",
+      "timestamp": "2026-11-02T08:03:09.437Z",
+      "url": "chrome-extension://bpoadfkcbjbfhfodiogcnhhhpibjhbnh/content_main.js"
+    }
+  ],
+  "error_scope": "浏览器翻译扩展错误单独保留；不作为演示脚本错误，也未修改扩展设置。"
+}

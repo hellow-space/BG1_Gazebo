@@ -9,7 +9,9 @@
 | `python_robotics/` | Git submodule: AtsushiSakai/PythonRobotics | Native Spiral-STC offline benchmark via `coverage_benchmark/adapters/stc.py` |
 | `polygon_coverage_planning/` | Git submodule: ethz-asl/polygon_coverage_planning | Native BCD, visibility graph and GK-MA via `coverage_benchmark/adapters/ethz.py` |
 
-All five submodule commits remain pinned in the parent repository. The
+| `ipa_coverage_planning/` | Git submodule: ipa320/ipa_coverage_planning, pinned noetic_dev commit | Native Grid Local Energy (algorithm 6) via `coverage_benchmark/adapters/ipa.py`; separate safe A* connections |
+
+All six submodule commits remain pinned in the parent repository. The
 opennav/Fields2Cover section names in `.gitmodules` retain historical identifiers;
 the actual checkout paths are under `third_party/`.
 
@@ -28,3 +30,5 @@ separately in `coverage_benchmark/`; upstream files remain unchanged. See the
 [five-planner report](../docs/benchmarks/five-planners-2026-10-29/README.md).
 Original licenses remain with each dependency; GK-MA additionally restricts
 use to non-commercial purposes as documented by the ETHZ repository.
+
+IPA package metadata states academic/non-commercial licensing and directs commercial users to Fraunhofer IPA; original source headers and declarations are retained. The [IPA design](../docs/benchmarks/ipa-local-energy-design.md) and [six-planner report](../docs/benchmarks/six-planners-2026-10-30/README.md) describe the unchanged upstream core and our safety layer.

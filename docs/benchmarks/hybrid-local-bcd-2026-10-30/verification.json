@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "run_id": "a2676f9bab4d448286abe31e9ccf5f85",
+  "records": 12,
+  "independent_coverage_witnesses": 3072,
+  "strict_and_analytic_box_audits": true,
+  "native_target_replay": true,
+  "frc_replay": true,
+  "motion_executed": false
+}

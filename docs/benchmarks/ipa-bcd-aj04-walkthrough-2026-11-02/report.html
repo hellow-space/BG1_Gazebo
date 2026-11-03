@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AJ04 · IPA BCD 全流程图解</title><link rel="stylesheet" href="report.css"></head>
+<body>
+<aside><div class="brand">AJ04 / IPA BCD</div><small>从原图到连续覆盖路线</small><nav>
+<a href="#overview">先看结论与阅读方式</a><a href="#scope">00 · 本报告追踪哪个版本</a>
+<a href="#input">01 · 读图和连通区</a><a href="#clearance">02 · 净空、起点与 F</a>
+<a href="#rotation">03 · 主方向与旋转</a><a href="#events">04 · 扫描与切割事件</a>
+<a href="#labels">05 · 80 块分区的形成</a><a href="#cells">06 · 全部区域逐块看</a>
+<a href="#sweeps">07 · 每块内部如何扫</a><a href="#clipping">08 · 原生候选与安全裁剪</a>
+<a href="#schedule">09 · 61 轮访问调度</a><a href="#connection">10 · A* 怎么连接</a>
+<a href="#final">11 · 完整路线与覆盖</a><a href="#atlas">12 · 全部放大图索引</a>
+<a href="#evidence">源码、证据与复现</a></nav></aside>
+<main>
+<header id="overview"><div class="eyebrow">源码追踪 × 历史实测 × 每区放大</div>
+<h1>IPA BCD 在 AJ04 上<br>究竟怎样划分、怎样规划</h1>
+<p class="lead">地图 <code>A11123AJ04_231127_094529</code> 的完整过程。原始结果来自 2026-10-30；2026-11-02 增加中间追踪与独立复核。每一块小区域都保留编号。</p>
+<div class="stats"><div><b>80</b><span>原生分区 C00–C79</span></div><div><b>61</b><span>具有可用段并被调度的区域</span></div><div><b>2,493.44 m</b><span>包含接近、绕行、重复的整路</span></div><div><b>59.3848%</b><span>以全图自由格为分母的覆盖率</span></div></div>
+<div class="note"><b>怎样看：</b>先顺着 01–11 看流程；重点看“06 全部区域逐块看”，它提供 80 块分区明细与每块三联放大图。地图可以滚轮放大、按住拖动。66 次分区事件和 61 轮调度都有逐步回放；所有静态图都可点击打开原尺寸。</div>
+<p id="load-status">正在加载精确路线数据与地图……</p></header>
+
+<section id="scope"><div class="step">00 / 边界</div><h2>这里的“IPA BCD”，包含哪两部分</h2>
+<p>本报告解释的是当前四组消融实验里的 <code>ipa_bcd</code>：<b>IPA 原生 BCD 分解 + 原生单 cell 扫线 + 项目自己的跨区调度和安全连接。</b>没有 Local Energy 调用，也没有 Local 补扫；不能把这条路线当作 IPA ROS action server 原封不动的输出。</p>
+<div class="flow"><span>原 PNG</span><i>→</i><span>自由区 / 1 m 净空 / F</span><i>→</i><span>IPA 旋转与 BCD 分解</span><i>→</i><span>80 块区内扫线</span><i>→</i><span>安全裁剪</span><i>→</i><span>61 区贪心调度 + A*</span><i>→</i><span>整路与扫掠统计</span></div>
+<table><thead><tr><th>实际运行部分</th><th>职责与本轮设置</th></tr></thead><tbody>
+<tr><td><code>map_io.load_map</code> / Python</td><td>阈值、最大连通区、EDT 净空、公共起点。</td></tr>
+<tr><td><code>BoustrophedonExplorer</code> / C++</td><td>全局旋转、临界切割、cell 标签与轮廓、每个 cell 的扫线和区内连接。</td></tr>
+<tr><td><code>hybrid/native/main.cpp</code></td><td>直接调用分解与单 cell 扫线；每个 cell 的原生初始 robot_pos 取该 cell 的中心。</td></tr>
+<tr><td><code>hybrid/planner.py</code> / Python</td><td>裁剪、访问顺序、路径正反向、从公共起点连接所有目标。纯 BCD 模式不使用 Hybrid 区域分类来切换内核。</td></tr>
+<tr><td>本轮适配差异</td><td>关闭原生额外半格腐蚀；外层已应用 1 m 净空。分解传入 min_cell_area = 0、min_cell_width = 0；不是上游默认参数。</td></tr>
+</tbody></table>
+<p class="source">上游固定提交 <code>986c18384ed884dadd3bc857cd0c47c13b7d4716</code>。原生 ROS 的标准 BCD 是算法 2，算法 8 是变体。本次未启动这两个 ROS 服务端文件，也未调用上游整房间的 TSP / LEFT_TO_RIGHT 调度入口。</p>
+</section>
+
+<section id="input"><div class="step">01 / 输入</div><h2>先决定“什么算自由”，再决定“规划哪一片”</h2>
+<p>输入使用同名 <b>PNG</b>，1208 × 1710 像素。概率定义为 <code>p = (255 − 灰度) / 255</code>，仅 <code>p &lt; 0.25</code> 算已知自由，即整数灰度 ≥ 192。其余像素全部作为不可通行输入；未知区没有补成自由区。</p>
+<p>全图有 <b>507,209</b> 个自由像素，分成 <b>114</b> 个四连通分量。公共输入选择最大的 <b>470,743</b> 格作为目标连通区；另外 <b>36,466</b> 格没有进入这次规划。后续覆盖率的分母仍保留全部 507,209 格。</p>
+<figure><a href="assets/01_input.png" target="_blank"><img src="assets/01_input.png" alt="原图、自由区、最大连通区"></a><figcaption>白/黑/灰来自原图；蓝色是最大自由连通区，橙色是其余自由分量。图中是同一张地图。</figcaption></figure>
+<p>分辨率沿用同名 PGM 推得的 0.05 m/像素，实际代码以 float32 转为 <code>0.05000000074505806</code> m；局部原点人为设为 [0,0,0]，不代表原始世界坐标。数组读取时顶行在上，进入规划后翻转为下左原点，像素中心换算为 <code>x=(col+0.5)r，y=(H−row−0.5)r</code>。</p>
+</section>
+
+<section id="clearance"><div class="step">02 / 可行区</div><h2>1 m 净空会断开通道；最后只保留起点能到达的 F</h2>
+<ol><li>对最大连通区补一圈非自由边界，再做精确欧氏距离变换 EDT。</li>
+<li>距离必须严格大于 <code>ceil(1.0 / r) = 20</code> 像素，得到 <b>295,111</b> 格 navigable。这里的 1 m 是公共栅格净空规则，不是作业宽度。</li>
+<li>以 EDT 最大值像素中心作为公共起点 <b>(34.375001, 52.475001) m</b>。</li>
+<li>再次四连通标记，只取包含起点的分量 F：<b>278,927</b> 格。另有 <b>16,184</b> 格虽满足净空，仍与起点断开。</li></ol>
+<figure><a href="assets/02_clearance.png" target="_blank"><img src="assets/02_clearance.png" alt="距离变换、1m净空和起点分量"></a><figcaption>蓝/绿是能走的中心区域；橙色为被净空排除的目标格；最右红色是满足净空却无法从起点到达的区域。</figcaption></figure>
+<div class="note">“全图看起来有通道”和“中心在保持 1 m 净空后仍可连通”是不同条件。BCD 只收到 F，不会看到被排除的区域；后面的 80 块都在这个输入上形成。</div>
+</section>
+
+<section id="rotation"><div class="step">03 / 对齐</div><h2>先把主要墙面方向转正，才开始切区</h2>
+<p><code>RoomRotator</code> 先用 Canny(50,150,3) 提取 F 的边缘，再做 HoughLinesP。起始最短线长为 1 m；本图找到 <b>92</b> 条线段，足够使用第一轮参数。线段方向折算到 [0,π]，按长度加权进入 <b>36 个方向桶</b>，取权重最大桶内的加权平均方向。</p>
+<p>AJ04 的全局旋转参数为 <b>+90.5080880999°</b>（OpenCV 约定），不是恰好 90°。<b>如果旋转前后都按 y 向上显示，这个矩阵表现为顺时针 90.508°。</b>旋转中心取 F 非零像素包围框中心，扩大画布得到 <b>1723 × 1225</b>。使用 <code>warpAffine / INTER_AREA</code>，再以 <code>&gt;127</code> 二值化；没有形态学闭运算来抹掉细障碍。</p>
+<p><b>旧图为什么不像只转了 90°：</b>旧图左边是 y 向上的原地图，右边是行号向下的原生图，且左边还画了 F 以外的地图。两边直接对比时，混入了一次显示上的上下翻转。下面已改成<b>左、中两张主图都只画同一个 F，纵轴都向上，像素尺度相同</b>，可用 A、B、C 三个对应点和输入方向箭头核对。右边单列原生行号视图，避免把显示翻转误当成算法又转了一次。</p>
+<figure><a href="assets/03_rotation.svg" target="_blank"><img src="assets/03_rotation.png?v=71a1a12af5dd" alt="同一F在相同向上坐标中的旋转前后对照，以及原生向下行号视图"></a><figcaption>左 → 中：顺时针 90.508°，输入 +x（向右）转为近似向下，输入 +y（向上）转为近似向右；A/B/C 是同三个点。中 → 右：像素数组完全相同，只把纵轴改成向下显示。算法旋转矩阵行列式为 +1，不含镜像。</figcaption></figure>
+<details><summary>展开精确仿射矩阵与坐标转换</summary><pre id="rotation-matrix"></pre><p>先在下左原点像素坐标上用 R 变换；原生分区/扫线结果以 R⁻¹ 变回，再加半格中心偏移并乘 r。报告中的地图图层均回到同一原图坐标。逐 cell 还会再旋转一次，它与这里的全局旋转是两步。</p></details>
+</section>
+
+<section id="events"><div class="step">04 / 分解</div><h2>逐行数自由片段；发生分裂或合并时才画边界</h2>
+<p>从旋转图第一行出现白像素的位置开始，沿 y′ 增大逐行扫描。实现通过“自由→黑色”的过渡计数，并记录障碍起止 x。比较相邻行的片段数：</p>
+<table><thead><tr><th>事件</th><th>触发与检查</th><th>在哪里画边界</th></tr></thead><tbody>
+<tr><td>IN / 分裂</td><td>片段数增加；对当前行黑像素检查上一行 x−1、x、x+1 是否全为自由。</td><td>在当前行向左右延伸，只标记当前/上一行均为自由的像素，遇黑障碍停止。</td></tr>
+<tr><td>OUT / 合并</td><td>片段数减少；回看上一行黑像素，检查当前行的三像素邻域。</td><td>在上一行向左右延伸；同时检查再上一行，避免把边界铺进障碍。</td></tr>
+<tr><td>SHIFT / 横向错位</td><td>片段数量相同，但相邻行片段位置错开时，也可能触发检查。</td><td>采用 IN 分支。本图没有触发 SHIFT，不能画一个虚构实例。</td></tr></tbody></table>
+<p>本图记录了 <b>31 次 IN + 35 次 OUT = 66 次候选事件</b>。其中 <b>30 次</b>真的新增边界像素，其余只进行了条件检查；最终形成 <b>79 段连续边界像素</b>。这些边界在算法内部临时阻断 floodFill，<b>不是机器人移动障碍墙</b>。</p>
+<figure><a href="assets/04_all_cuts.png" target="_blank"><img src="assets/04_all_cuts.png" alt="全部实际分区切割线"></a><figcaption>同一批真实切割线，左图映回原图，右图保留旋转坐标。红色 IN、紫色 OUT。</figcaption></figure>
+<figure><a href="assets/05_event_zoom.png" target="_blank"><img src="assets/05_event_zoom.png" alt="分裂和合并事件的局部放大"></a><figcaption>放大切割发生的障碍端部；完整边界见上一图。黄点表示源码检查通过的黑像素位置，同一障碍可以产生多个黄点。</figcaption></figure>
+<div class="panel"><h3>66 次事件逐步回放</h3><div class="toolbar"><button id="event-prev">上一次</button><input id="event-range" type="range" min="1" max="66" value="7"><button id="event-next">下一次</button><select id="event-select"></select><button id="event-focus">放大事件</button><button id="event-reset">全区</button></div>
+<p id="event-info"></p><canvas id="event-map" class="map" aria-label="分区事件地图"></canvas><p class="hint">当前新增切线红色，之前切线紫色，扫描行黄色虚线。可以滚轮放大、拖动。选中没有切线的事件时仍显示扫描位置。</p></div>
+<details><summary>展开全部 66 次事件明细</summary><div class="table-scroll"><table><thead><tr><th>事件</th><th>类型</th><th>原生行 y′</th><th>片段变化</th><th>检查通过的黑像素</th><th>新增边界段</th></tr></thead><tbody id="events-table"></tbody></table></div></details>
+</section>
+
+<section id="labels"><div class="step">05 / 区域数量</div><h2>80 块是怎么数出来的；为什么有这么多小块</h2>
+<p>临时边界标记后，对剩余白像素用 <b>四连通 floodFill</b> 逐块标记：得到 80 个标签。再建立边界两侧 cell 的邻接关系；上游支持把太小的 cell 并入最大邻区，但本轮传入面积/宽度阈值都是 0，<b>没有合并任何 cell</b>。只把临时边界像素分给相邻的大区域，再提取每个标签的外轮廓。</p>
+<p><code>GeneralizedPolygon</code> 用填充轮廓后的非零像素数定义面积，不是直接用连续多边形面积公式。随后用距离变换和 MeanShift 求 cell 内部中心。标签面积与填充轮廓面积可能不同，CSV 分别列出。输出索引从 0 开始，所以 <b>C00 对应原生标签 1，C79 对应标签 80</b>；编号不是访问顺序。</p>
+<figure><a href="assets/06_label_stages.png" target="_blank"><img src="assets/06_label_stages.png" alt="floodFill标签及边界像素归属"></a><figcaption>原生标签图直接来自追踪副本。合并前 80 块，处理后仍为 80 块。</figcaption></figure>
+<p>80 块中有 <b>55 块小于 1 m²</b>，最小只有 <b>1 像素 = 0.0025 m²</b>。接近 90° 的旋转、像素台阶、障碍端部和逐行变化检查都会留下细碎区域；面积阈值 0 使它们全部保留。这里的 80 是原生 BCD cell 数，<b>不是 Hybrid 聚合后的任务区数量</b>。</p>
+<figure><a href="assets/07_all_80_cells.svg" target="_blank"><img src="assets/07_all_80_cells.png" alt="全部80个原生分区编号图"></a><figcaption>C00–C79 全部引出标注；点状 cell 也保留。点击打开可放大的 SVG，下面逐区查看解决密集区域重叠问题。</figcaption></figure>
+</section>
+
+<section id="cells"><div class="step">06 / 逐块检查</div><h2>全部 80 块，都可以单独定位、放大和查看扫线</h2>
+<div class="toolbar"><button id="cell-prev">上一块</button><select id="cell-select"></select><button id="cell-next">下一块</button><button id="cell-focus">放大当前区域</button><button id="cell-reset">全区</button></div>
+<div id="cell-info" class="note"></div>
+<div class="toolbar"><label><input type="checkbox" id="show-cells" checked>80 区底色</label><label><input type="checkbox" id="show-f" checked>可行区 F</label><label><input type="checkbox" id="show-grid">局部扫线</label><label><input type="checkbox" id="show-raw">原生有序路径</label><label><input type="checkbox" id="show-safe" checked>安全片段</label><label><input type="checkbox" id="show-final" checked>本区最终路线</label><label><input type="checkbox" id="show-labels">全部编号</label></div>
+<canvas id="cell-map" class="map" aria-label="全部分区可缩放地图"></canvas>
+<p class="hint">点击区域或使用选择框。灰色线为原生候选，橙色为安全片段，蓝色为归属当前区域的最终路线，紫色为其中 A*；红框高亮当前区域。细小区域不一定能直接点中，可按编号选取。</p>
+<div class="toolbar"><label>原生目标点回放 <input type="range" id="raw-progress" min="0" value="0"></label><input type="number" id="raw-index" min="0" value="0"><span id="raw-info"></span></div>
+<details id="corner-details"><summary>当前区域四角选择的原生距离（从 cell 中心出发）</summary><div id="corner-info"></div></details>
+<figure><a id="cell-image-link" href="assets/cells/C38.png" target="_blank"><img id="cell-image" src="assets/cells/C38.png" alt="当前cell的原图、局部网格、最终路线三联放大图"></a><figcaption>三联放大图：左为原图位置，中为再旋转后的真实像素与网格，右为路径。三个面板坐标系不同，均有单位；接近路线超出局部框的部分在上方交互图查看。</figcaption></figure>
+<h3>区域总表</h3><p>面积按原生填充像素计；“访问 #”是最终调度次序。点击一行即可切换上面的地图。<a href="cells.csv">下载完整 CSV</a>。</p>
+<div class="toolbar"><label>显示 <select id="cell-filter"><option value="all">全部 80 块</option><option value="visited">已访问的 61 块</option><option value="missing">未单独访问的 19 块</option><option value="tiny">面积 ≤ 0.01 m²</option></select></label><span id="cell-count"></span></div>
+<div class="table-scroll"><table><thead><tr><th>区域</th><th>标签</th><th>面积 m²</th><th>原生像素</th><th>网格线</th><th>原生点</th><th>安全段</th><th>访问 #</th><th>A*</th><th>状态</th></tr></thead><tbody id="cells-table"></tbody></table></div>
+</section>
+
+<section id="sweeps"><div class="step">07 / 区内规划</div><h2>每一个 cell 内部，如何变成弓字路径</h2>
+<ol><li><b>画单 cell 掩膜。</b>轮廓填成白色，周围为黑色；以 cell 包围框中心计算第二次旋转。再旋转的方向仍由 Hough 主方向确定，不是简单比较矩形长宽。</li>
+<li><b>确定可扫像素。</b>将整房间旋转到 cell 坐标，与 cell 掩膜共同检查；本轮关闭原生额外半格腐蚀，保留既有 F 安全边界。</li>
+<li><b>生成网格线。</b>从可扫最小行开始，行距 <code>floor(0.6 / √2 / r) = 8 px ≈ 0.40 m</code>，半格 4 px；沿行每 1 px 采样。末行若不足完整行距，可落在最大有效行。<code>max_deviation_from_track=0</code>，本次不做上下偏移补线。</li>
+<li><b>选择起始角。</b>取首行与末行左右端点共四角，从 cell 中心调用 IPA 原生 A* 比较距离，选择最小者。代价单位是像素路径长度，<code>1e100</code> 表示不可达。</li>
+<li><b>排列区内路线。</b>根据角点选择从首行或末行开始，按行左右交替；行间使用 IPA 的区内 A*。源码还包含首行起始连接，可能产生重复经过，报告保留实际输出。</li>
+<li><b>输出并变回原图。</b><code>path_eps=1.0</code> 像素控制采样保留；末端会额外加入，因此可出现重复目标点。先逆 cell 旋转，再逆全局旋转，最后换成米制坐标。</li></ol>
+<figure><a href="assets/08_cell_sweep.png" target="_blank"><img src="assets/08_cell_sweep.png" alt="C38区内网格及有序扫线"></a><figcaption>例子 C38：原生 3068 个目标点。这里选角时以 cell 中心为出发点；真正的机器人公共起点接近及 cell 正反向选择在后面的 Python 调度阶段发生。</figcaption></figure>
+<div class="note"><b>6 个单像素区域为什么没有扫线：</b>C04、C17、C30、C36、C54、C77。追踪表明，它们在局部仿射变换与二值化后白像素数均为 0，后续网格为空；不能只笼统解释成“算法忽略小区域”。逐区图保留原始像素中心投影，展示白格消失的位置。</div>
+</section>
+
+<section id="clipping"><div class="step">08 / 安全候选</div><h2>原生输出还不是最终路线：先回到原图裁剪</h2>
+<p>80 块 cell 共返回 <b>46,243</b> 个原生目标点。适配层先去相邻重复点、合并满足数值判据的共线点，再对每段与原分辨率 F 栅格边界求交，保留自由段。切出的边界端点必要时略向内缩，随后做严格闭格安全检查；没有把障碍像素改成自由。</p>
+<p>最终得到 <b>39,465</b> 个可用安全片段，归属 <b>61</b> 个 cell。片段总长度 <b>2263.492542 m</b>；原生各 cell 路径长度之和为 <b>2321.870645 m</b>。两者都还不包含全部跨段与跨区连接，不能当最终整路长度。</p>
+<figure><a href="assets/09_raw_safe.png" target="_blank"><img src="assets/09_raw_safe.png" alt="原生候选和安全片段对照"></a><figcaption>颜色区分原生 cell。左右没有用直线擅自连接不同 cell，因此这里不是一条连续全局路线。</figcaption></figure>
+<table><thead><tr><th>未单独调度的原因</th><th>数量</th><th>区域</th></tr></thead><tbody>
+<tr><td>局部重采样后无白格，原生无扫线</td><td>6</td><td>C04、C17、C30、C36、C54、C77</td></tr>
+<tr><td>原生只给一个目标点，无法构成非零长度片段</td><td>9</td><td>C01、C19、C25、C42、C45、C46、C48、C59、C60</td></tr>
+<tr><td>原生有很短的路径，原图 F 裁剪后没有可用段</td><td>4</td><td>C41、C52、C69、C73</td></tr></tbody></table>
+<p>19 块没有被单独访问，不意味着每块都完全没被扫到：邻区路线和连接段的 0.6 m 作业圆盘仍可能覆盖它们。它们没有从地图自由面积分母中删除。<code>rejected_candidate_segments=0</code> 仅表示裁剪后没有片段在后续严格检查中被拒绝，不表示所有原生线段都完整保留。</p>
+</section>
+
+<section id="schedule"><div class="step">09 / 访问顺序</div><h2>从公共起点开始，每轮比较真实接近距离</h2>
+<p>纯 BCD 把所有有安全片段的 cell 放入待访问列表，不采用 Hybrid 的 BCD/Local 分类。每个 cell 提供两个候选入口：整段序列的首端，以及把整段序列反过来后的首端。每轮先按当前端点到候选入口的直线距离排序，只取最近 <b>8</b> 个候选；再用安全连接器计算实际路径长度，选最短者，相同长度按 cell 索引、正反向确定。</p>
+<p>胜出后连接并加入该 cell 的全部片段目标，更新当前位置，然后进入下一轮。本次共 <b>61 轮</b>，首轮是 <b>C38 正向</b>，公共起点接近长度 <b>7.343333 m</b>。这是有候选上限的贪心顺序，不是 IPA TSP，也不保证全局最短。</p>
+<figure><a href="assets/11_scheduler_first.png" target="_blank"><img src="assets/11_scheduler_first.png" alt="首轮8个候选及真实接近距离"></a><figcaption>这里的代价以米计；与原生单 cell 的四角像素距离是不同阶段、不同单位。</figcaption></figure>
+<div class="panel"><h3>61 轮调度与累计路线</h3><div class="toolbar"><button id="order-prev">上一轮</button><input id="order-range" type="range" min="1" max="61" value="1"><button id="order-next">下一轮</button><select id="order-select"></select><button id="order-focus">放大当轮候选</button><button id="order-reset">全区</button><label><input type="checkbox" id="order-candidates" checked>显示 8 个候选接近路径</label></div><p id="order-info"></p><canvas id="order-map" class="map" aria-label="调度和累计路线地图"></canvas><div id="candidate-table"></div></div>
+<details><summary>展开全部访问顺序及每区长度</summary><div id="schedule-table"></div></details>
+<figure><a href="assets/10_order_connections.png" target="_blank"><img src="assets/10_order_connections.png" alt="61区访问顺序和实际A星连接"></a><figcaption>左侧数字是访问序号，不是 C 编号。右侧紫色仅表示实际写入最终路径的 A*，候选评价用过但没有胜出的路径不计入长度。</figcaption></figure>
+</section>
+
+<section id="connection"><div class="step">10 / 连续安全连接</div><h2>每个目标都必须接上；有视线就直连，否则走 A*</h2>
+<p>安全片段被展开为起点、终点目标序列，因此本次共有 <b>78,930 条目标连接记录</b>。连接器先检查端点与通行连通性；若可见线段合格则直接连接，否则搜索完整 F 上的八邻域 A*。斜向移动必须同时满足相邻两个正交格自由，禁止切角；所得路径经过共线压缩与经检查的视线简化，再做严格闭格复核。</p>
+<p>全程 <b>532 次 A* 搜索</b>中，<b>323 次</b>用于比较入口候选，<b>209 次</b>实际加入最终路线。剩余 <b>78,721</b> 条目标连接记录为可见直连，其中可以包含零长度连接。不能把 532 当成 532 段实际绕行。</p>
+<figure><a href="assets/12_astar_zoom.png" target="_blank"><img src="assets/12_astar_zoom.png" alt="三处真实A星绕行放大"></a><figcaption>紫色是实际路线，红虚线只表示端点间的直接连线。最左 C10 接近：直线 2.85 m，实际绕行 9.28 m。</figcaption></figure>
+<p>连接使用完整 F，分区边界不阻止通行。任一必需连接失败会使该方案失败，不把不连续片段伪装成成功整路。本次最终路径同时通过严格闭格审计和独立“线段与阻塞像素方框相交”解析审计。</p>
+<div class="panel"><h3>最终路线的任意顶点检查</h3><div class="toolbar"><input id="vertex-range" type="range" min="0" max="79224" value="0"><input id="vertex-index" type="number" min="0" max="79224" value="0"><button id="vertex-focus">放大当前点</button><button id="vertex-reset">全区</button></div><p id="vertex-info"></p><canvas id="vertex-map" class="map" aria-label="路线顶点回放地图"></canvas></div>
+</section>
+
+<section id="final"><div class="step">11 / 完整结果</div><h2>路线连续安全，但“覆盖了 F”与“覆盖了全图”必须分开</h2>
+<table><thead><tr><th>项</th><th>本次证据复算结果</th><th>含义</th></tr></thead><tbody>
+<tr><td>完整路线</td><td>79,225 个顶点 / 2493.437449 m</td><td>含公共起点、所有接近、区内外转移、绕行与重复；不要求回到起点。</td></tr>
+<tr><td>安全片段本体</td><td>2263.492542 m</td><td>沿已裁剪片段行进的部分。</td></tr>
+<tr><td>每区首次接近之和</td><td>161.834864 m</td><td>61 次，包括公共起点到第一个区域。</td></tr>
+<tr><td>同区片段之间连接之和</td><td>68.110043 m</td><td>连接相邻安全片段端点；不是作业宽度的面积统计。</td></tr>
+<tr><td>全自由区覆盖</td><td>301,205 / 507,209 = 59.384790%</td><td>0.6 m 圆盘沿完整路线扫掠，以原图全部自由像素中心计数。</td></tr>
+<tr><td>F 内覆盖</td><td>278,780 / 278,927 = 99.947298%</td><td>F 内还剩 147 格 / 0.3675 m²。</td></tr>
+<tr><td>全图自由残余</td><td>206,004 格</td><td>包含净空排除、起点不可达和规划残余；没有从分母扣掉。</td></tr>
+<tr><td>栅格安全</td><td>碰撞段 0 / 公共净空违规段 0</td><td>最终静态栅格几何通过，不代表实际执行验证。</td></tr>
+</tbody></table>
+<figure><a href="assets/13_final.png" target="_blank"><img src="assets/13_final.png" alt="最终整路及全自由区覆盖残余"></a><figcaption>绿色圆盘扫掠会覆盖一些 F 外的自由边带，所以全图已扫 301,205 格可以大于 F 的 278,927 格；机器人中心始终受 F 约束。</figcaption></figure>
+<figure><a href="assets/14_residual_zoom.png" target="_blank"><img src="assets/14_residual_zoom.png" alt="F内未覆盖像素放大"></a><figcaption>最大几处 F 内残余逐像素放大。纯 BCD 没有 Local 补扫，不能把 99.9473% 写成 100%。</figcaption></figure>
+<p>本报告复核的是保存路线和静态几何。没有启动 ROS、Gazebo 或机器人运动，没有验证全程跟踪、曲率、动态避障或真机清扫。原生规划时间为历史记录；本次加记录的追踪耗时不作为算法计时结果。</p>
+</section>
+
+<section id="atlas"><div class="step">12 / 所有局部图</div><h2>80 块区域的静态放大索引</h2>
+<p>下列 10 页索引每页 8 块，确保没有漏掉任何分区。每框单独缩放，面积与访问状态写在标题里。更详细的三联图在“06”按编号选择，或展开下方逐区清单。</p>
+<details class="atlas"><summary>索引 01/10 · C00–C07</summary><figure><a href="assets/atlas_01.png" target="_blank"><img loading="lazy" src="assets/atlas_01.png" alt="C00至C07全部区域放大"></a></figure></details>
+<details class="atlas"><summary>索引 02/10 · C08–C15</summary><figure><a href="assets/atlas_02.png" target="_blank"><img loading="lazy" src="assets/atlas_02.png" alt="C08至C15全部区域放大"></a></figure></details>
+<details class="atlas"><summary>索引 03/10 · C16–C23</summary><figure><a href="assets/atlas_03.png" target="_blank"><img loading="lazy" src="assets/atlas_03.png" alt="C16至C23全部区域放大"></a></figure></details>
+<details class="atlas"><summary>索引 04/10 · C24–C31</summary><figure><a href="assets/atlas_04.png" target="_blank"><img loading="lazy" src="assets/atlas_04.png" alt="C24至C31全部区域放大"></a></figure></details>
+<details class="atlas"><summary>索引 05/10 · C32–C39</summary><figure><a href="assets/atlas_05.png" target="_blank"><img loading="lazy" src="assets/atlas_05.png" alt="C32至C39全部区域放大"></a></figure></details>
+<details class="atlas"><summary>索引 06/10 · C40–C47</summary><figure><a href="assets/atlas_06.png" target="_blank"><img loading="lazy" src="assets/atlas_06.png" alt="C40至C47全部区域放大"></a></figure></details>
+<details class="atlas"><summary>索引 07/10 · C48–C55</summary><figure><a href="assets/atlas_07.png" target="_blank"><img loading="lazy" src="assets/atlas_07.png" alt="C48至C55全部区域放大"></a></figure></details>
+<details class="atlas"><summary>索引 08/10 · C56–C63</summary><figure><a href="assets/atlas_08.png" target="_blank"><img loading="lazy" src="assets/atlas_08.png" alt="C56至C63全部区域放大"></a></figure></details>
+<details class="atlas"><summary>索引 09/10 · C64–C71</summary><figure><a href="assets/atlas_09.png" target="_blank"><img loading="lazy" src="assets/atlas_09.png" alt="C64至C71全部区域放大"></a></figure></details>
+<details class="atlas"><summary>索引 10/10 · C72–C79</summary><figure><a href="assets/atlas_10.png" target="_blank"><img loading="lazy" src="assets/atlas_10.png" alt="C72至C79全部区域放大"></a></figure></details>
+<details><summary>展开全部 80 张三联放大图入口</summary><div class="cell-links"><a href="assets/cells/C00.png" target="_blank">C00 三联放大</a>
+<a href="assets/cells/C01.png" target="_blank">C01 三联放大</a>
+<a href="assets/cells/C02.png" target="_blank">C02 三联放大</a>
+<a href="assets/cells/C03.png" target="_blank">C03 三联放大</a>
+<a href="assets/cells/C04.png" target="_blank">C04 三联放大</a>
+<a href="assets/cells/C05.png" target="_blank">C05 三联放大</a>
+<a href="assets/cells/C06.png" target="_blank">C06 三联放大</a>
+<a href="assets/cells/C07.png" target="_blank">C07 三联放大</a>
+<a href="assets/cells/C08.png" target="_blank">C08 三联放大</a>
+<a href="assets/cells/C09.png" target="_blank">C09 三联放大</a>
+<a href="assets/cells/C10.png" target="_blank">C10 三联放大</a>
+<a href="assets/cells/C11.png" target="_blank">C11 三联放大</a>
+<a href="assets/cells/C12.png" target="_blank">C12 三联放大</a>
+<a href="assets/cells/C13.png" target="_blank">C13 三联放大</a>
+<a href="assets/cells/C14.png" target="_blank">C14 三联放大</a>
+<a href="assets/cells/C15.png" target="_blank">C15 三联放大</a>
+<a href="assets/cells/C16.png" target="_blank">C16 三联放大</a>
+<a href="assets/cells/C17.png" target="_blank">C17 三联放大</a>
+<a href="assets/cells/C18.png" target="_blank">C18 三联放大</a>
+<a href="assets/cells/C19.png" target="_blank">C19 三联放大</a>
+<a href="assets/cells/C20.png" target="_blank">C20 三联放大</a>
+<a href="assets/cells/C21.png" target="_blank">C21 三联放大</a>
+<a href="assets/cells/C22.png" target="_blank">C22 三联放大</a>
+<a href="assets/cells/C23.png" target="_blank">C23 三联放大</a>
+<a href="assets/cells/C24.png" target="_blank">C24 三联放大</a>
+<a href="assets/cells/C25.png" target="_blank">C25 三联放大</a>
+<a href="assets/cells/C26.png" target="_blank">C26 三联放大</a>
+<a href="assets/cells/C27.png" target="_blank">C27 三联放大</a>
+<a href="assets/cells/C28.png" target="_blank">C28 三联放大</a>
+<a href="assets/cells/C29.png" target="_blank">C29 三联放大</a>
+<a href="assets/cells/C30.png" target="_blank">C30 三联放大</a>
+<a href="assets/cells/C31.png" target="_blank">C31 三联放大</a>
+<a href="assets/cells/C32.png" target="_blank">C32 三联放大</a>
+<a href="assets/cells/C33.png" target="_blank">C33 三联放大</a>
+<a href="assets/cells/C34.png" target="_blank">C34 三联放大</a>
+<a href="assets/cells/C35.png" target="_blank">C35 三联放大</a>
+<a href="assets/cells/C36.png" target="_blank">C36 三联放大</a>
+<a href="assets/cells/C37.png" target="_blank">C37 三联放大</a>
+<a href="assets/cells/C38.png" target="_blank">C38 三联放大</a>
+<a href="assets/cells/C39.png" target="_blank">C39 三联放大</a>
+<a href="assets/cells/C40.png" target="_blank">C40 三联放大</a>
+<a href="assets/cells/C41.png" target="_blank">C41 三联放大</a>
+<a href="assets/cells/C42.png" target="_blank">C42 三联放大</a>
+<a href="assets/cells/C43.png" target="_blank">C43 三联放大</a>
+<a href="assets/cells/C44.png" target="_blank">C44 三联放大</a>
+<a href="assets/cells/C45.png" target="_blank">C45 三联放大</a>
+<a href="assets/cells/C46.png" target="_blank">C46 三联放大</a>
+<a href="assets/cells/C47.png" target="_blank">C47 三联放大</a>
+<a href="assets/cells/C48.png" target="_blank">C48 三联放大</a>
+<a href="assets/cells/C49.png" target="_blank">C49 三联放大</a>
+<a href="assets/cells/C50.png" target="_blank">C50 三联放大</a>
+<a href="assets/cells/C51.png" target="_blank">C51 三联放大</a>
+<a href="assets/cells/C52.png" target="_blank">C52 三联放大</a>
+<a href="assets/cells/C53.png" target="_blank">C53 三联放大</a>
+<a href="assets/cells/C54.png" target="_blank">C54 三联放大</a>
+<a href="assets/cells/C55.png" target="_blank">C55 三联放大</a>
+<a href="assets/cells/C56.png" target="_blank">C56 三联放大</a>
+<a href="assets/cells/C57.png" target="_blank">C57 三联放大</a>
+<a href="assets/cells/C58.png" target="_blank">C58 三联放大</a>
+<a href="assets/cells/C59.png" target="_blank">C59 三联放大</a>
+<a href="assets/cells/C60.png" target="_blank">C60 三联放大</a>
+<a href="assets/cells/C61.png" target="_blank">C61 三联放大</a>
+<a href="assets/cells/C62.png" target="_blank">C62 三联放大</a>
+<a href="assets/cells/C63.png" target="_blank">C63 三联放大</a>
+<a href="assets/cells/C64.png" target="_blank">C64 三联放大</a>
+<a href="assets/cells/C65.png" target="_blank">C65 三联放大</a>
+<a href="assets/cells/C66.png" target="_blank">C66 三联放大</a>
+<a href="assets/cells/C67.png" target="_blank">C67 三联放大</a>
+<a href="assets/cells/C68.png" target="_blank">C68 三联放大</a>
+<a href="assets/cells/C69.png" target="_blank">C69 三联放大</a>
+<a href="assets/cells/C70.png" target="_blank">C70 三联放大</a>
+<a href="assets/cells/C71.png" target="_blank">C71 三联放大</a>
+<a href="assets/cells/C72.png" target="_blank">C72 三联放大</a>
+<a href="assets/cells/C73.png" target="_blank">C73 三联放大</a>
+<a href="assets/cells/C74.png" target="_blank">C74 三联放大</a>
+<a href="assets/cells/C75.png" target="_blank">C75 三联放大</a>
+<a href="assets/cells/C76.png" target="_blank">C76 三联放大</a>
+<a href="assets/cells/C77.png" target="_blank">C77 三联放大</a>
+<a href="assets/cells/C78.png" target="_blank">C78 三联放大</a>
+<a href="assets/cells/C79.png" target="_blank">C79 三联放大</a></div></details>
+</section>
+
+<section id="evidence"><div class="step">溯源 / 复现</div><h2>每张图对应哪个实际源码和证据</h2>
+<p>本次先核对历史输入、结果、原生证据及当前规划源码的 SHA-256，再从既有生成副本构建<b>只增加记录</b>的追踪程序。追踪程序的 80 个轮廓和全部 46,243 个原生目标点，与历史 <code>output.json</code> 逐值相同，序列化 SHA 也一致。最终路线没有重新规划；本次重新计算指标、重放全部目标和每轮候选选择。</p>
+<table><thead><tr><th>阶段</th><th>源文件及关键入口</th></tr></thead><tbody>
+<tr><td>输入筛选、净空与起点</td><td><a href="../../../coverage_benchmark/map_io.py">map_io.py</a>：load_map</td></tr>
+<tr><td>全局/局部方向</td><td><a href="../../../third_party/ipa_coverage_planning/ipa_room_exploration/common/src/room_rotator.cpp">room_rotator.cpp</a>：computeRoomMainDirection、computeRoomRotationMatrix、rotateRoom</td></tr>
+<tr><td>分解与区内扫线</td><td><a href="../../../third_party/ipa_coverage_planning/ipa_room_exploration/common/src/boustrophedon_explorator.cpp">boustrophedon_explorator.cpp</a>：233 行旋转分解、263 行扫描切割、490 行标签、567 行合并规则、710 行区内扫线、966 行路径采样</td></tr>
+<tr><td>区域面积与中心</td><td><a href="../../../third_party/ipa_coverage_planning/ipa_room_exploration/common/include/ipa_room_exploration/boustrophedon_explorator.h">boustrophedon_explorator.h</a>：GeneralizedPolygon</td></tr>
+<tr><td>扫线网格</td><td><a href="../../../third_party/ipa_coverage_planning/ipa_room_exploration/common/include/ipa_room_exploration/grid.h">grid.h</a>：generateBoustrophedonGrid，259 行起</td></tr>
+<tr><td>实际调用与生成修改</td><td><a href="../../../coverage_benchmark/hybrid/native/main.cpp">native/main.cpp</a>：31 行分解、38 行单 cell 扫线；<a href="../../../coverage_benchmark/hybrid/build.py">build.py</a>：只改生成副本</td></tr>
+<tr><td>裁剪、调度与路线记账</td><td><a href="../../../coverage_benchmark/hybrid/planner.py">planner.py</a>：SafeRoute、candidates、_entry_options、_plan；<a href="../../../coverage_benchmark/grid_connector.py">grid_connector.py</a>：GridConnector</td></tr>
+<tr><td>几何与覆盖指标</td><td><a href="../../../coverage_benchmark/metrics.py">metrics.py</a>、<a href="../../../coverage_benchmark/ipa_connection.py">ipa_connection.py</a>、<a href="../../../coverage_benchmark/ipa_audit.py">ipa_audit.py</a></td></tr>
+</tbody></table>
+<div class="downloads"><a href="cells.csv">全部分区 CSV</a><a href="summary.json">精确数量与指标</a><a href="evidence/native_trace/trace.json">完整原生中间追踪</a><a href="evidence/schedule_candidates.json">61 轮候选路径与代价</a><a href="evidence/report_verification.json">本次重放核验</a><a href="evidence/native_trace/verification.json">追踪输出一致性</a><a href="../hybrid-local-bcd-2026-10-30/A11123AJ04_231127_094529_ipa_bcd.json">历史最终路线与逐段来源</a></div>
+<p>离线打开本目录的 <code>report.html</code> 即可查看图表，无 CDN 或外部网络依赖。正文、图片与交互数据都在报告目录内；源码和历史结果链接还需要原项目的相对目录。重新执行脚本需要本地原 PNG 和既有历史证据路径。</p>
+<pre>python3 docs/benchmarks/ipa-bcd-aj04-walkthrough-2026-11-02/trace_native.py
+python3 docs/benchmarks/ipa-bcd-aj04-walkthrough-2026-11-02/prepare_report.py
+python3 docs/benchmarks/ipa-bcd-aj04-walkthrough-2026-11-02/render_figures.py
+python3 docs/benchmarks/ipa-bcd-aj04-walkthrough-2026-11-02/assemble_report.py
+python3 docs/benchmarks/ipa-bcd-aj04-walkthrough-2026-11-02/verify_report.py</pre>
+<p class="source">报告保留原输入 SHA：<code>88ce806ef09044c2b57ba86e7dc3befab7a177b8a07690899900fc4ffca2b016</code>。显示坐标保留原始浮点值；静态图片为渲染展示，精确几何以 JSON 与掩膜为准。区域颜色只用于识别，不表示语义房间或规划优劣。</p>
+</section>
+<footer>AJ04 / IPA BCD · 2026-11-02 · 原生 80 区 / 调度 61 区 / Local 调用 0</footer>
+</main><script src="report-data.js"></script><script src="report.js?v=b4301829b0cb"></script></body></html>

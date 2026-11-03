@@ -62,3 +62,7 @@ Fields2Cover 地图感知扩展仍位于独立 `coverage_benchmark`：`map_io �
 
 
 ETHZ适配同属独立离线模块：`map_io → ethz.prepare_input → ethz_native → ETHZ原生BCD/扫描/可见图/GK-MA → PlanningResult → metrics`。先取公共起点净空分量，再按0.2 m保守全自由块取起点分量、矢量化并保留孔洞，舍弃格数写入结果；输入微退1微米避免半开栅格边界歧义，输出整路不修复。原生每cell最佳方向、可见图与GK-MA负责扫描和排序。`ethz_build`在本地生成目录构建依赖和核心，保留上游；`ethz_compare/verify_ethz`将三组新结果与历史12组汇总/复核，原有ROS overlay和运动接口不变。见[模块说明](coverage_benchmark/README.md)。
+
+IPA Local Energy适配位于独立离线模块：`map_io → ipa.prepare_input → ipa_native原生算法6 → ipa_connection/GridConnector → metrics`；先取公共起点1 m净空分量，原生房间旋转、半格内缩和全部目标顺序保留。自有连接层从公共起点接近并逐一连接全部目标，禁止切角和触碰阻塞格，失败返回空最终路线。`ipa_audit`以解析线段/像素方框相交独立复核，`ipa_compare/verify_ipa`统一18组并重放全部目标和逐段来源；原图、指标、历史五算法和ROS接口不改。见[IPA设计](docs/benchmarks/ipa-local-energy-design.md)。
+
+IPA BCD/Local 独立入口位于 `coverage_benchmark/hybrid/`（保留目录名供报告导入）：`PlanningInput → native BCD 分解/扫线或全局 Local → SafeRoute/GridConnector → CoverageLedger → 双安全审计`。仅提供 `ipa_bcd` 和 `ipa_local`；混合分类、区域切换和补扫已删除。原生 cell 栅格化用于查看，不改变调度。新生成副本关闭额外半格腐蚀，原 IPA 适配和上游所有算法保持不变。`experiment` 运行两组并保存/重放证据，见[模块说明](coverage_benchmark/hybrid/README.md)。

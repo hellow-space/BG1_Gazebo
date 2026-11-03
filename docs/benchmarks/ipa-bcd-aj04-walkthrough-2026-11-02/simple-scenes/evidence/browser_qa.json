@@ -1,0 +1,109 @@
+{
+  "passed": true,
+  "html_sha256": "fc9165435f544d6a8ec5fc23dc244eaf9ab6e6311f10ad35b7756b2c2c5b71e6",
+  "figures_sha256": "7b444ad2082fe3a17e5cd34eea6f0ab139491aecbc62e844633292dafe917e84",
+  "checked_scenes": [
+    {
+      "heading": "场景 1：空房间",
+      "images": [
+        {
+          "loaded": true,
+          "name": "assets/empty-01.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/empty-02.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/empty-03.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/empty-04.png"
+        }
+      ]
+    },
+    {
+      "heading": "场景 2：中央有障碍",
+      "images": [
+        {
+          "loaded": true,
+          "name": "assets/island-01.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/island-02.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/island-03.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/island-04.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/island-05.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/island-06.png"
+        }
+      ]
+    },
+    {
+      "heading": "场景 3：两条入口后来汇合",
+      "images": [
+        {
+          "loaded": true,
+          "name": "assets/meeting-01.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/meeting-02.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/meeting-03.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/meeting-04.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/meeting-05.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/meeting-06.png"
+        }
+      ]
+    },
+    {
+      "heading": "场景 4：侧墙凸起",
+      "images": [
+        {
+          "loaded": true,
+          "name": "assets/notch-01.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/notch-02.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/notch-03.png"
+        },
+        {
+          "loaded": true,
+          "name": "assets/notch-04.png"
+        }
+      ]
+    }
+  ],
+  "screenshot": "evidence/browser_central.png",
+  "screenshot_sha256": "91e931167aa53956cec60e2226909afed9a013838c7f5a8c0e7e857fc773d453"
+}

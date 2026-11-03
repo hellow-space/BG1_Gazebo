@@ -1,0 +1,113 @@
+{
+  "adjacency": [
+    {
+      "label": 1,
+      "neighbors": [],
+      "pixels": 378.0
+    }
+  ],
+  "before_merge_count": 1,
+  "directions": [],
+  "events": [
+    {
+      "after": 0,
+      "before": 1,
+      "critical_points": [],
+      "cuts": [],
+      "type": "OUT",
+      "y": 21
+    }
+  ],
+  "final_label_count": 1,
+  "first_scan_row": 3,
+  "initial_segments": 1,
+  "polygon_count": 1,
+  "rotations": [],
+  "rows": [
+    {
+      "segments": 1,
+      "y": 3
+    },
+    {
+      "segments": 1,
+      "y": 4
+    },
+    {
+      "segments": 1,
+      "y": 5
+    },
+    {
+      "segments": 1,
+      "y": 6
+    },
+    {
+      "segments": 1,
+      "y": 7
+    },
+    {
+      "segments": 1,
+      "y": 8
+    },
+    {
+      "segments": 1,
+      "y": 9
+    },
+    {
+      "segments": 1,
+      "y": 10
+    },
+    {
+      "segments": 1,
+      "y": 11
+    },
+    {
+      "segments": 1,
+      "y": 12
+    },
+    {
+      "segments": 1,
+      "y": 13
+    },
+    {
+      "segments": 1,
+      "y": 14
+    },
+    {
+      "segments": 1,
+      "y": 15
+    },
+    {
+      "segments": 1,
+      "y": 16
+    },
+    {
+      "segments": 1,
+      "y": 17
+    },
+    {
+      "segments": 1,
+      "y": 18
+    },
+    {
+      "segments": 1,
+      "y": 19
+    },
+    {
+      "segments": 1,
+      "y": 20
+    },
+    {
+      "segments": 0,
+      "y": 21
+    },
+    {
+      "segments": 0,
+      "y": 22
+    },
+    {
+      "segments": 0,
+      "y": 23
+    }
+  ],
+  "sweeps": []
+}
